@@ -2,10 +2,47 @@ import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
-import { FiHome } from 'react-icons/fi';
-import { RiQuestionnaireLine } from 'react-icons/ri';
+// ENUMS
 
-export default ({children}) => {
+export enum PageEnum {
+    HOME,
+    ABOUT,
+    HABILITIES,
+    PROJECTS,
+    CONTACT
+}
+
+// INTERFACES
+
+interface Page {
+    title: string;
+    rote: string;
+    currentPage?: boolean; // É a página atual?
+}
+
+interface MainFrameProps {
+    page: PageEnum
+}
+
+const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
+{
+    const pages: Page[] = [
+        // HOME
+        {
+            title: 'Início',
+            rote: '/',
+        },
+        {
+            title: 'Sobre',
+            rote: '/about'
+        }
+    ];
+
+    // OPERAÇÕES
+
+    // Definir página inicial
+    pages[page].currentPage = true;
+
     return(
         <div className={styles.container}>
             <h1>Bruno Coutinho Remeikis</h1>
@@ -13,11 +50,18 @@ export default ({children}) => {
             <div className={styles.content}>
                 <nav>
                     <ul>
-                        <li><Link href='/'>Início</Link></li>
+                        {pages.map((page, index) => {
+                            <li className={page.currentPage ? styles.currentPage : ''}>
+                                <Link href={`/${page.rote}`}>
+                                    {page.title}
+                                </Link>
+                            </li>
+                        })}
+                        
                         <li><Link href='/about'>Sobre</Link></li>
                         <li><Link href='/'>Habilidades</Link></li>
                         <li><Link href='/'>Projetos</Link></li>
-                        <li><Link href='/'>Contatos</Link></li>
+                        <li><Link href='/'>Contato</Link></li>
                     </ul>
                 </nav>
 
@@ -26,3 +70,5 @@ export default ({children}) => {
         </div>
     );
 }
+
+export default MainFrame;

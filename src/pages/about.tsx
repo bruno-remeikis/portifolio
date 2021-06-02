@@ -2,11 +2,12 @@ import Head from 'next/head';
 
 import styles from '../styles/About.module.scss';
 
-import MainFrame from '../components/MainFrame';
+import MainFrame, { PageEnum } from '../components/MainFrame';
 
-export default () => {
+export default () =>
+{
     return (
-        <MainFrame>
+        <MainFrame page={PageEnum.ABOUT}>
             <Head>
                 <title>Sobre - Bruno Remeikis</title>
             </Head>
