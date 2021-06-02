@@ -1,0 +1,40 @@
+:root {
+	--green-1: #589C48; // May Green
+	--green-2: #7BB662; // Bug Green
+
+	--orange-1: #FBB149; // Pastel Orange
+	--orange-2: #F58024; // Princeton Orange
+
+	--purple-1: #994FB2; // Purpureus
+	--purple-2: #733381; // Maximum purple
+
+	--white: #eaeaea;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html,
+body {
+	background-image: linear-gradient(to bottom, var(--purple-2), var(--purple-1), var(--orange-2));
+    color: var(--white);
+
+	min-height: 100vh;
+
+	padding: 0;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+		Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+ 	box-sizing: border-box;
+}
