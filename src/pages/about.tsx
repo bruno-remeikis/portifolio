@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/link';
 
 import styles from '../styles/About.module.scss';
 
@@ -13,14 +14,17 @@ export default () =>
             </Head>
 
             <main className={styles.container}>
-                <h2>Sobre mim</h2>
-                <p>Me chamo <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor Full Stack, apaixonado por criar coisas novas.</p>
-                <p></p>
+                <div className={styles.infoGroup}>
+                    <h2>Sobre mim</h2>
+                    <p>Me chamo <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor Full Stack.</p>
+                    <p>Minhas principais tecnolodias são: <span>HTML, CSS, JavaScript, TypeScript, React, Java e SQL</span>. Você pode ver as minhas habilidades clicando em <Link href='/habilities'>Habilidades</Link>.</p>
+                </div>
 
-                <br />
-
-                <h2>Curiosidades</h2>
-                <p>- Adoro música em todos os sentidos: tocar instrumentos, cantar, compor, dançar, etc.</p>
+                <div className={styles.infoGroup}>
+                    <h2>Curiosidades</h2>
+                    <p>- Adoro música em todos os sentidos: tocar instrumentos, cantar, compor, dançar, etc.</p>
+                    <p>- Gosto de criar coisas novas, desde sua concepção até seu desenvolvimento.</p>
+                </div>
             </main>
         </MainFrame>
     );

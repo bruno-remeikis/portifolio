@@ -1,15 +1,24 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
     padding: 1.2rem 3rem;
+}
 
-    h2 {
-        color: var(--orange-2);
-    }
+.infoGroup {
+    width: 100%;
+
+    h2 { color: var(--orange-2); }
 
     p {
+        margin-bottom: 0.6rem;
+
         font-size: 1.4rem;
 
-        span {
-			color: var(--orange-2);
-		}
+        span, a { color: var(--orange-2); }
+
+        a { transition: color 0.2s; }
+        a:hover { color: var(--orange-1); }
     }
 }

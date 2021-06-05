@@ -32,9 +32,22 @@ const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
             title: 'Início',
             rote: '/',
         },
+        // ABOUT
         {
             title: 'Sobre',
             rote: '/about'
+        },
+        {
+            title: 'Habilidades',
+            rote: '/habilities'
+        },
+        {
+            title: 'Projetos',
+            rote: '/projects'
+        },
+        {
+            title: 'Contato',
+            rote: '/contact'
         }
     ];
 
@@ -50,18 +63,13 @@ const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
             <div className={styles.content}>
                 <nav>
                     <ul>
-                        {pages.map((page, index) => {
+                        {pages.map((page, index) => (
                             <li className={page.currentPage ? styles.currentPage : ''}>
-                                <Link href={`/${page.rote}`}>
+                                <Link href={page.rote}>
                                     {page.title}
                                 </Link>
                             </li>
-                        })}
-                        
-                        <li><Link href='/about'>Sobre</Link></li>
-                        <li><Link href='/'>Habilidades</Link></li>
-                        <li><Link href='/'>Projetos</Link></li>
-                        <li><Link href='/'>Contato</Link></li>
+                        ))}
                     </ul>
                 </nav>
 
