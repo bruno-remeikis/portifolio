@@ -77,12 +77,23 @@
     box-shadow: 0 0 4px 1px rgb(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 1200px)
+@media screen and (max-height: 600px)
 {
-    
+    .container {
+        align-items: unset;
+    }
+
+    .content {
+        min-height: 100vh;
+        border-radius: 0;
+    }
 }
 
-@media screen and (max-height: 700px)
+@media only screen and (max-width: 1110px)
 {
-    
+    .content {
+        width: 100%;
+        min-height: 100vh;
+        border-radius: 0;
+    }
 }
