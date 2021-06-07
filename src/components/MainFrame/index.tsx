@@ -61,7 +61,7 @@ const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
             <h1>Bruno Coutinho Remeikis</h1>
 
             <div className={styles.content}>
-                <nav>
+                <nav className={styles.mainMenu}>
                     <ul>
                         {pages.map((page, index) => (
                             <li className={page.currentPage ? styles.currentPage : ''}>

@@ -16,7 +16,7 @@ export default function Home()
 			</Head>
 
 			<main className={styles.container}>
-				<div>
+				<div className={styles.mainText}>
 					<p className={styles.p1}>Olá!</p>
 					<p className={styles.p2}>Eu sou o <span>Bruno</span>,</p>
 					<p className={styles.p2}>dev Full Stack</p>

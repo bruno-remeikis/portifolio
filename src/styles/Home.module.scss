@@ -7,17 +7,15 @@
 
 	padding: 4rem 8rem;
 
-	p {
-		&.p1 {
-			font-size: 4rem;
-		}
+	.mainText {
+		margin-right: 1rem;
 
-		&.p2 {
-			font-size: 3.2rem;
-		}
-
-		span {
-			color: var(--orange-2);
+		p {
+			&.p1 { font-size: 4rem; }
+	
+			&.p2 { font-size: 3.2rem; }
+	
+			span { color: var(--orange-2); }
 		}
 	}
 
@@ -37,9 +35,7 @@
 
 			cursor: pointer;
 
-			&:hover {
-				background-color: var(purple-2);
-			}
+			&:hover { background-color: var(purple-2); }
 		}
 	}
 }
@@ -64,6 +60,26 @@
 @media only screen and (max-height: 600px)
 {
 	.container {
-		padding: 0;
+		padding: 0 8rem;
+	}
+}
+
+@media only screen and (max-width: 960px)
+{
+	.container {
+		justify-content: center;
+		padding: 0 1rem;
+	}
+}
+
+@media only screen and (max-width: 730px) {
+	.container {
+		flex-direction: column-reverse;
+	}
+
+	.mainText {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }
