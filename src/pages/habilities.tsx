@@ -40,8 +40,6 @@ export default () =>
             </Head>
 
             <main className={styles.container}>
-                {/*<h2>Tecnologias</h2>*/}
-
                 <div className={styles.items}>
                     {items.map(item =>
                         <div className={styles.item}>
