@@ -1,0 +1,30 @@
+.container {
+    padding: 1.2rem 3rem;
+}
+
+.item {
+    position: relative;
+
+    cursor: pointer;
+
+    &:hover span {
+        opacity: 1;
+    }
+
+    span {
+        position: absolute;
+        z-index: 1;
+
+        background-color: rgba(0, 0, 0, 0.3);
+        color: var(--white);
+
+        width: 100%;
+        padding: 1.4rem;
+
+        text-align: center;
+        font-size: 1.4rem;
+
+        opacity: 0;
+        transition: opacity 0.2s;
+    }
+}
