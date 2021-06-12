@@ -1,5 +1,5 @@
 .container {
-    padding: 1.2rem 3rem;
+    padding: 0 0.6rem;
 }
 
 .item {
@@ -7,9 +7,7 @@
 
     cursor: pointer;
 
-    &:hover span {
-        opacity: 1;
-    }
+    &:hover span { opacity: 1; }
 
     span {
         position: absolute;
@@ -26,5 +24,12 @@
 
         opacity: 0;
         transition: opacity 0.2s;
+    }
+}
+
+@media only screen and (max-width: 900px)
+{
+    .item {
+        span { padding: 0.4rem; }
     }
 }

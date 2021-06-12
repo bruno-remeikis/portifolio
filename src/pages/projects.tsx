@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Router, useRouter } from 'next/router';
 
 import styles from '../styles/Projects.module.scss';
 
 import MainFrame, { PageEnum } from '../components/MainFrame';
 
 import Carousel from 'react-elastic-carousel';
+import { isMobile } from 'react-device-detect';
 
 interface ItemProps
 {
@@ -17,8 +17,6 @@ interface ItemProps
 
 const Item: React.FC<ItemProps> = ({ title, imageName, link }) =>
 {
-    const router = useRouter();
-
     return (
         <a
             className={styles.item}
@@ -39,7 +37,13 @@ export default () =>
         </Head>
 
         <main className={styles.container}>
-            <Carousel isRTL={false} breakPoints={[{width: 1000, itemsToShow: 1}]}>
+            <Carousel
+                className={styles.carousel}
+                breakPoints={[{width: 1000, itemsToShow: 1}]}
+                isRTL={false}
+                enableMouseSwipe={isMobile}
+                showArrows={!isMobile}
+            >
                 <Item title="Calendário" imageName="calendario.png" link={'https://github.com/bruno-remeikis/calendario'} />
                 <Item title="Portifólio" imageName="portifolio.png" link={'https://github.com/bruno-remeikis/portifolio'} />
             </Carousel>
