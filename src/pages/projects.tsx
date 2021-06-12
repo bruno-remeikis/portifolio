@@ -23,7 +23,7 @@ const Item: React.FC<ItemProps> = ({ title, imageName, link }) =>
             href={link}
             target='_blank'
         >
-            <span className={!isMobile ? styles.mobileTitle : styles.title}>{title}</span>
+            <span className={isMobile ? styles.mobileTitle : styles.title}>{title}</span>
             <Image src={`/projects/${imageName}`} alt={`Projeto: ${title}`} width={1366} height={625} />
         </a>
     )
