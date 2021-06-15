@@ -17,13 +17,15 @@ export default () =>
                 <div className={styles.infoGroup}>
                     <h2>Sobre mim</h2>
                     <p>Me chamo <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor Full Stack.</p>
-                    <p>Minhas principais tecnolodias são: <span>HTML, CSS, JavaScript, TypeScript, React, Java e SQL</span>. Você pode ver as minhas habilidades clicando em <Link href='/habilities'>Habilidades</Link>.</p>
+                    <p>Minhas principais tecnolodias são: <span>HTML, CSS, JavaScript, TypeScript, React, Java e SQL</span>. Você pode mais clicando em <Link href='/habilities'>Habilidades</Link>.</p>
                 </div>
 
                 <div className={styles.infoGroup}>
                     <h2>Curiosidades</h2>
-                    <p>- Adoro música em todos os sentidos: tocar instrumentos, cantar, compor, dançar, etc.</p>
-                    <p>- Gosto de criar coisas novas, desde sua concepção até seu desenvolvimento.</p>
+                    <ul>
+                        <li>Adoro música em todos os sentidos: ouvir, tocar instrumentos, cantar, compor, dançar (apesar de não saber), etc.</li>
+                        <li>Gosto de criar coisas novas, desde seu planejamento até seu desenvolvimento.</li>
+                    </ul>
                 </div>
             </main>
         </MainFrame>

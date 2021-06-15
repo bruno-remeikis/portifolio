@@ -16,7 +16,9 @@
         font-weight: 500;
     }
 
-    p {
+    ul { list-style-type: circle; }
+
+    p, li {
         margin-bottom: 0.6rem;
 
         font-size: 1.4rem;

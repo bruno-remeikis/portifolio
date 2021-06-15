@@ -34,8 +34,9 @@
 			font-size: 1.2rem;
 
 			cursor: pointer;
+			transition: transform 0.2s;
 
-			&:hover { background-color: var(purple-2); }
+			&:hover { transform: scale(1.06); }
 		}
 	}
 }
