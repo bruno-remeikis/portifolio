@@ -63,8 +63,8 @@ const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
             <div className={styles.content}>
                 <nav className={styles.mainMenu}>
                     <ul>
-                        {pages.map((page, index) => (
-                            <li className={page.currentPage ? styles.currentPage : ''}>
+                        {pages.map((page, i) => (
+                            <li key={i} className={page.currentPage ? styles.currentPage : ''}>
                                 <Link href={page.rote}>
                                     {page.title}
                                 </Link>

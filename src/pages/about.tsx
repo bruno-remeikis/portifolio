@@ -5,7 +5,7 @@ import styles from '../styles/About.module.scss';
 
 import MainFrame, { PageEnum } from '../components/MainFrame';
 
-export default () =>
+const About: React.FC = () =>
 {
     return (
         <MainFrame page={PageEnum.ABOUT}>
@@ -31,3 +31,5 @@ export default () =>
         </MainFrame>
     );
 }
+
+export default About;

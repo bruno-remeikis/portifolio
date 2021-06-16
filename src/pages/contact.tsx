@@ -4,7 +4,7 @@ import styles from '../styles/Contact.module.scss';
 
 import MainFrame, { PageEnum } from '../components/MainFrame';
 
-export default () =>
+const Contact: React.FC = () =>
 {
     return (
         <MainFrame page={PageEnum.CONTACT}>
@@ -27,3 +27,5 @@ export default () =>
         </MainFrame>
     );
 }
+
+export default Contact;

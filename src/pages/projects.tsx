@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
+import { useRef, useState } from 'react';
 
 import styles from '../styles/Projects.module.scss';
 
@@ -9,7 +10,6 @@ import { Technology, technologies, getImagePath } from '../utils/technologies';
 
 import Carousel from 'react-elastic-carousel';
 import { isMobile } from 'react-device-detect';
-import { useEffect, useRef, useState } from 'react';
 
 interface ItemProps
 {
@@ -33,8 +33,8 @@ const Item: React.FC<ItemProps> = ({ title, imageName, link, technologies }) =>
         <Image src={`/projects/${imageName}`} alt={`Projeto: ${title}`} width={1366} height={625} />
 
         <div className={`${styles.technologies} ${!isMobile ? styles.desktopTechnologies: ''}`}>
-            {technologies.map((item) =>
-                <div className={styles.technology}>
+            {technologies.map((item, i) =>
+                <div key={i} className={styles.technology}>
                     <Image
                         src={getImagePath(item.imageName)}
                         alt={item.name}
@@ -50,10 +50,10 @@ const Item: React.FC<ItemProps> = ({ title, imageName, link, technologies }) =>
     </a>
 );
 
-export default () =>
+const Projects: React.FC = () =>
 {
-    const carousel = useRef(null);
-    const [slideIndex, setSlideIndex] = useState(0);
+    //const carousel = useRef(null);
+    //const [slideIndex, setSlideIndex] = useState(0);
     const slideTime = 5500;
 
     const items = [
@@ -75,12 +75,13 @@ export default () =>
                 technologies.html,
                 technologies.sass,
                 technologies.typescript,
-                technologies.react
+                technologies.react,
+                technologies.next
             ]}
         />
     ];
 
-    const lastSlideIndex = items.length - 1;
+    //const lastSlideIndex = items.length - 1;
 
     return(
         <MainFrame page={PageEnum.PROJECTS}>
@@ -90,7 +91,7 @@ export default () =>
 
             <main className={styles.container}>
                 <Carousel
-                    ref={carousel}
+                    //ref={carousel}
                     className={styles.carousel}
                     breakPoints={[{width: 1000, itemsToShow: 1}]}
                     isRTL={false}
@@ -99,20 +100,32 @@ export default () =>
                     showArrows={!isMobile}
                     enableAutoPlay
                     autoPlaySpeed={slideTime}
+                    /*
                     onNextStart={() => {
                         if(slideIndex == lastSlideIndex)
+                        {
                             carousel.current!.goTo(0);
+                            setSlideIndex(0);
+                        }
                     }}
                     onPrevStart={() => {
                         if(slideIndex == 0)
+                        {
                             carousel.current!.goTo(lastSlideIndex);
+                            setSlideIndex(lastSlideIndex);
+                        }
                     }}
                     onNextEnd={() => setSlideIndex(slideIndex + 1)}
                     onPrevEnd={() => setSlideIndex(slideIndex - 1)}
+                    */
                 >
-                    {items.map(item => item)}
+                    {items.map((item, i) =>
+                        <div key={i}>{item}</div>
+                    )}
                 </Carousel>
             </main>
         </MainFrame>
     );
 }
+
+export default Projects;

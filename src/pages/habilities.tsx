@@ -7,7 +7,8 @@ import MainFrame, { PageEnum } from "../components/MainFrame";
 
 import { technologies, getImagePath } from '../utils/technologies';
 
-export default () =>
+const Habilities: React.FC = () =>
+(
     <MainFrame page={PageEnum.HABILITIES}>
         <Head>
             <title>Habilidades - Bruno Remeikis</title>
@@ -15,8 +16,8 @@ export default () =>
 
         <main className={styles.container}>
             <div className={styles.items}>
-                {Object.entries(technologies) /*items*/.map(item =>
-                    <div className={styles.item}>
+                {Object.entries(technologies).map((item, i) =>
+                    <div key={i} className={styles.item}>
                         <div className={styles.itemContent}>
                             <Image
                                 src={getImagePath(item[1].imageName)}
@@ -31,3 +32,6 @@ export default () =>
             </div>
         </main>
     </MainFrame>
+);
+
+export default Habilities;
