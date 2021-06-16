@@ -11,7 +11,7 @@
 
     &:hover {
         .desktopTitle { opacity: 1; }
-        .tecnologies { opacity: 1; }
+        .technologies { opacity: 1; }
     }
 
     // Title
@@ -38,14 +38,14 @@
         transition: opacity 0.2s;
     }
 
-    // Tecnologies
-    .tecnologies {
+    // Technologies
+    .technologies {
         display: flex;
         gap: 0.4rem;
 
         margin-top: 0.2rem;
 
-        .tecnology {
+        .technology {
             position: relative;
 
             display: flex;
@@ -59,7 +59,7 @@
         }
     }
 
-    .desktopTecnologies {
+    .desktopTechnologies {
         position: absolute;
         z-index: 1;
         bottom: 0;
@@ -70,7 +70,7 @@
         opacity: 0;
         transition: opacity 0.2s;
 
-        .tecnology
+        .technology
         {
             &:hover span {
                 opacity: 1;

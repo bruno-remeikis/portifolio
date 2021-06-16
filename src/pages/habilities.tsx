@@ -5,13 +5,7 @@ import styles from '../styles/Habilities.module.scss';
 
 import MainFrame, { PageEnum } from "../components/MainFrame";
 
-import { tecnologies, getImagePath } from '../utils/tecnologies';
-
-interface Tecnology {
-    name: string;
-    imgName: string;
-
-}
+import { technologies, getImagePath } from '../utils/technologies';
 
 export default () =>
     <MainFrame page={PageEnum.HABILITIES}>
@@ -21,7 +15,7 @@ export default () =>
 
         <main className={styles.container}>
             <div className={styles.items}>
-                {Object.entries(tecnologies) /*items*/.map(item =>
+                {Object.entries(technologies) /*items*/.map(item =>
                     <div className={styles.item}>
                         <div className={styles.itemContent}>
                             <Image

@@ -1,4 +1,4 @@
-export interface Tecnology
+export interface Technology
 {
     name: string;
     imageName: string;
@@ -10,7 +10,7 @@ export function getImagePath(imageName: string): string
 }
 
 // Dictionary
-export const tecnologies: {[name: string]: Tecnology} = {
+export const technologies: {[name: string]: Technology} = {
     html: {
         name: 'HTML',
         imageName: 'html5'
@@ -52,8 +52,8 @@ export const tecnologies: {[name: string]: Tecnology} = {
         imageName: 'java'
     },
     c: {
-        name: 'JavaScript',
-        imageName: 'javascript'
+        name: 'C',
+        imageName: 'c'
     },
     cpp: {
         name: 'C++',
