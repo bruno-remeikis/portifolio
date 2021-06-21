@@ -41,7 +41,7 @@ export const technologies: {[name: string]: Technology} = {
     },
     angular: {
         name: 'Angular',
-        imageName: 'angular.svg'
+        imageName: 'angular'
     },
     sass: {
         name: 'Sass',
