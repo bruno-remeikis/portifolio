@@ -6,7 +6,7 @@ export interface Technology
 
 export function getImagePath(imageName: string): string
 {
-    return `/habilities/${imageName}.svg`;
+    return `/abilities/${imageName}.svg`;
 }
 
 // Dictionary
@@ -39,9 +39,17 @@ export const technologies: {[name: string]: Technology} = {
         name: 'Next.js',
         imageName: 'next-js'
     },
+    angular: {
+        name: 'Angular',
+        imageName: 'angular.svg'
+    },
     sass: {
         name: 'Sass',
         imageName: 'sass'
+    },
+    bootstrap: {
+        name: 'Bootstrap',
+        imageName: 'bootstrap'
     },
     git: {
         name: 'Git',

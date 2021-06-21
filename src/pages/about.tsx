@@ -17,7 +17,7 @@ const About: React.FC = () =>
                 <div className={styles.infoGroup}>
                     <h2>Sobre mim</h2>
                     <p>Me chamo <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor Full Stack.</p>
-                    <p>Minhas principais tecnolodias são: <span>HTML, CSS, JavaScript, TypeScript, React, Java e SQL</span>. Você pode mais clicando em <Link href='/habilities'>Habilidades</Link>.</p>
+                    <p>Minhas principais tecnolodias são: <span>HTML, CSS, JavaScript, TypeScript, React, Java e SQL</span>. Você pode mais clicando em <Link href='/abilities'>Habilidades</Link>.</p>
                 </div>
 
                 <div className={styles.infoGroup}>

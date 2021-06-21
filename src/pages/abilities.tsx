@@ -1,15 +1,15 @@
 import Head from 'next/head';
 import Image from 'next/image';
 
-import styles from '../styles/Habilities.module.scss';
+import styles from '../styles/Abilities.module.scss';
 
 import MainFrame, { PageEnum } from "../components/MainFrame";
 
 import { technologies, getImagePath } from '../utils/technologies';
 
-const Habilities: React.FC = () =>
+const Abilities: React.FC = () =>
 (
-    <MainFrame page={PageEnum.HABILITIES}>
+    <MainFrame page={PageEnum.ABILITIES}>
         <Head>
             <title>Habilidades - Bruno Remeikis</title>
         </Head>
@@ -34,4 +34,4 @@ const Habilities: React.FC = () =>
     </MainFrame>
 );
 
-export default Habilities;
+export default Abilities;

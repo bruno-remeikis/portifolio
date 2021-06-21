@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 export enum PageEnum {
     HOME,
     ABOUT,
-    HABILITIES,
+    ABILITIES,
     PROJECTS,
     CONTACT
 }
@@ -39,7 +39,7 @@ const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
         },
         {
             title: 'Habilidades',
-            rote: '/habilities'
+            rote: '/abilities'
         },
         {
             title: 'Projetos',
