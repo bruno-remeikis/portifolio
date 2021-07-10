@@ -98,8 +98,8 @@ const Projects: React.FC = () =>
                     disableArrowsOnEnd={false}
                     enableMouseSwipe={isMobile}
                     showArrows={!isMobile}
-                    enableAutoPlay
-                    autoPlaySpeed={slideTime}
+                    //enableAutoPlay
+                    //autoPlaySpeed={slideTime}
                     /*
                     onNextStart={() => {
                         if(slideIndex == lastSlideIndex)
