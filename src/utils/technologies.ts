@@ -47,10 +47,10 @@ export const technologies: {[name: string]: Technology} = {
         name: 'Sass',
         imageName: 'sass'
     },
-    bootstrap: {
-        name: 'Bootstrap',
-        imageName: 'bootstrap'
-    },
+    // bootstrap: {
+    //     name: 'Bootstrap',
+    //     imageName: 'bootstrap'
+    // },
     git: {
         name: 'Git',
         imageName: 'git'
@@ -67,20 +67,20 @@ export const technologies: {[name: string]: Technology} = {
         name: 'C++',
         imageName: 'cplusplus'
     },
-    php: {
-        name: 'PHP',
-        imageName: 'php'
-    },
-    python: {
-        name: 'Python',
-        imageName: 'python'
+    // php: {
+    //     name: 'PHP',
+    //     imageName: 'php'
+    // },
+    // python: {
+    //     name: 'Python',
+    //     imageName: 'python'
+    // },
+    oracle: {
+        name: 'Oracle',
+        imageName: 'oracle'
     },
     mysql: {
         name: 'MySQL',
         imageName: 'mysql'
-    },
-    oracle: {
-        name: 'Oracle',
-        imageName: 'oracle'
     },
 };
