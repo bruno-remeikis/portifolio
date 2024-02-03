@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image';
 
 import styles from '../styles/Home.module.scss';
 
 import { getImagePath, technologies } from '../utils/technologies';
-import Image from 'next/dist/client/image';
 
 import { TbFileDownload } from "react-icons/tb";
 // import { CiHome } from "react-icons/ci";
@@ -24,7 +24,6 @@ import { GoLog } from "react-icons/go";
 
 import { CiMail } from "react-icons/ci";
 import { CiPhone } from "react-icons/ci";
-
 
 import { Card } from '../components/Card';
 import { Emojis } from '../components/Card/CardIcon';
@@ -47,11 +46,10 @@ const ContactLink: React.FC<{
 	href: string;
 	bgColor: string;
 }> = ({ title, image, href, bgColor }) =>
-	<Link href={href} passHref>
-		<a target='_blank' style={{ backgroundColor: bgColor }} className={styles.contactLink} rel="noopener noreferrer">
-			<Image src={`/img/contact/${image}.svg`} width={60} height={60} />
-			<span>{ title }</span>
-		</a>
+	// rel="noopener noreferrer"
+	<Link href={href} target='_blank' style={{ backgroundColor: bgColor }} className={styles.contactLink}>
+		<Image src={`/img/contact/${image}.svg`} width={60} height={60} alt={title} />
+		<span>{ title }</span>
 	</Link>
 
 const Home: React.FC = () =>
@@ -78,26 +76,26 @@ const Home: React.FC = () =>
 
 				<nav className={styles.mainMenu}>
 					<ul>
-						<li><Link href="#home"><a>
+						<li><Link href="#home">
 							<GoHome />
 							<span>Início</span>
-						</a></Link></li>
-						<li><Link href="#about"><a>
+						</Link></li>
+						<li><Link href="#about">
 							<GoPerson />
 							<span>Sobre mim</span>	
-						</a></Link></li>
-						<li><Link href="#resume"><a>
+						</Link></li>
+						<li><Link href="#resume">
 							<GoLog />
 							<span>Resumo</span>	
-						</a></Link></li>
-						<li><Link href="#contacts"><a>
+						</Link></li>
+						<li><Link href="#contacts">
 							<GoRead />
 							<span>Contato</span>
-						</a></Link></li>
-						{/* <li><Link href="#projects"><a>
+						</Link></li>
+						{/* <li><Link href="#projects">
 							<GoLightBulb />
 							<span>Projetos</span>	
-						</a></Link></li> */}
+						</Link></li> */}
 					</ul>
 				</nav>
 
@@ -133,7 +131,7 @@ const Home: React.FC = () =>
 						<div className={styles.about__cols}>
 							<div className={styles.about__col}>
 								<div className={styles.about__imgContainer}>
-									<Image src="/img/about/purple-bg.jpg" className={styles.about__img} width={603} height={800} alt="Imagem do autor" />
+									<Image src="/img/about/purple-bg.jpg" className={styles.about__img} width={301} height={400} alt="Imagem do autor" />
 								</div>
 							</div>
 							<div className={styles.about__col}>
@@ -257,7 +255,7 @@ const Home: React.FC = () =>
 							<div className={styles.cards}>
 								<Card.Root>
 									{/* <Card.Icon emoji={ Emojis.RED_BOOK } /> */}
-									<Image src='/img/flags/br-rounded.svg' width={35} height={35} />
+									<Image src='/img/flags/br-rounded.svg' width={35} height={35} alt='Brazil flag' />
 									<Card.Lang
 										reading={{ title: 'Leitura', points: 5 }}
 										writing={{ title: 'Escrita', points: 5 }}
@@ -265,7 +263,7 @@ const Home: React.FC = () =>
 									/>
 								</Card.Root>
 								<Card.Root>
-									<Image src='/img/flags/us-rounded.svg' width={35} height={35} />
+									<Image src='/img/flags/us-rounded.svg' width={35} height={35} alt='USA flag' />
 									<Card.Lang
 										reading={{ title: 'Reading', points: 4 }}
 										writing={{ title: 'Writing', points: 4 }}

@@ -79,7 +79,7 @@
 
 .mainMenu {
 	position: fixed;
-	z-index: 999;
+	z-index: 9999;
 	top: 0;
 	bottom: 1rem;
 	left: 1rem;
@@ -134,6 +134,7 @@
 			}
 			&:hover span {
 				opacity: 1;
+				display: block;
 			}
 
 			svg {
@@ -144,6 +145,8 @@
 			span {
 				position: absolute;
 				left: 100%;
+
+				display: none;
 
 				width: 6rem;
 				padding-left: 0.4rem;
@@ -263,7 +266,7 @@
 
 		.about__cols {
 			display: flex;
-			align-items: center;
+			// align-items: center;
 			justify-content: center;
 			gap: 6rem;
 		}
@@ -286,8 +289,6 @@
 				position: relative;
 
 				.about__img {
-					// 	width: 5rem;
-					// 	height: 5rem;
 					border-radius: 1rem;
 				}
 			}
@@ -599,7 +600,7 @@
 
 .downloadContainer {
 	display: flex;
-	justify-content: center;
+	// justify-content: center;
 }
 .download {
 	display: flex;

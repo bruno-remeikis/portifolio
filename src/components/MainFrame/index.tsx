@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import styles from './styles.module.scss';
+import { ReactNode } from 'react';
 
 // ENUMS
 
@@ -21,7 +22,8 @@ interface Page {
 }
 
 interface MainFrameProps {
-    page: PageEnum
+    children: ReactNode;
+    page: PageEnum;
 }
 
 const MainFrame: React.FC<MainFrameProps> = ({ children, page }) =>
