@@ -1,30 +1,31 @@
 import styles from './styles.module.scss';
 
-type CardLangProps = {
-    leitura: number;
-    escrita: number;
-    conversacao: number;
+type LangAttribute = {
+    title: string;
+    points: number;
 }
 
-const CardLang: React.FC<CardLangProps> = ({ leitura, escrita, conversacao }) =>
-{
-    const max = 4;
+type CardLangProps = {
+    reading: LangAttribute;
+    writing: LangAttribute;
+    conversation: LangAttribute;
+}
 
-    const attrs = [
-        { title: 'Leitura', points: leitura },
-        { title: 'Escrita', points: escrita },
-        { title: 'Conversação', points: conversacao },
-    ];
+const CardLang: React.FC<CardLangProps> = ({ reading, writing, conversation }) =>
+{
+    const max = 5;
+
+    const attrs = [ reading, writing, conversation ];
 
     return (
         <div className={styles.lang}>
 
-            {attrs.map(a =>
-            <div className={styles.lang__attr}>
+            {attrs.map((a, i) =>
+            <div key={i} className={styles.lang__attr}>
                 <span>{ a.title }</span>
                 <div className={styles.points}>
                     {[...Array(max)].map((_, i) =>
-                        <div className={styles.point} data-checked={i < leitura} />
+                        <div key={i} className={styles.point} data-checked={i < a.points} />
                     )}
                 </div>
             </div>)}

@@ -1,5 +1,5 @@
 :root {
-	--gradient: linear-gradient(to bottom, var(--purple-2), var(--purple-1), var(--orange-2));
+	--gradient: linear-gradient(to bottom, black, var(--dark-purple), var(--orange-2));
 	// --gradient: linear-gradient(to bottom, var(--orange-2), var(--orange-2), var(--purple-2));
 	
 	--green-1: #589C48; // May Green
@@ -10,8 +10,13 @@
 
 	--purple-1: #994FB2; // Purpureus
 	--purple-2: #733381; // Maximum purple
+	--dark-purple: #25102a;
+	--dark-purple-2: #301537;
 
 	--white: #eaeaea;
+	--light: #f4d5be;
+
+	--text-purple: rgb(206, 171, 206);
 }
 
 * {
@@ -47,6 +52,10 @@ a {
 	text-decoration: none;
 }
 
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 400;
+}
+
 // html {
 // 	overflow: none;
 // }
@@ -72,7 +81,7 @@ a {
 // Track
 ::-webkit-scrollbar-track {
 	// background: transparent;
-	background-color: var(--purple-2);
+	background-color: var(--dark-purple);
 }
 // Handle
 ::-webkit-scrollbar-thumb {
@@ -83,6 +92,7 @@ a {
 	position: relative;
 	height: 100vh;
 	scroll-behavior: smooth;
+	// ? behavior: smooth;
 	overflow: auto;
 	scroll-snap-type: y mandatory;
 }

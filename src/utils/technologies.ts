@@ -1,3 +1,6 @@
+// Icones SVG
+// https://devicon.dev/
+
 export interface Technology
 {
     name: string;
@@ -6,7 +9,7 @@ export interface Technology
 
 export function getImagePath(imageName: string): string
 {
-    return `/abilities/${imageName}.svg`;
+    return `/img/abilities/${imageName}.svg`;
 }
 
 // Dictionary
@@ -35,6 +38,10 @@ export const technologies: {[name: string]: Technology} = {
         name: 'React',
         imageName: 'react'
     },
+    reactNative: {
+        name: 'React Native',
+        imageName: 'react'
+    },
     next: {
         name: 'Next.js',
         imageName: 'next-js'
@@ -43,37 +50,41 @@ export const technologies: {[name: string]: Technology} = {
         name: 'Angular',
         imageName: 'angular'
     },
-    sass: {
-        name: 'Sass',
-        imageName: 'sass'
-    },
-    // bootstrap: {
-    //     name: 'Bootstrap',
-    //     imageName: 'bootstrap'
+    // electron: {
+    //     name: 'Electron',
+    //     imageName: 'electron-original'
     // },
-    git: {
-        name: 'Git',
-        imageName: 'git'
-    },
+    // sass: {
+    //     name: 'Sass',
+    //     imageName: 'sass'
+    // },
     java: {
         name: 'Java',
         imageName: 'java'
     },
-    c: {
-        name: 'C',
-        imageName: 'c'
+    spring: {
+        name: 'Spring',
+        imageName: 'spring-original'
     },
-    cpp: {
-        name: 'C++',
-        imageName: 'cplusplus'
+    quarkus: {
+        name: 'Quarkus',
+        imageName: 'devicon--quarkus'
     },
-    // php: {
-    //     name: 'PHP',
-    //     imageName: 'php'
+    camel: {
+        name: 'Camel',
+        imageName: 'apache-camel'
+    },
+    kafka: {
+        name: 'Kafka',
+        imageName: 'apachekafka-original'
+    },
+    // c: {
+    //     name: 'C',
+    //     imageName: 'c'
     // },
-    // python: {
-    //     name: 'Python',
-    //     imageName: 'python'
+    // cpp: {
+    //     name: 'C++',
+    //     imageName: 'cplusplus'
     // },
     oracle: {
         name: 'Oracle',
@@ -83,4 +94,43 @@ export const technologies: {[name: string]: Technology} = {
         name: 'MySQL',
         imageName: 'mysql'
     },
+    git: {
+        name: 'Git',
+        imageName: 'git'
+    },
+    docker: {
+        name: 'Docker',
+        imageName: 'docker-original'
+    },
+    // tailwind: {
+    //     name: 'Tailwind CSS',
+    //     imageName: 'tailwindcss-plain'
+    // }
+    // mongo: {
+    //     name: 'MongoDB',
+    //     imageName: 'mongodb-original'
+    // },
+    // redhat: {
+    //     name: 'RedHat',
+    //     imageName: 'redhat-original'
+    // },
+    // redhat2: {
+    //     name: 'RedHat',
+    //     imageName: 'redhat-original-wordmark'
+    // }
+
+    // ---
+
+    // bootstrap: {
+    //     name: 'Bootstrap',
+    //     imageName: 'bootstrap'
+    // },
+    // php: {
+    //     name: 'PHP',
+    //     imageName: 'php'
+    // },
+    // python: {
+    //     name: 'Python',
+    //     imageName: 'python'
+    // },
 };
