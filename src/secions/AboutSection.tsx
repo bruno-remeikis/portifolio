@@ -27,7 +27,7 @@ const AboutSection: React.FC = () =>
                         gostaria tanto.
                     </p>
                     <div className={styles.downloadContainer}>
-                        <a href="/resume/Curriculo - Bruno Remeikis - 02-02-2024.pdf" className={styles.download} download>
+                        <a href="/resume/Curriculo - Bruno Remeikis.pdf" className={styles.download} download>
                             Download CV <TbFileDownload />
                         </a>
                     </div>

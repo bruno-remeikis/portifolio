@@ -55,13 +55,14 @@
 	height: 100vh;
 	scroll-behavior: smooth;
 	// behavior: smooth;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	// scroll-snap-type: y mandatory;
 }
 
 .mainMenu {
 	position: fixed;
-	z-index: 9999;
+	z-index: 99999;
 	top: 0;
 	bottom: 1rem;
 	left: 1rem;
@@ -73,7 +74,10 @@
 		list-style: none;
 
 		display: flex;
+		align-items: center;
+		justify-content: end;
 		flex-direction: column;
+		height: 100%;
 		// gap: 0.2rem;
 	}
 
@@ -140,118 +144,6 @@
 	}
 }
 
-.contactsSection {
-	position: relative;
-	overflow: hidden;
-
-	display: flex;
-	// flex-direction: column;
-	align-items: center;
-	justify-content: center;
-
-	background-color: var(--purple-2);
-
-	.contactsContent {
-		z-index: 9999;
-		overflow: visible;
-	}
-
-	.waveContainer {
-		z-index: 999;
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
-
-	.wave {
-		display: block;
-		position: relative;
-		height: 40px;
-		width: 100%;
-		background: var(--dark-purple);
-		transform: scale(1, 1);
-	}
-		
-	.wave:before {
-		content: "";
-		display: block;
-		position: absolute;
-		border-radius: 100%;
-		width: 100%;
-		height: 300px;
-		background-color: var(--purple-2);
-		right: -25%;
-		top: 20px;
-	}
-		
-	.wave:after {
-		content: "";
-		display: block;
-		position: absolute;
-		border-radius: 100%;
-		width: 100%;
-		height: 300px;
-		background-color: var(--dark-purple);
-		left: -25%;
-		top: -240px;
-		clip-path: ellipse(100% 15% at -15% 100%);
-	}
-
-	.contacts__cols {
-		display: flex;
-		gap: 6rem;
-	}
-
-	.contacts__links {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 0.4rem;
-	}
-
-	.contacts__contacts {
-		display: flex;
-		flex-direction: column;
-		gap: 0.8rem;
-
-		div {
-			display: flex;
-			align-items: center;
-			gap: 0.4rem;
-
-			svg {
-				font-size: 1.6rem;
-			}
-
-			span {
-				font-size: 1.2rem;
-			}
-		}
-	}
-
-	.contactLink {
-		display: flex;
-		align-items: center;
-		gap: 0.6rem;
-
-		// padding: 0.4rem 2rem 0.4rem 0.6rem;
-		width: 18rem;
-		height: 4.4rem;
-		padding: 0 0 0 0.6rem;
-		border-radius: 99rem;
-		transition: all 0.2s;
-
-		&:hover {
-			opacity: 0.9;
-		}
-
-		span {
-			font-size: 1.2rem;
-		}
-	}
-}
-
 .projectsSection {
 	.projectImg {
 		width: 10rem;
@@ -270,5 +162,47 @@
 // 		list-style: none;
 // 		// animation: loop 8s linear infinite;
 // 		// background-color: red;
+// 	}
+// }
+
+@media only screen and (max-width: 845px) {
+	.mainMenu {
+		left: 0;
+		right: 0;
+		// top: 0;
+		// bottom: auto;
+		top: auto;
+		bottom: 0;
+
+		// background-color: rgba(7, 0, 9, 0.98);
+		height: 4rem;
+		backdrop-filter: blur(8px);
+		// border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+		border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+		ul {
+			flex-direction: row;
+			justify-content: center;
+			width: 100%;
+
+			a {
+				span {
+					top: 100%;
+					left: auto;
+					text-align: center;
+				}
+			}
+		}
+	}
+	.pageScroll {
+		$menuHeight: 4rem;
+		// padding-top: $menuHeight;
+		margin-bottom: $menuHeight;
+	}
+}
+
+// @media only screen and (max-height: 330px) {
+// 	.pageScroll {
+// 		margin-bottom: $menuHeight !important;
 // 	}
 // }

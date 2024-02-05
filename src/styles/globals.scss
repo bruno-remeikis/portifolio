@@ -12,6 +12,7 @@
 	--purple-2: #733381; // Maximum purple
 	--dark-purple: #25102a;
 	--dark-purple-2: #301537;
+	--dark-purple-3: #391942;
 
 	--white: #eaeaea;
 	--light: #f4d5be;
@@ -33,6 +34,7 @@ body {
 	// -o-background-size: cover;
 	// background-size: cover;
 	
+	background-color: var(--dark-purple);
 	color: var(--white);
 
 	min-height: 100vh;

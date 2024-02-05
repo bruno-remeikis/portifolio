@@ -5,11 +5,7 @@
 	justify-content: center;
 	// justify-content: space-between;
 
-	// background-color: var(--orange-2);
-	// background-color: var(--purple-2);
-	// background-color: rgb(245, 245, 245);
-	background-color: var(--dark-purple);
-	// color: black;
+	background-color: var(--dark-purple-3);
 
 	h3 {
 		font-size: 0.8rem;
@@ -163,15 +159,33 @@
 }
 
 @media only screen and (max-width: 1000px) {
+	.resumeSection {
+		padding-top: 4rem;
+	}
     .resumeContent {
         flex-direction: column;
         align-items: center;
         gap: 2rem !important;
     }
     .tecnologies {
+		justify-content: center;
         margin-top: 2rem;
     }
     .cards:not(:first-child) {
         margin-top: 1.4rem;
     }
+}
+
+@media only screen and (max-width: 530px) {
+	.resumeContent {
+		width: 100% !important;
+	}
+	.resume__col:nth-child(1) {
+		width: 100% !important;
+		padding: 0 1rem;
+	}
+	.resume__col:nth-child(2) {
+		width: 100% !important;
+		padding: 0 1rem;
+	}
 }
