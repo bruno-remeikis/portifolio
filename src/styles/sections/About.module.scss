@@ -1,0 +1,135 @@
+.polygon {
+	position: absolute;
+	top: 0;
+	
+	background-color: var(--orange-2);
+	width: 100%;
+	height: 4rem;
+
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 40%);
+}
+
+.aboutSection {
+	position: relative;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background-color: var(--dark-purple);
+	
+	.aboutContent {
+		flex: 1;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		// width: 60rem;
+
+		.about__cols {
+			display: flex;
+			// align-items: center;
+			justify-content: center;
+			gap: 6rem;
+		}
+
+		.about__col {
+			// flex: 1;
+
+			&:nth-child(1) {
+				width: 18rem;
+			}
+			&:nth-child(2) {
+				width: 20rem;
+				font-size: 1.2rem;
+				// text-align: justify;
+				// color: rgba(255, 255, 255, 0.7);
+				color: var(--text-purple);
+			}
+			
+			.about__imgContainer {
+				position: relative;
+
+				.about__img {
+					border-radius: 1rem;
+				}
+			}
+		}
+	}
+}
+
+.downloadContainer {
+	display: flex;
+	
+	.download {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+			
+		background-color: var(--purple-2);
+		color: var(--white);
+		margin-top: 2rem;
+		padding: 1rem;
+		border-radius: 0.4rem;
+	
+		text-align: center;
+	
+		cursor: pointer;
+		transition: all 0.2s;
+	
+		&:hover { opacity: 0.9; }
+	
+		svg {
+			font-size: 1.2rem;
+		}
+	}
+}
+
+@media only screen and (max-height: 630px) {
+    .polygon {
+        position: relative !important;
+        // top: inherit !important;
+    }
+}
+
+@media only screen and (max-width: 740px) {
+    .about__cols {
+        gap: 3rem !important;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .aboutContent {
+        width: 100% !important;
+    }
+    .about__imgContainer {
+        display: none;
+        // width: 100%;
+        
+        // img {
+        //     object-fit: cover;
+        //     object-position: 100% 25%;
+        //     width: 30rem;
+        //     height: 5rem;
+        //     border-radius: 0 !important;
+        // }
+    }
+    .about__cols {
+        flex-direction: column;
+        align-items: center;
+        gap: 0 !important;
+        width: 100% !important;
+    }
+    .about__col:nth-child(1) {
+        width: 0 !important;
+    }
+    .about__col:nth-child(2) {
+        text-align: justify !important;
+    }
+    .downloadContainer {
+        justify-content: center;
+    }
+}

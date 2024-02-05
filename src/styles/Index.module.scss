@@ -1,0 +1,274 @@
+// @media only screen and (max-height: 600px)
+// {
+// 	.container {
+// 		padding: 0 8rem;
+// 	}
+// }
+
+// @media only screen and (max-width: 960px)
+// {
+// 	.container {
+// 		justify-content: center;
+// 		padding: 0 1rem;
+// 	}
+// }
+
+// @media only screen and (max-width: 730px) {
+// 	.container {
+// 		flex-direction: column-reverse;
+// 	}
+
+// 	.mainText {
+// 		display: flex;
+// 		flex-direction: column;
+// 		align-items: center;
+// 	}
+// }
+
+
+
+// --------------------------------------------------
+
+// // SCROLLBAR
+// // width
+// .pageScroll::-webkit-scrollbar {
+// 	width: 0.28rem;
+// }
+// // Track
+// .pageScroll::-webkit-scrollbar-track {
+// 	background: transparent;
+// }
+// // Handle
+// .pageScroll::-webkit-scrollbar-thumb {
+// 	background: var(--white);
+// }
+
+.page {
+	position: relative;
+
+	h1 {
+		display: none;
+	}
+}
+.pageScroll {
+	position: relative;
+	height: 100vh;
+	scroll-behavior: smooth;
+	// behavior: smooth;
+	overflow: auto;
+	// scroll-snap-type: y mandatory;
+}
+
+.mainMenu {
+	position: fixed;
+	z-index: 9999;
+	top: 0;
+	bottom: 1rem;
+	left: 1rem;
+
+	display: flex;
+	align-items: flex-end;
+
+	ul {
+		list-style: none;
+
+		display: flex;
+		flex-direction: column;
+		// gap: 0.2rem;
+	}
+
+	li {
+		a {
+			position: relative;
+
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			// background-color: rgba(255, 255, 255, 0.9);
+			// filter: invert(100%);
+			// color: var(--dark-purple);
+
+			width: 3rem;
+			height: 3rem;
+			border-radius: 99rem;
+
+			// &:hover {
+			// 	width: auto;
+			// }
+			// &:hover span {
+			// 	display: block;
+			// } 
+
+			&:hover::after {
+				width: 100%;
+				height: 100%;
+			}
+
+			&::after {
+				content: "";
+				position: absolute; // ! Tenta comentar isso procê vê
+				background-color: rgba(255, 255, 255, 0.2);
+				width: 0;
+				height: 0;
+				border-radius: 99rem;
+				transition: all 0.2s;
+			}
+			&:hover span {
+				opacity: 1;
+				display: block;
+			}
+
+			svg {
+				z-index: 1;
+				font-size: 1.4rem;
+			}
+
+			span {
+				position: absolute;
+				left: 100%;
+
+				display: none;
+
+				width: 6rem;
+				padding-left: 0.4rem;
+				opacity: 0;
+				transition: all 0.1s;
+				font-weight: lighter;
+			}
+		}
+	}
+}
+
+.contactsSection {
+	position: relative;
+	overflow: hidden;
+
+	display: flex;
+	// flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background-color: var(--purple-2);
+
+	.contactsContent {
+		z-index: 9999;
+		overflow: visible;
+	}
+
+	.waveContainer {
+		z-index: 999;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+
+	.wave {
+		display: block;
+		position: relative;
+		height: 40px;
+		width: 100%;
+		background: var(--dark-purple);
+		transform: scale(1, 1);
+	}
+		
+	.wave:before {
+		content: "";
+		display: block;
+		position: absolute;
+		border-radius: 100%;
+		width: 100%;
+		height: 300px;
+		background-color: var(--purple-2);
+		right: -25%;
+		top: 20px;
+	}
+		
+	.wave:after {
+		content: "";
+		display: block;
+		position: absolute;
+		border-radius: 100%;
+		width: 100%;
+		height: 300px;
+		background-color: var(--dark-purple);
+		left: -25%;
+		top: -240px;
+		clip-path: ellipse(100% 15% at -15% 100%);
+	}
+
+	.contacts__cols {
+		display: flex;
+		gap: 6rem;
+	}
+
+	.contacts__links {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.4rem;
+	}
+
+	.contacts__contacts {
+		display: flex;
+		flex-direction: column;
+		gap: 0.8rem;
+
+		div {
+			display: flex;
+			align-items: center;
+			gap: 0.4rem;
+
+			svg {
+				font-size: 1.6rem;
+			}
+
+			span {
+				font-size: 1.2rem;
+			}
+		}
+	}
+
+	.contactLink {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+
+		// padding: 0.4rem 2rem 0.4rem 0.6rem;
+		width: 18rem;
+		height: 4.4rem;
+		padding: 0 0 0 0.6rem;
+		border-radius: 99rem;
+		transition: all 0.2s;
+
+		&:hover {
+			opacity: 0.9;
+		}
+
+		span {
+			font-size: 1.2rem;
+		}
+	}
+}
+
+.projectsSection {
+	.projectImg {
+		width: 10rem;
+		height: auto;
+	}
+}
+
+// .abilitiesSection {
+// 	--d: 100s;
+
+// 	background-color: var(--orange-2);
+
+// 	.tecnologies {
+// 		display: flex;
+// 		gap: 0.4rem;
+// 		list-style: none;
+// 		// animation: loop 8s linear infinite;
+// 		// background-color: red;
+// 	}
+// }
