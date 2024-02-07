@@ -165,7 +165,7 @@
 // 	}
 // }
 
-@media only screen and (max-width: 845px) {
+@media only screen and (max-width: 845px) { // ! Mudar também padding-bottom da @media de Contact.module.scss
 	.mainMenu {
 		left: 0;
 		right: 0;
@@ -175,7 +175,7 @@
 		bottom: 0;
 
 		// background-color: rgba(7, 0, 9, 0.98);
-		height: 4rem;
+		height: var(--mainMenu-height);
 		backdrop-filter: blur(8px);
 		// border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 		border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -191,13 +191,12 @@
 					left: auto;
 					text-align: center;
 				}
+
+				&:hover span {
+					display: none !important;
+				}
 			}
 		}
-	}
-	.pageScroll {
-		$menuHeight: 4rem;
-		// padding-top: $menuHeight;
-		margin-bottom: $menuHeight;
 	}
 }
 

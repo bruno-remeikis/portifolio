@@ -71,24 +71,26 @@ const Home: React.FC = () =>
 					</ul>
 				</nav>
 
-				<HomeSection />
+				<div className={styles.sections}>
+					<HomeSection />
 
-				<AboutSection />
-				
-				<ResumeSection />
+					<AboutSection />
+					
+					<ResumeSection />
 
-				<ContactSection />
+					<ContactSection />
 
-				{/* <div id="projects" className={`section ${styles.projectsSection}`}>
-					<div className={styles.projectImg}>
-						<Image src='/projects/calendario.png' layout='fill' />
-					</div>
-				</div> */}
+					{/* <div id="projects" className={`section ${styles.projectsSection}`}>
+						<div className={styles.projectImg}>
+							<Image src='/projects/calendario.png' layout='fill' />
+						</div>
+					</div> */}
 
-				{/* <footer>
-					<p>Ultima atualização</p>
-					<p>fevereiro de 2024</p>
-				</footer> */}
+					{/* <footer>
+						<p>Ultima atualização</p>
+						<p>fevereiro de 2024</p>
+					</footer> */}
+				</div>
 			
 			</div>
 		</div>

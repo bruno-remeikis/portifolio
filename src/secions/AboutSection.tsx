@@ -24,7 +24,7 @@ const AboutSection: React.FC = () =>
                         de graduação e atuo profissionalmente na área há quase 4 anos.
 
                         Caí de paraquedas no mundo da programação e não imaginava que
-                        gostaria tanto.
+                        gostaria tanto!
                     </p>
                     <div className={styles.downloadContainer}>
                         <a href="/resume/Curriculo - Bruno Remeikis.pdf" className={styles.download} download>

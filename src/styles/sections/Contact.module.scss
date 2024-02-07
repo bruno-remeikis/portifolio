@@ -1,4 +1,6 @@
 .contactsSection {
+	--wave-height: 40px;
+	
 	position: relative;
 	overflow: hidden;
 
@@ -25,7 +27,7 @@
 	.wave {
 		display: block;
 		position: relative;
-		height: 40px;
+		height: var(--wave-height);
 		width: 100%;
 		background: var(--dark-purple-3);
 		transform: scale(1, 1);
@@ -110,15 +112,38 @@
 	}
 }
 
+// HEIGHT
+
+@media only screen and (max-height: 460px) {
+	.sectionTitle {
+		margin-bottom: 2rem;
+	}
+}
+
+// @media only screen and (max-height: 430px) {
+// 	.contactsContent {
+// 		margin-top: calc(var(--wave-height) + 1rem);
+// 		padding-bottom: 2rem;
+// 	}
+// }
+
+// WIDTH
+
 @media only screen and (max-width: 845px) {
     .contacts__cols {
         gap: 2rem !important;
     }
+	// ! Alterado por @media de Index.module.scss
+	.contactsSection {
+		padding-bottom: var(--mainMenu-height);
+	}
 }
 
 @media only screen and (max-width: 720px) {
     .contactsContent {
         width: 100%;
+		margin-top: calc(var(--wave-height) + 1rem);
+		padding-bottom: 2rem;
     }
     .contacts__cols {
         flex-direction: column;

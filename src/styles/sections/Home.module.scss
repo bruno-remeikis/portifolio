@@ -82,6 +82,8 @@
 	border-radius: 999rem;
 }
 
+// HEIGHT
+
 @media screen and (max-height: 600px)
 {
     .container {
@@ -94,6 +96,8 @@
     }
 }
 
+// WIDTH
+
 @media only screen and (max-width: 1110px)
 {
     .content {
@@ -105,7 +109,7 @@
 @media only screen and (max-width: 952px) {
 	.container {
 		background-color: inherit !important;
-		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent);
+		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent) !important;
 	}
 	.content {
 		flex-direction: column-reverse;
@@ -132,6 +136,10 @@
 // }
 
 @media only screen and (max-width: 450px) {
+	.content {
+		padding-top: 2rem !important;
+		padding-bottom: 2rem !important;
+	}
 	.mainPic {
 		width: 18rem;
 		height: 18rem;

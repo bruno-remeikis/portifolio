@@ -1,5 +1,5 @@
 import { CiCalendar } from 'react-icons/ci';
-import styles from './styles.module.scss';
+import styles from './Card.module.scss';
 
 type CardInfoProps = {
     title: string;

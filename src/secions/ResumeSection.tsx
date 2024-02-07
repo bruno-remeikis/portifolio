@@ -109,7 +109,7 @@ const ResumeSection: React.FC = () =>
 
                     {/* LINGUAS */}
                     {/* https://github.com/HatScripts/circle-flags/ */}
-                    <div className={styles.cards}>
+                    <div className={`${styles.cards} ${styles.cardLanguages}`}>
                         <Card.Root>
                             {/* <Card.Icon emoji={ Emojis.RED_BOOK } /> */}
                             <Image src='/img/flags/br-rounded.svg' width={35} height={35} alt='Brazil flag' />

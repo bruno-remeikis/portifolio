@@ -24,7 +24,7 @@ const ContactSection: React.FC = () =>
         </div>
 
         <div className={styles.contactsContent}>
-            <SectionTitle title='Contato' subtitle='Fale comigo' />
+            <SectionTitle className={styles.sectionTitle} title='Contato' subtitle='Fale comigo' />
 
             {/* https://www.iconfinder.com/search?iconset=social-media-icons-the-circle-set */}
 
