@@ -64,6 +64,11 @@
 	}
 }
 
+.mainPicContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 .mainPic
 {
 	display: block;
@@ -80,6 +85,21 @@
 
 	margin-bottom: 1rem;
 	border-radius: 999rem;
+}
+
+.contacts {
+	display: flex;
+	gap: 0.8rem;
+
+	a {
+		transition: all 0.2s;
+
+		&:hover {
+			&.wpp { color: rgb(37, 211, 102); }
+			&.lin { color: #0a66c2; }
+			&.git { color: #181616; }
+		}
+	}
 }
 
 // HEIGHT
@@ -120,6 +140,10 @@
 	.btnSobre {
 		justify-content: center;
 	}
+	.mainPicContainer {
+		flex-direction: column-reverse;
+		gap: 1rem;
+	}
 }
 
 // @media only screen and (max-width: 730px) {
@@ -137,7 +161,7 @@
 
 @media only screen and (max-width: 450px) {
 	.content {
-		padding-top: 2rem !important;
+		padding-top: 1rem !important;
 		padding-bottom: 2rem !important;
 	}
 	.mainPic {
@@ -151,5 +175,8 @@
 			&.p1 { font-size: 3.4rem !important; }
 			&.p2 { font-size: 2.8rem !important; }
 		}
+	}
+	.contacts {
+		align-self: end;
 	}
 }

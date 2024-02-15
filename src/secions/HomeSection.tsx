@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import styles from '../styles/sections/Home.module.scss';
 
+import { FaLinkedin } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
+
 const HomeSection: React.FC = () =>
     <div id="home" className={`section ${styles.homeSection}`}>
         <div className={styles.container}>
@@ -18,7 +22,14 @@ const HomeSection: React.FC = () =>
                 </section>
 
                 {/* Main image */}
-                <span className={styles.mainPic} />
+                <div className={styles.mainPicContainer}>
+                    <span className={styles.mainPic} />
+                    <div className={styles.contacts}>
+                        <Link href="https://wa.me/5527995898501" target="_blank" className={styles.wpp}><FaWhatsapp size={24} /></Link>
+                        <Link href="https://www.linkedin.com/in/bruno-remeikis-b9a6a2202/" target="_blank" className={styles.lin}><FaLinkedin size={24} /></Link>
+                        <Link href="https://github.com/bruno-remeikis" target="_blank" className={styles.git}><FaGithub size={24} /></Link>
+                    </div>
+                </div>
             </main>
         </div>
     </div>
