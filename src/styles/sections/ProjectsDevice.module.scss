@@ -1,0 +1,67 @@
+.projectsSection {
+    // background-color: rgb(201, 92, 255);
+    // background-color: #0c0c0c;
+    background-color: white;
+
+    padding-top: 3rem;
+
+    .devices {
+        display: flex;
+        gap: 10rem;
+        margin-left: 10rem;
+    }
+}
+
+.deviceContainer {
+    position: relative;
+
+    // width: 50rem;
+    // height: 50rem;
+    // width: 500px;
+    // height: 500px;
+
+    // box-sizing: content-box;
+
+    img {
+        position: absolute;
+        // bottom: 0;
+        // left: 0;
+        // height: auto;
+    }
+
+    .projectImg {
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+    }
+
+    // .deviceImg {
+
+    // }
+
+    div {
+        position: absolute;
+        // background-color: red;
+        background-color: white;
+        height: 10rem;
+    }
+
+    // div {
+    //     position: absolute;
+    //     background-color: white;
+        
+    //     width: 3.45rem;
+    //     height: 17rem;
+    // }
+
+    .hidderLeft { left: 0; }
+
+    .hidderRight { right: 0; }
+}
+
+.rowTest {
+    display: flex;
+    width: 100%;
+    transition: margin 0.4s;
+    // margin-left: calc(100vw / 2 - 3785px * 0.15 / 2);
+}

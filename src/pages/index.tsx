@@ -4,33 +4,40 @@ import Image from 'next/image';
 
 import styles from '../styles/Index.module.scss';
 
-import { getImagePath, technologies } from '../utils/technologies';
-
-import { TbFileDownload } from "react-icons/tb";
 import { GoHome } from "react-icons/go";
 import { GoPerson } from "react-icons/go";
 import { GoRead } from "react-icons/go";
 import { GoLightBulb } from "react-icons/go";
 import { GoLog } from "react-icons/go";
 
-import { CiMail } from "react-icons/ci";
-import { CiPhone } from "react-icons/ci";
-
-import { Card } from '../components/Card';
-import { Emojis } from '../components/Card/CardIcon';
-import { useState } from 'react';
-import SectionTitle from '../components/SectionTitle';
 import HomeSection from '../secions/HomeSection';
 import AboutSection from '../secions/AboutSection';
 import ResumeSection from '../secions/ResumeSection';
 import ContactSection from '../secions/ContactSection';
+// import ProjectsDeviceSection from '../secions/ProjectsDeviceSection';
+import ProjectsSection from '../secions/ProjectsSection';
+import { useState } from 'react';
 
 const Home: React.FC = () =>
 {
+	const [darkMenu, setDarkMenu] = useState<boolean>(false);
+
+	function invertMenuColor()
+	{
+		const projects = document.querySelector('#projects');
+		const bcr = projects.getBoundingClientRect();
+
+		console.log(bcr.y);
+
+		setDarkMenu(
+			bcr.y - bcr.height <= -100 &&
+			bcr.y >= -200
+		);
+	}
 
 	return(
 		<div className={styles.page}>
-			<div className={styles.pageScroll}>
+			<div id="pageScroll" className={styles.pageScroll} onScroll={invertMenuColor}>
 
 				<Head>
 					<meta charSet="UTF-8" />
@@ -46,7 +53,7 @@ const Home: React.FC = () =>
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
-				<nav className={styles.mainMenu}>
+				<nav className={`${styles.mainMenu} ${darkMenu ? styles.darkMenu : null}`}>
 					<ul>
 						<li><Link href="#home">
 							<GoHome />
@@ -60,14 +67,14 @@ const Home: React.FC = () =>
 							<GoLog />
 							<span>Resumo</span>	
 						</Link></li>
+						<li><Link href="#projects">
+							<GoLightBulb />
+							<span>Projetos</span>	
+						</Link></li>
 						<li><Link href="#contacts">
 							<GoRead />
 							<span>Contato</span>
 						</Link></li>
-						{/* <li><Link href="#projects">
-							<GoLightBulb />
-							<span>Projetos</span>	
-						</Link></li> */}
 					</ul>
 				</nav>
 
@@ -77,6 +84,10 @@ const Home: React.FC = () =>
 					<AboutSection />
 					
 					<ResumeSection />
+
+					<ProjectsSection />
+
+					{/* <ProjectsDeviceSection /> */}
 
 					<ContactSection />
 

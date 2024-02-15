@@ -20,12 +20,21 @@
 	--text-purple: rgb(206, 171, 206);
 
 	--mainMenu-height: 4rem;
+
+	// Session Backgrounds
+	--sbg-projects: rgb(242, 242, 242); // var(--dark-purple);
+	--sbg-contact: var(--dark-purple-2);
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+
+html {
+	scroll-behavior: smooth;
 }
 
 html,
@@ -50,7 +59,6 @@ body {
 	// overflow-x: hidden; /* Hide horizontal scrollbars */
 }
 
-
 a {
 	color: inherit;
 	text-decoration: none;
@@ -60,22 +68,12 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
 }
 
-// html {
-// 	overflow: none;
-// }
-
-// body {
-// 	// overflow: overlay;
-// 	// width: 100%;
-// 	// scrollbar-gutter: stable;
-
-// 	overflow: auto;
-//   	// scrollbar-gutter: stable both-edges;
-// }
-
-// .Test_pageScroll__HVef9 {
-// 	overflow: overlay;
-// }
+.section {
+	min-height: 100vh;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	// scroll-padding: 10rem;
+}
 
 // SCROLLBAR
 // width
@@ -90,55 +88,4 @@ h1, h2, h3, h4, h5, h6 {
 // Handle
 ::-webkit-scrollbar-thumb {
 	background: var(--white);
-}
-
-/*body {
-	position: relative;
-	height: 100vh;
-	scroll-behavior: smooth;
-	// ? behavior: smooth;
-	overflow: auto;
-	scroll-snap-type: y mandatory;
-}
-.section {
-	height: 100vh;
-	scroll-snap-align: start;
-}*/
-
-
-
-
-
-/*
-body {
-	overflow-y: overlay;
-}
-
-// SCROLLBAR
-// width
-body::-webkit-scrollbar {
-	width: 0.28rem;
-}
-// Track
-body::-webkit-scrollbar-track {
-	background: transparent;
-	position: absolute;
-	right: -3rem;
-  	top: -50rem;
-}
-// Handle
-body::-webkit-scrollbar-thumb {
-	background: red; //var(--white);
-}
-body::-webkit-scrollbar-track-piece:start {
-	background: transparent;
-}
-body::-webkit-scrollbar-track-piece:end {
-	background: transparent;
-}
-*/
-
-.section {
-	min-height: 100vh;
-	scroll-snap-align: start;
 }

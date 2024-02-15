@@ -18,9 +18,9 @@ const ResumeSection: React.FC = () =>
                 <div className={styles.resume__col}>
                     <div className={styles.resume__text}>
                         {/* <section> */}
-                            <p>Meu nome é <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor <span>Full Stack</span>. Tenho 21 anos. Resido em Vitória/ES.</p>
-                            <p>Atualmente trabalho desenvolvendo aplicações em Angular e Java com Spring Boot para criação de APIs, JPA e JSP.</p>
-                            <p>Participei da criação de um produto com Quarkus, Apache Camel, Apache Kafka e Redis pela <span>Red Hat</span> para o processamentos de boletos bancários.</p>
+                        <p>Meu nome é <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor <span>Full Stack</span>. Tenho 21 anos. Resido em Vitória/ES.</p>
+                        <p>Atualmente trabalho desenvolvendo aplicações em Angular e Java com Spring Boot para criação de APIs, JPA e JSP.</p>
+                        <p>Participei da criação de um produto com Quarkus, Apache Camel e Apache Kafka pela Red Hat para o processamentos de boletos bancários.</p>
                         {/* </section> */}
                         <p>Estou cursando Sistemas de Informação, tendo concluído 64% das matérias e previsão de graduação em 2025/2.</p>
                         <p>Em meu trabalho, busco ao máximo aplicar boas práticas de manutenibilidade e legibilidade do código.</p>

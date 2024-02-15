@@ -5,7 +5,7 @@ import { TbFileDownload } from 'react-icons/tb';
 
 const AboutSection: React.FC = () =>
     <div id="about" className={`section ${styles.aboutSection}`}>
-        <div className={styles.polygon} />
+        {/* <div className={styles.polygon} /> */}
 
         <div className={styles.aboutContent}>
             <SectionTitle title='Sobre mim' subtitle='Uma breve introdução' />
