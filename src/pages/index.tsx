@@ -27,11 +27,9 @@ const Home: React.FC = () =>
 		const projects = document.querySelector('#projects');
 		const bcr = projects.getBoundingClientRect();
 
-		console.log(bcr.y);
-
 		setDarkMenu(
-			bcr.y - bcr.height <= -100 &&
-			bcr.y >= -200
+			bcr.y - window.innerHeight <= 0 &&
+			bcr.y + bcr.height - window.innerHeight >= 0
 		);
 	}
 
