@@ -27,9 +27,11 @@ const Home: React.FC = () =>
 		const projects = document.querySelector('#projects');
 		const bcr = projects.getBoundingClientRect();
 
+		const menuBcr = document.querySelector('#mainMenu').getBoundingClientRect();
+
 		setDarkMenu(
 			bcr.y - window.innerHeight <= 0 &&
-			bcr.y + bcr.height - window.innerHeight >= 0
+			bcr.y + bcr.height - window.innerHeight + menuBcr.height >= 0
 		);
 	}
 
@@ -52,7 +54,7 @@ const Home: React.FC = () =>
 				</Head>
 
 				<nav className={`${styles.mainMenu} ${darkMenu ? styles.darkMenu : null}`}>
-					<ul>
+					<ul id="mainMenu">
 						<li><Link href="#home">
 							<GoHome />
 							<span>Início</span>

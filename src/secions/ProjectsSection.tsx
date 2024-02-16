@@ -4,14 +4,21 @@ import SectionTitle from '../components/SectionTitle';
 import { MdArrowOutward } from "react-icons/md";
 
 type ProjectProps = {
+    className?: string;
+
     img: string;
     name: string;
     link: string;
+
     imgAlign?: 'center' | 'top' | 'bottom' | number;
+    rowSpan?: number;
 }
 
-const Project: React.FC<ProjectProps> = ({ img, name, link, imgAlign = 'center' }) =>
-    <div className={styles.project}>
+const Project: React.FC<ProjectProps> = ({ className, img, name, link, imgAlign = 'center', rowSpan }) =>
+    <div
+        className={`${styles.project} ${className}`}
+        style={ rowSpan ? { gridRow: `span ${rowSpan}`} : null}
+    >
         {/* <Image src={`/img/projects/${img}`} width={0} height={0} sizes="100vw" alt={name} /> */}
         <div className={styles.imgContainer}>
             <div className={styles.img} style={{
@@ -46,16 +53,23 @@ const ProjectsSection2: React.FC = () =>
                         link='https://github.com/bruno-remeikis/Chess'
                     />
                     <Project
-                        img='naval-battle.png'
-                        name='Batalha Naval'
-                        link='https://github.com/bruno-remeikis/naval-battle'
-                        imgAlign={20}
+                        img='ciph/ciph-1.jpeg'
+                        name='Ciphersonal'
+                        link='https://github.com/bruno-remeikis/ciph'
+                        imgAlign={4}
+                        rowSpan={2}
                     />
                     <Project
                         img='ursport.jpeg'
                         name='UrSport'
                         link='https://github.com/bruno-remeikis/projeto-integrador-2'
                         imgAlign='top'
+                    />
+                    <Project
+                        img='naval-battle.png'
+                        name='Batalha Naval'
+                        link='https://github.com/bruno-remeikis/naval-battle'
+                        imgAlign={20}
                     />
                     <Project
                         img='calendario2.png'
