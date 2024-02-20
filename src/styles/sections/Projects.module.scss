@@ -1,3 +1,5 @@
+// --- SECTION ---
+
 .projectsSection {
     background-color: var(--sbg-projects);
 
@@ -29,6 +31,10 @@
     }
 }
 
+
+
+// --- PROJECTS ---
+
 .projectsContainer {
     padding: 3rem 0;
 
@@ -36,7 +42,6 @@
     flex-direction: column;
     align-items: center;
 }
-
 .projects {
     --width: 24rem;
 
@@ -47,7 +52,6 @@
     grid-auto-rows: calc(var(--width) * 0.5416);
     gap: 1rem;
 }
-
 .project {
     --border-radius: 0.4rem;
 
@@ -56,13 +60,21 @@
     border-radius: var(--border-radius);
     box-shadow: 2px 10px 15px -3px rgba(0,0,0,0.25);
 
-    &:hover .caption {
-        opacity: 1;
-    }
+    // transition: all 5s;
 
-    &:hover .img {
-        transform: scale(1.1);
-    }
+    // &.project__open {
+    //     z-index: 99999;
+    //     position: fixed;
+    //     top: 50%;
+    //     left: 50%;
+    //     // transform: translate(-50%, -50%);
+
+    //     width: 20rem;
+    //     height: 20rem;
+    // }
+
+    &:hover .caption { opacity: 1; }
+    &:hover .img { transform: scale(1.1); }
 
     .imgContainer {
         width: 100%;
@@ -100,6 +112,140 @@
         transition: all .2s;
     }
 }
+
+// .modalContent {
+//     width: 0;
+//     height: 0;
+//     transition: all 1s;
+// }
+
+// .modalContent__Open {
+//     width: 50%;
+//     height: 50%;
+    
+//     &:hover {
+//         width: 100%;
+//         height: 100%;
+//     }
+// }
+
+// .modalContent {
+//     width: 30rem;
+//     height: 30rem;
+// }
+
+// .modalContent__Mobile {
+//     display: flex;
+
+//     .carousel {
+//         width: 10rem;
+//     }
+// }
+
+
+
+// --- MODAL ---
+
+.modalOverlay {
+    background-color: rgba(255, 255, 255, 0.9);
+
+    .modalContainer {
+        $borderRadius: 0.5rem;
+
+        width: 30rem;
+        // height: 30rem;
+        border-radius: $borderRadius;
+        box-shadow: 0px 10px 22px -3px rgba(0, 0, 0, 0.2);
+
+        .modalContent {
+            display: flex;
+            flex-direction: column;
+
+            width: 100%;
+            height: 100%;
+
+            color: #222;
+
+            // CAROUSEL
+            .carousel {
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+                .carousel__item {
+                    height: 17rem;
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: $borderRadius $borderRadius 0 0;
+                }
+            }
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+
+                background-color: rgba(0, 0, 0, 0.03);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+                padding: 0.8rem;
+
+                h3 { font-size: 1.6rem; }
+
+                .technologies {
+                    display: flex;
+                    gap: 0.4rem;
+                }
+            }
+
+            .modalInfo {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                // color: var(--white);
+
+                padding: 0.8rem;
+            
+                .description p:not(:first-child) { margin-top: 0.6rem; }
+                .intention {
+                    margin-top: 0.6rem;
+
+                    span:nth-child(1) { color: var(--orange-2); }
+                    span:nth-child(2) { font-weight: lighter; }
+                }
+            }
+
+            .projectLinks {
+                flex: 1;
+                display: flex;
+                flex-direction: row-reverse;
+                align-items: flex-end;
+                gap: 0.2rem;
+
+                margin: 0.8rem;
+            
+                a {
+                    display: flex;
+                    align-items: center;
+                    gap: 0.4rem;
+            
+                    color: var(--white);
+                    padding: 0.4rem 0.8rem;
+                    border-radius: 99rem;
+                    transition: all 0.2s;
+            
+                    svg { font-size: 1.2rem; }
+            
+                    &:hover { opacity: 0.9; }
+            
+                    &.demoLink { background-color: rgb(206, 62, 19); }
+                    &.githubLink { background-color: #181616; }
+                }
+            }
+        }
+    }
+}
+
+
+
+// --- MEDIAS ---
 
 @media only screen and (max-width: 1220px) {
     .projects { --width: 20rem; }

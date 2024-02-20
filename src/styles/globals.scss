@@ -89,3 +89,21 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb {
 	background: var(--white);
 }
+
+
+
+// .ReactModal__Content {
+//     opacity: 0;
+//     transition: all 2000ms ease-in-out;
+// }
+// .ReactModal__Content--after-open{
+//     opacity: 1;
+// }
+// .ReactModal__Content--before-close{
+//     opacity: 0;
+// }
+
+// Remove elemento estranho de baixo do Carousel
+.thumbs-wrapper.axis-vertical {
+	display: none;
+}

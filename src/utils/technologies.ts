@@ -5,6 +5,8 @@ export interface Technology
 {
     name: string;
     imageName: string;
+    extension?: string;
+    unshowable?: true;
 }
 
 export function getImagePath(imageName: string): string
@@ -54,10 +56,11 @@ export const technologies: {[name: string]: Technology} = {
     //     name: 'Electron',
     //     imageName: 'electron-original'
     // },
-    // sass: {
-    //     name: 'Sass',
-    //     imageName: 'sass'
-    // },
+    sass: {
+        name: 'Sass',
+        imageName: 'sass',
+        unshowable: true
+    },
     java: {
         name: 'Java',
         imageName: 'java'
@@ -78,14 +81,6 @@ export const technologies: {[name: string]: Technology} = {
         name: 'Kafka',
         imageName: 'apachekafka-original'
     },
-    // c: {
-    //     name: 'C',
-    //     imageName: 'c'
-    // },
-    // cpp: {
-    //     name: 'C++',
-    //     imageName: 'cplusplus'
-    // },
     oracle: {
         name: 'Oracle',
         imageName: 'oracle'
@@ -101,6 +96,21 @@ export const technologies: {[name: string]: Technology} = {
     docker: {
         name: 'Docker',
         imageName: 'docker-original'
+    },
+    // c: {
+    //     name: 'C',
+    //     imageName: 'c'
+    // },
+    cpp: {
+        name: 'C++',
+        imageName: 'cplusplus',
+        unshowable: true
+    },
+    phaser3: {
+        name: 'Phaser 3',
+        imageName: 'phaser3',
+        extension: 'png',
+        unshowable: true
     },
     // tailwind: {
     //     name: 'Tailwind CSS',

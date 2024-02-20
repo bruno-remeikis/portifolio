@@ -40,17 +40,19 @@ const ResumeSection: React.FC = () =>
                     {/* <h3>Minhas habilidades</h3> */}
                     <div className={`${styles.tecnologies} ${displayTecNames ? styles.displayTecNames : null}`}>
                         {Object.entries(technologies).map((item, i) =>
-                            <div key={i} className={styles.tec}>
-                                <div className={styles.tec__imgContainer}>
-                                    <Image
-                                        src={getImagePath(item[1].imageName)}
-                                        alt={item[1].name}
-                                        width={40}
-                                        height={40}
-                                    />
+                            !item[1].unshowable ? // <- Não mostrar algumas tecnologias
+                                <div key={i} className={styles.tec}>
+                                    <div className={styles.tec__imgContainer}>
+                                        <Image
+                                            src={getImagePath(item[1].imageName)}
+                                            alt={item[1].name}
+                                            width={40}
+                                            height={40}
+                                        />
+                                    </div>
+                                    <p className={styles.tec__name}>{item[1].name}</p>
                                 </div>
-                                <p className={styles.tec__name}>{item[1].name}</p>
-                            </div>
+                            : null
                         )}
                     </div>
 
