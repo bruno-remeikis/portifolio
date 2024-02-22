@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Image from 'next/image';
+import { Analytics } from '@vercel/analytics/react';
 
 import styles from '../styles/Index.module.scss';
 

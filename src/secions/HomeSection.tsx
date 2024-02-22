@@ -5,6 +5,8 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+import { track } from '@vercel/analytics';
+
 const HomeSection: React.FC = () =>
     <div id="home" className={`section ${styles.homeSection}`}>
         <div className={styles.container}>
@@ -17,7 +19,7 @@ const HomeSection: React.FC = () =>
                     <p className={styles.p2}>dev Full Stack</p>
 
                     <div className={styles.btnSobre}>
-                        <Link href="#about">Sobre mim</Link>
+                        <Link href="#about" onClick={() => { track('about-me') }}>Sobre mim</Link>
                     </div>
                 </section>
 
