@@ -11,7 +11,7 @@ type ModalProps = {
     children: React.ReactNode,
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, overlayClass, containerClass, children }) =>
+export const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, overlayClass, containerClass, children }) =>
 {
     return (
         <div
@@ -28,5 +28,3 @@ const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, overlayClass, containe
         </div>
     );
 }
-
-export default Modal;

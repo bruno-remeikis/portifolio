@@ -2,11 +2,11 @@ import Image from 'next/image';
 import styles from '../styles/sections/Projects.module.scss';
 import SectionTitle from '../components/SectionTitle';
 import { MdArrowOutward } from "react-icons/md";
-import { HiMiniCodeBracket } from "react-icons/hi2";
+import { HiMiniCodeBracket, HiMiniXCircle, HiMiniXMark } from "react-icons/hi2";
 import { HiMiniGlobeAlt } from "react-icons/hi2";
 import { useState } from 'react';
 
-import Modal2 from '../components/Modal';
+import { Modal } from '../components/Modal';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -64,72 +64,91 @@ const Project: React.FC<ProjectProps> = ({
                 <MdArrowOutward />
             </div>
 
-            <Modal2
+            <Modal
                 isOpen={open}
                 setIsOpen={setOpen}
-                overlayClass={styles.modalOverlay}
+                overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''}`}
                 containerClass={styles.modalContainer}
             >
-                <div className={`${styles.modalContent} ${open ? styles.modalContent__Open : ''} ${mobile ? styles.modalContent__Mobile : ''}`}>
-                    <div
+                <div className={styles.modalContent}>
+                    {/* <div
                         style={{ position: 'absolute', right: '-2rem', backgroundColor: 'white', width: '1.5rem', height: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '99rem'}}
                         onClick={() => setOpen(false)}
-                    >X</div>
+                    >X</div> */}
 
-                    <Carousel className={styles.carousel}>
-                        {imgs.map(pImg =>
-                            <div
-                                className={styles.carousel__item}
-                                style={{
-                                    backgroundImage: `url('/img/projects/${pImg}')`,
-                                    backgroundPositionX: '50%',
-                                    backgroundPositionY: getImgAlign()
-                                }}
-                            />
-                        )}
-                    </Carousel>
-
-                    <div className={styles.header}>
-                        <h3>{ name }</h3>
-                        <div className={styles.technologies}>
-                            {technologies.map(t =>
-                                <Image src={`/img/abilities/${t.imageName}.${t.extension ? t.extension : 'svg'}`} width={35} height={35} alt={t.name} title={t.name} />    
+                    <div className={styles.carouselContainer}>
+                        <Carousel className={styles.carousel} showThumbs={false}>
+                            {imgs.map((pImg, i) =>
+                                <div
+                                    key={i}
+                                    className={styles.carousel__item}
+                                    style={{
+                                        backgroundImage: `url('/img/projects/${pImg}')`,
+                                        backgroundPositionX: '50%',
+                                        backgroundPositionY: getImgAlign()
+                                    }}
+                                />
                             )}
-                        </div>
+                        </Carousel>
                     </div>
 
-                    <div className={styles.modalInfo}>
-                        <div className={styles.description}>
-                            {description.split('\n').map(desc =>
-                                <p>{ desc }</p>
-                            )}
-                        </div>
-
-                        {intention ?
-                            <div className={styles.intention}>
-                                <span>Intúito: </span>
-                                <span>{ intention }</span>
+                    <div className={styles.data}>
+                        <div className={styles.header}>
+                            <h3>{ name }</h3>
+                            <div className={styles.technologies}>
+                                {technologies.map((t, i) =>
+                                    <Image
+                                        key={i}
+                                        src={`/img/abilities/${t.imageName}.${t.extension ? t.extension : 'svg'}`}
+                                        width={35} height={35}
+                                        alt={t.name} title={t.name}
+                                    />    
+                                )}
                             </div>
-                        : null}
-                    </div>
+                        </div>
 
-                    <div className={styles.projectLinks}>
-                        {demoLink ?
-                            <Link href={demoLink} target='_blank' className={styles.demoLink}>
-                                <HiMiniGlobeAlt />
-                                Visitar
-                            </Link>
-                        : null}
+                        <div className={styles.modalInfo}>
+                            <div className={styles.description}>
+                                {description.split('\n').map((desc, i) =>
+                                    <p key={i}>{ desc }</p>
+                                )}
+                            </div>
 
-                        {githubLink ? 
-                            <Link href={githubLink} target='_blank' className={styles.githubLink}>
-                                <HiMiniCodeBracket />
-                                Ver código-fonte
-                            </Link>
-                        : null}
+                            {intention ?
+                                <div className={styles.intention}>
+                                    <span>Intúito: </span>
+                                    <span>{ intention }</span>
+                                </div>
+                            : null}
+                        </div>
+
+                        <div className={styles.projectLinks}>
+                            <div>
+                                {demoLink ?
+                                    <Link href={demoLink} target='_blank' className={styles.demoLink}>
+                                        <HiMiniGlobeAlt />
+                                        Visitar
+                                    </Link>
+                                : null}
+
+                                {githubLink ? 
+                                    <Link href={githubLink} target='_blank' className={styles.githubLink}>
+                                        <HiMiniCodeBracket />
+                                        Ver código-fonte
+                                    </Link>
+                                : null}
+                            </div>
+
+                            <div>
+                                <button type="button" className={styles.closeBtn} onClick={() => setOpen(false)}>
+                                    <HiMiniXMark />
+                                    Fechar
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </Modal2>
+            </Modal>
         </div>
     );
 }
