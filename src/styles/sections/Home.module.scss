@@ -98,7 +98,7 @@
 		&:hover {
 			&.wpp { color: rgb(37, 211, 102); }
 			&.lin { color: #0a66c2; }
-			&.git { color: #181616; }
+			&.git { /*color: #181616;*/ opacity: 0.6; }
 		}
 	}
 }
@@ -131,6 +131,7 @@
 	.container {
 		background-color: inherit !important;
 		background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent) !important;
+		box-shadow: none !important;
 	}
 	.content {
 		flex-direction: column-reverse;

@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import styles from '../styles/sections/Projects.module.scss';
 import SectionTitle from '../components/SectionTitle';
-import { MdArrowOutward } from "react-icons/md";
-import { HiMiniCodeBracket, HiMiniXMark } from "react-icons/hi2";
-import { HiMiniGlobeAlt } from "react-icons/hi2";
+import { MdArrowOutward, MdFullscreen, MdOutlineFullscreen } from "react-icons/md";
+import { HiMiniCodeBracket, HiMiniXMark, HiMiniGlobeAlt } from "react-icons/hi2";
+import { AiOutlineFullscreen } from "react-icons/ai";
 import { useState } from 'react';
 import { isDesktop } from 'react-device-detect';
 
@@ -38,7 +38,7 @@ const Project: React.FC<ProjectProps> = ({
     // const [requestClosing, setRequestClosing] = useState<boolean>(true);
     const [closing, setClosing] = useState<boolean>(false);
 
-    function onRequestClose()
+    function requestClose()
     {
         setClosing(true);
 
@@ -73,14 +73,14 @@ const Project: React.FC<ProjectProps> = ({
                 className={styles.caption}
                 onClick={() => setIsOpen(true)}
             >
-                <span>{ name }</span>
-                <MdArrowOutward />
+                <span>{ name } <AiOutlineFullscreen /></span>
+                <span>Clique para ver detalhes</span>
             </div>
 
             <Modal
                 isOpen={isOpen}
                 // setIsOpen={setRequestClosing}
-                onRequestClose={onRequestClose}
+                onRequestClose={requestClose}
                 overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''} ${closing ? styles.modalOverlay__Closing : '' /*styles.modalOverlay__Closed*/} ${isOpen ? styles.modalOverlay__Open : ''}`}
                 containerClass={styles.modalContainer}
             >
@@ -149,7 +149,7 @@ const Project: React.FC<ProjectProps> = ({
                             </div>
 
                             <div>
-                                <button type="button" className={styles.closeBtn} onClick={() => setIsOpen(false)}>
+                                <button type="button" className={styles.closeBtn} onClick={() => requestClose()}>
                                     <HiMiniXMark />
                                     Fechar
                                 </button>
@@ -239,7 +239,7 @@ const ProjectsSection2: React.FC = () =>
                         intention='Acadêmico'
                     />
                     <Project
-                        img='naval-battle.PNG'
+                        img='naval-battle.png'
                         name='Batalha Naval'
                         githubLink='https://github.com/bruno-remeikis/naval-battle'
                         imgAlign={20}
