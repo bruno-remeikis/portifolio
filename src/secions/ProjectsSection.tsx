@@ -2,9 +2,10 @@ import Image from 'next/image';
 import styles from '../styles/sections/Projects.module.scss';
 import SectionTitle from '../components/SectionTitle';
 import { MdArrowOutward } from "react-icons/md";
-import { HiMiniCodeBracket, HiMiniXCircle, HiMiniXMark } from "react-icons/hi2";
+import { HiMiniCodeBracket, HiMiniXMark } from "react-icons/hi2";
 import { HiMiniGlobeAlt } from "react-icons/hi2";
 import { useState } from 'react';
+import { isDesktop } from 'react-device-detect';
 
 import { Modal } from '../components/Modal';
 
@@ -33,7 +34,19 @@ const Project: React.FC<ProjectProps> = ({
     img, name, demoLink, githubLink, imgAlign = 'center', mobile, imgs, description, technologies, intention
 }) =>
 {
-    const [open, setOpen] = useState<boolean>(false);
+    const [isOpen, setIsOpen] = useState<boolean>(false);
+    // const [requestClosing, setRequestClosing] = useState<boolean>(true);
+    const [closing, setClosing] = useState<boolean>(false);
+
+    function onRequestClose()
+    {
+        setClosing(true);
+
+        setTimeout(() => {
+            setClosing(false);
+            setIsOpen(false);
+        }, 300);
+    }
 
     const getImgAlign = () =>
         imgAlign === 'center' ? '50%' :
@@ -43,7 +56,7 @@ const Project: React.FC<ProjectProps> = ({
 
     return (
         <div
-            className={`${styles.project} ${open ? styles.project__open : ''}`}
+            className={`${styles.project} ${isDesktop ? styles.project__isDesktop : ''}`}
             style={
                 mobile ? { gridRow: 'span 2' } : null
             }
@@ -58,24 +71,20 @@ const Project: React.FC<ProjectProps> = ({
 
             <div
                 className={styles.caption}
-                onClick={() => setOpen(true)}
+                onClick={() => setIsOpen(true)}
             >
                 <span>{ name }</span>
                 <MdArrowOutward />
             </div>
 
             <Modal
-                isOpen={open}
-                setIsOpen={setOpen}
-                overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''}`}
+                isOpen={isOpen}
+                // setIsOpen={setRequestClosing}
+                onRequestClose={onRequestClose}
+                overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''} ${closing ? styles.modalOverlay__Closing : '' /*styles.modalOverlay__Closed*/} ${isOpen ? styles.modalOverlay__Open : ''}`}
                 containerClass={styles.modalContainer}
             >
                 <div className={styles.modalContent}>
-                    {/* <div
-                        style={{ position: 'absolute', right: '-2rem', backgroundColor: 'white', width: '1.5rem', height: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', borderRadius: '99rem'}}
-                        onClick={() => setOpen(false)}
-                    >X</div> */}
-
                     <div className={styles.carouselContainer}>
                         <Carousel className={styles.carousel} showThumbs={false}>
                             {imgs.map((pImg, i) =>
@@ -140,7 +149,7 @@ const Project: React.FC<ProjectProps> = ({
                             </div>
 
                             <div>
-                                <button type="button" className={styles.closeBtn} onClick={() => setOpen(false)}>
+                                <button type="button" className={styles.closeBtn} onClick={() => setIsOpen(false)}>
                                     <HiMiniXMark />
                                     Fechar
                                 </button>
@@ -173,7 +182,7 @@ const ProjectsSection2: React.FC = () =>
                         description={
                             'Jogo de xadrez desenvolvido com o framework Phaser 3.\nUtilizei este projeto para aprender um ' +
                             'pouco de como funciona o xadrez, além de experimentar um pouco de desenvolvimento de jogos digitais ' +
-                            'e exercitar minhas habilidades como programador e desenvolvedor Front-end.'
+                            'e exercitar minhas habilidades em programação e desenvolvimento Front-end.'
                         }
                         technologies={[
                             technologies.html,
@@ -230,21 +239,21 @@ const ProjectsSection2: React.FC = () =>
                         intention='Acadêmico'
                     />
                     <Project
-                        img='naval-battle.png'
+                        img='naval-battle.PNG'
                         name='Batalha Naval'
                         githubLink='https://github.com/bruno-remeikis/naval-battle'
                         imgAlign={20}
                         imgs={[
-                            'naval-battle-home.png',
-                            'naval-battle-game.png',
-                            'naval-battle-instructions.png'
+                            'naval-battle-home.PNG',
+                            'naval-battle-game.PNG',
+                            'naval-battle-instructions.PNG'
                         ]}
                         description={
-                            'Neste desafio, refiz uma das primeiras aplicações que desenvolví em minha vida (e uma das' +
+                            'Neste desafio, refiz uma das primeiras aplicações que desenvolví em minha vida (e uma das ' +
                             'quais mais me orgulho).\nTrata-se de uma Batalha Naval feita em C++ utilizando a biblioteca ' +
-                            'Conio2 e exibida em um terminal, onde é possível caminhar com um cursor por uma malha coordenada ' +
-                            'e atirar onde estiver posicionado, revelando assim o que havia escondido na malha (podendo ser ' +
-                            'uma embarcação ou água).\nOs elementos escondidos são posicionados de forma totalmente aleatória, ' +
+                            'Conio2 e exibida em um terminal. Nele é possível caminhar com um cursor por uma malha coordenada ' +
+                            'e atirar onde ele estiver posicionado, revelando assim o que há (podendo ser uma embarcação ' +
+                            'ou água).\nOs elementos escondidos são posicionados de forma totalmente aleatória, ' +
                             'o que torna cada rodada única.'
                         }
                         technologies={[
@@ -260,7 +269,7 @@ const ProjectsSection2: React.FC = () =>
                         imgs={[
                             'calendario2.png'
                         ]}
-                        description='Este é um calendário simples feiro em um dia de tédio :)'
+                        description='Este é um calendário simples feito em um dia de tédio :)'
                         technologies={[
                             technologies.html,
                             technologies.css,
@@ -289,17 +298,6 @@ const ProjectsSection2: React.FC = () =>
                 </div>
 
             </div>
-
-            {/* <section>
-                <figure>
-                    <Image src='/img/projects/calendario.png' width={0} height={0} sizes="100vw" alt='Calendario' />
-                    <div>
-                        <span>Calendário</span>
-                    </div>
-                </figure>
-                <h3>Calendário</h3>
-                <p></p>
-            </section> */}
         </div>
     );
 }

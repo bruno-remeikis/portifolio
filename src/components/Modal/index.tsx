@@ -3,7 +3,8 @@ import { Dispatch, SetStateAction } from "react";
 
 type ModalProps = {
     isOpen: boolean;
-    setIsOpen: Dispatch<SetStateAction<boolean>>;
+    setIsOpen?: Dispatch<SetStateAction<boolean>>;
+    onRequestClose?: Function;
 
     overlayClass?: string;
     containerClass?: string;
@@ -11,13 +12,18 @@ type ModalProps = {
     children: React.ReactNode,
 }
 
-export const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, overlayClass, containerClass, children }) =>
+export const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, onRequestClose, overlayClass, containerClass, children }) =>
 {
     return (
         <div
             className={`${styles.overlay} ${overlayClass ? overlayClass : ''}`}
             style={{ display: isOpen ? 'flex' : 'none', }}
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+                if(onRequestClose)
+                    onRequestClose();
+                if(setIsOpen)
+                    setIsOpen(false);
+            }}
         >
             <div
                 className={`${styles.container} ${containerClass ? containerClass : ''}`}
