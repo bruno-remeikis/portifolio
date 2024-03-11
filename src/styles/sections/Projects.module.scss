@@ -219,8 +219,10 @@ $modalAnimationDuration: 0.3s;
                         &.demoLink { background-color: rgb(206, 62, 19); }
                         &.githubLink { background-color: #181616; }
                         &.closeBtn {
-                            background-color: rgba(255, 0, 0, 0.1);
+                            background-color: transparent;
                             color: red;
+
+                            &:hover { background-color: rgba(255, 0, 0, 0.1); }
                         }
                     }
                 }
@@ -316,7 +318,7 @@ $modalAnimationDuration: 0.3s;
             
             .modalContent {
                 width: 100%;
-                min-height: 100vh;
+                min-height: 100svh;
 
                 .carouselContainer {
                     .carousel {
@@ -355,7 +357,7 @@ $modalAnimationDuration: 0.3s;
             
             .modalContent {
                 width: 100%;
-                min-height: 100vh;
+                min-height: 100svh;
 
                 .carouselContainer {
                     background-color: rgba(0, 0, 0, 0.1) !important;

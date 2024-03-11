@@ -48,7 +48,7 @@ body {
 	background-color: var(--dark-purple);
 	color: var(--white);
 
-	min-height: 100vh;
+	min-height: 100svh;
 
 	padding: 0;
 	margin: 0;
@@ -69,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section {
-	min-height: 100vh;
+	min-height: 100svh;
 	scroll-snap-align: start;
 	scroll-snap-stop: always;
 	// scroll-padding: 10rem;
