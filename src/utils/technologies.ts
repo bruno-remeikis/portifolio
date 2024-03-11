@@ -5,7 +5,7 @@ export interface Technology
 {
     name: string;
     imageName: string;
-    extension?: string;
+    extension?: string; // Default: svg
     unshowable?: true;
 }
 
@@ -36,13 +36,23 @@ export const technologies: {[name: string]: Technology} = {
         name: 'Node.js',
         imageName: 'node-js'
     },
+    express: {
+        name: 'Express',
+        imageName: 'express-original',
+        unshowable: true
+    },
     react: {
         name: 'React',
         imageName: 'react'
     },
     reactNative: {
         name: 'React Native',
-        imageName: 'react'
+        imageName: 'react-native'
+    },
+    expo: {
+        name: 'Expo',
+        imageName: 'expo-go',
+        unshowable: true
     },
     next: {
         name: 'Next.js',
@@ -88,6 +98,11 @@ export const technologies: {[name: string]: Technology} = {
     mysql: {
         name: 'MySQL',
         imageName: 'mysql'
+    },
+    sqlite: {
+        name: 'SQLite',
+        imageName: 'sqlite',
+        unshowable: true
     },
     git: {
         name: 'Git',

@@ -212,7 +212,9 @@ const ProjectsSection2: React.FC = () =>
                             'sendo possível exportá-los, gerando um documento JSON.'
                         }
                         technologies={[
-                            technologies.reactNative
+                            technologies.reactNative,
+                            technologies.expo,
+                            technologies.sqlite
                         ]}
                         intention='Uso pessoal'
                     />
