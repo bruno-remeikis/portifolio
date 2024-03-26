@@ -127,10 +127,10 @@ export const technologies: {[name: string]: Technology} = {
         extension: 'png',
         unshowable: true
     },
-    // tailwind: {
-    //     name: 'Tailwind CSS',
-    //     imageName: 'tailwindcss-plain'
-    // }
+    tailwind: {
+        name: 'Tailwind',
+        imageName: 'tailwindcss-plain'
+    }
     // mongo: {
     //     name: 'MongoDB',
     //     imageName: 'mongodb-original'

@@ -17,6 +17,7 @@
 }
 .projects {
     --width: 24rem;
+    --modal-image-width: 60svw;
 
     --cols: 3;
 
@@ -122,7 +123,8 @@ $modalAnimationDuration: 0.3s;
     }
 
     .modalContainer {
-        width: 30rem;
+        //width: 30rem;
+        width: var(--modal-image-width);
         border-radius: $modalBorderRadius;
         box-shadow: 0px 10px 22px -3px rgba(0, 0, 0, 0.2);
 
@@ -169,7 +171,7 @@ $modalAnimationDuration: 0.3s;
                 }
 
                 .modalInfo {
-                    // flex: 1;
+                    flex: 1;
                     display: flex;
                     flex-direction: column;
 
@@ -239,10 +241,12 @@ $modalAnimationDuration: 0.3s;
                 flex-direction: row;
 
                 .carousel {
-                    width: $mobileWidth;
+                    // width: $mobileWidth;
+                    max-width: 40rem;
+                    // max-height: 10rem;
 
                     .carousel__item {
-                        height: 32rem;
+                        // height: 32rem;
                         border-bottom: 0;
                         border-right: $modalBorder;
                         border-left: 0;
@@ -281,7 +285,10 @@ $modalAnimationDuration: 0.3s;
 // --- MEDIAS ---
 
 @media only screen and (max-width: 1310px) {
-    .projects { --width: 22rem; }
+    .projects {
+        --width: 22rem;
+        --modal-image-width: 80svw;
+    }
 }
 @media only screen and (max-width: 1220px) {
     .projects { --width: 20rem; }
@@ -296,17 +303,6 @@ $modalAnimationDuration: 0.3s;
 
 @media only screen and (max-width: 980px) {
     .projects { --width: 20rem; }
-}
-
-@media only screen and (max-width: 700px) {
-    .projects {
-        --cols: 1;
-        --width: 30rem;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    .projects { --width: 24rem; }
 
     // --- MODAL DESKTOP ---
     .modalOverlay:not(.modalOverlay__Mobile) {
@@ -317,6 +313,9 @@ $modalAnimationDuration: 0.3s;
             width: 100%;
             
             .modalContent {
+                display: flex;
+                flex-direction: column;
+
                 width: 100%;
                 min-height: 100svh;
 
@@ -328,9 +327,24 @@ $modalAnimationDuration: 0.3s;
                         }
                     }
                 }
+
+                .data {
+                    flex: 1;
+                }
             }
         }
     }
+}
+
+@media only screen and (max-width: 700px) {
+    .projects {
+        --cols: 1;
+        --width: 30rem;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .projects { --width: 24rem; }
 }
 
 @media only screen and (max-width: 420px) {

@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from '../styles/sections/Projects.module.scss';
 import SectionTitle from '../components/SectionTitle';
-import { MdArrowOutward, MdFullscreen, MdOutlineFullscreen } from "react-icons/md";
 import { HiMiniCodeBracket, HiMiniXMark, HiMiniGlobeAlt } from "react-icons/hi2";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import { useState } from 'react';
@@ -14,6 +13,11 @@ import { Carousel } from 'react-responsive-carousel';
 import { Technology, technologies } from '../utils/technologies';
 import Link from 'next/link';
 
+type ImageProps = {
+    src: string;
+    size: number[]; // [0]: width; [1]: height
+}
+
 type ProjectProps = {
     img: string;
     name: string;
@@ -21,21 +25,21 @@ type ProjectProps = {
     githubLink?: string;
 
     imgAlign?: 'center' | 'top' | 'bottom' | number;
-    mobile?: boolean;
+    mobile?: boolean; // Na vitrine, imagens ocupam duas linhas e, no modal, imagens ficam na lateral
+    butDesktopShowcase?: boolean; // Se mobile=true e butDesktopShowcase=true, não exibe a imagem da vitrine em duas linhas
 
     // For modal
-    imgs: string[];
+    imgs: ImageProps[];
     description: string;
     technologies: Technology[];
     intention?: string;
 }
 
 const Project: React.FC<ProjectProps> = ({
-    img, name, demoLink, githubLink, imgAlign = 'center', mobile, imgs, description, technologies, intention
+    img, name, demoLink, githubLink, imgAlign = 'center', mobile, butDesktopShowcase, imgs, description, technologies, intention
 }) =>
 {
     const [isOpen, setIsOpen] = useState<boolean>(false);
-    // const [requestClosing, setRequestClosing] = useState<boolean>(true);
     const [closing, setClosing] = useState<boolean>(false);
 
     function requestClose()
@@ -58,7 +62,7 @@ const Project: React.FC<ProjectProps> = ({
         <div
             className={`${styles.project} ${isDesktop ? styles.project__isDesktop : ''}`}
             style={
-                mobile ? { gridRow: 'span 2' } : null
+                mobile && !butDesktopShowcase ? { gridRow: 'span 2' } : null
             }
         >
             <div className={styles.imgContainer}>
@@ -79,23 +83,23 @@ const Project: React.FC<ProjectProps> = ({
 
             <Modal
                 isOpen={isOpen}
-                // setIsOpen={setRequestClosing}
                 onRequestClose={requestClose}
-                overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''} ${closing ? styles.modalOverlay__Closing : '' /*styles.modalOverlay__Closed*/} ${isOpen ? styles.modalOverlay__Open : ''}`}
+                overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''} ${closing ? styles.modalOverlay__Closing : ''} ${isOpen ? styles.modalOverlay__Open : ''}`}
                 containerClass={styles.modalContainer}
             >
                 <div className={styles.modalContent}>
                     <div className={styles.carouselContainer}>
                         <Carousel className={styles.carousel} showThumbs={false}>
-                            {imgs.map((pImg, i) =>
-                                <div
-                                    key={i}
+                            {imgs.map(img =>
+                                <Image
+                                    key={img.src}
                                     className={styles.carousel__item}
-                                    style={{
-                                        backgroundImage: `url('/img/projects/${pImg}')`,
-                                        backgroundPositionX: '50%',
-                                        backgroundPositionY: getImgAlign()
-                                    }}
+                                    src={`/img/projects/${img.src}`}
+                                    width={img.size[0] ? img.size[0] : 10}
+                                    height={img.size[1] ? img.size[1] : 10}
+                                    layout='intrinsic'
+                                    alt={`${name} image`}
+                                    title={`${name} image`}
                                 />
                             )}
                         </Carousel>
@@ -109,8 +113,11 @@ const Project: React.FC<ProjectProps> = ({
                                     <Image
                                         key={i}
                                         src={`/img/abilities/${t.imageName}.${t.extension ? t.extension : 'svg'}`}
-                                        width={35} height={35}
-                                        alt={t.name} title={t.name}
+                                        // layout='intrinsic'
+                                        width={35}
+                                        height={35}
+                                        alt={t.name}
+                                        title={t.name}
                                     />    
                                 )}
                             </div>
@@ -172,12 +179,36 @@ const ProjectsSection2: React.FC = () =>
 
                 <div className={styles.projects}>
                     <Project
-                        img='chess.PNG'
+                        img='ai-chat/ai-chat-1-dark.png'
+                        imgAlign='top'
+                        name='AI Chat'
+                        githubLink='https://github.com/bruno-remeikis/ai-chat'
+                        demoLink='https://ai-chat-rmk.vercel.app/'
+                        imgs={[
+                            { src: 'ai-chat/ai-chat-1-dark.png', size: [691, 786] },
+                            { src: 'ai-chat/ai-chat-1-light.png', size: [692, 786] },
+                        ]}
+                        description={
+                            'Uma interface web que se integração com a Gemini, a Inteligência Artificial da Google.\n' +
+                            'Nela é possível conversar com a IA e obter respostas atualizadas, já que a mesma têm ' +
+                            'acesso à internet'
+                        }
+                        technologies={[
+                            technologies.typescript,
+                            technologies.react,
+                            technologies.next,
+                            technologies.tailwind
+                        ]}
+                        intention='Aprendizado'
+                        mobile
+                    />
+                    <Project
+                        img='chess/chess.png'
                         name='Xadrez'
                         githubLink='https://github.com/bruno-remeikis/Chess'
                         imgs={[
-                            'chess.PNG',
-                            'chess-2.PNG'
+                            { src: 'chess/chess.png', size: [1920, 1079] },
+                            { src: 'chess/chess-2.png', size: [1920, 1079] },
                         ]}
                         description={
                             'Jogo de xadrez desenvolvido com o framework Phaser 3.\nUtilizei este projeto para aprender um ' +
@@ -193,38 +224,12 @@ const ProjectsSection2: React.FC = () =>
                         intention='Aprendizado'
                     />
                     <Project
-                        img='ciph/ciph-1.jpeg'
-                        name='Ciphersonal'
-                        githubLink='https://github.com/bruno-remeikis/ciph'
-                        imgAlign={5}
-                        mobile
-                        imgs={[
-                            'ciph/ciph-1.jpeg',
-                            'ciph/ciph-2.jpeg',
-                            'ciph/ciph-3.jpeg',
-                            'ciph/ciph-4.jpeg',
-                            'ciph/ciph-5.jpeg',
-                        ]}
-                        description={
-                            'Ciph é uma aplicação mobile que desenvolví para que eu pudesse salvar meus repertórios musicais. ' +
-                            'Nele é possivel salvar músicas, suas letras, cifras e artistas, bem como criar repertórios, que ' +
-                            'são como pastas de músicas.\nTodos os dados são salvos em um banco de dados local usando SQLite, ' +
-                            'sendo possível exportá-los, gerando um documento JSON.'
-                        }
-                        technologies={[
-                            technologies.reactNative,
-                            technologies.expo,
-                            technologies.sqlite
-                        ]}
-                        intention='Uso pessoal'
-                    />
-                    <Project
                         img='ursport.jpeg'
                         name='UrSport'
                         githubLink='https://github.com/bruno-remeikis/projeto-integrador-2'
                         imgAlign='top'
                         imgs={[
-                            'ursport.jpeg',
+                            { src: 'ursport.jpeg', size: [1366, 768] },
                         ]}
                         description={
                             'UrSport é uma rede social esportiva desenvolvida em pouco tempo para uma apresentação acadêmica.\n' +
@@ -241,14 +246,14 @@ const ProjectsSection2: React.FC = () =>
                         intention='Acadêmico'
                     />
                     <Project
-                        img='naval-battle.png'
+                        img='naval-battle/naval-battle.png'
                         name='Batalha Naval'
                         githubLink='https://github.com/bruno-remeikis/naval-battle'
                         imgAlign={20}
                         imgs={[
-                            'naval-battle-home.PNG',
-                            'naval-battle-game.PNG',
-                            'naval-battle-instructions.PNG'
+                            { src: 'naval-battle/naval-battle-home.png', size: [923, 1040] },
+                            { src: 'naval-battle/naval-battle-game.png', size: [822, 670] },
+                            { src: 'naval-battle/naval-battle-instructions.png', size: [923, 1040] },
                         ]}
                         description={
                             'Neste desafio, refiz uma das primeiras aplicações que desenvolví em minha vida (e uma das ' +
@@ -262,6 +267,34 @@ const ProjectsSection2: React.FC = () =>
                             technologies.cpp
                         ]}
                         intention='Desafio pessoal'
+                        mobile
+                        butDesktopShowcase
+                    />
+                    <Project
+                        img='ciph/ciph-1.jpeg'
+                        name='Ciphersonal'
+                        githubLink='https://github.com/bruno-remeikis/ciph'
+                        imgAlign={5}
+                        mobile
+                        imgs={[
+                            { src: 'ciph/ciph-1.jpeg', size: [768, 1280] },
+                            { src: 'ciph/ciph-2.jpeg', size: [768, 1280] },
+                            { src: 'ciph/ciph-3.jpeg', size: [768, 1280] },
+                            { src: 'ciph/ciph-4.jpeg', size: [768, 1280] },
+                            { src: 'ciph/ciph-5.jpeg', size: [768, 1280] },
+                        ]}
+                        description={
+                            'Ciph é uma aplicação mobile que desenvolví para que eu pudesse salvar meus repertórios musicais. ' +
+                            'Nele é possivel salvar músicas, suas letras, cifras e artistas, bem como criar repertórios, que ' +
+                            'são como pastas de músicas.\nTodos os dados são salvos em um banco de dados local usando SQLite, ' +
+                            'sendo possível exportá-los, gerando um documento JSON.'
+                        }
+                        technologies={[
+                            technologies.reactNative,
+                            technologies.expo,
+                            technologies.sqlite
+                        ]}
+                        intention='Uso pessoal'
                     />
                     <Project
                         img='calendario2.png'
@@ -269,7 +302,7 @@ const ProjectsSection2: React.FC = () =>
                         githubLink='https://github.com/bruno-remeikis/calendario'
                         imgAlign='top'
                         imgs={[
-                            'calendario2.png'
+                            { src: 'calendario2.png', size: [1123, 625] },
                         ]}
                         description='Este é um calendário simples feito em um dia de tédio :)'
                         technologies={[
@@ -280,13 +313,12 @@ const ProjectsSection2: React.FC = () =>
                         intention='Aprendizado'
                     />
                     <Project
-                        img='portifolio.png'
+                        img='portfolio/portifolio.png'
                         name='Este portifólio'
                         demoLink='https://portifolio-remeikis.vercel.app/'
                         githubLink='https://github.com/bruno-remeikis/portifolio'
                         imgs={[
-                            'portifolio.png',
-                            // 'portifolio-old.png'
+                            { src: 'portfolio/portifolio.png', size: [1920, 1079] },
                         ]}
                         description={
                             'Aqui falo um pouco sobre mim, da minha carreira como desenvolvedor e mostro alguns dos meus projetos.'

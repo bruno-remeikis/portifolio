@@ -1,7 +1,7 @@
 import styles from './Modal.module.scss';
 import { Dispatch, SetStateAction } from "react";
 
-type ModalProps = {
+export type ModalProps = {
     isOpen: boolean;
     setIsOpen?: Dispatch<SetStateAction<boolean>>;
     onRequestClose?: Function;
