@@ -85,6 +85,15 @@
 	height: 20rem;
 
 	border-radius: 999rem;
+
+	// animation: teste 2s;
+	// animation-play-state: paused;
+	
+	&:hover {
+		// animation-play-state: running;
+
+		animation: teste 2s;
+	}
 }
 
 .contacts {
@@ -179,5 +188,22 @@
 	}
 	.contacts {
 		align-self: end;
+	}
+}
+
+
+
+// ANIMATIONS
+
+@keyframes teste {
+	50% {
+		transform:
+			translateY(-2rem)
+			rotateY(180deg);
+	}
+	100% {
+		transform:
+			translateY(0rem)
+			rotateY(360deg);
 	}
 }

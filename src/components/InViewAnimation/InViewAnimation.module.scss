@@ -1,0 +1,16 @@
+.slideLeft {
+	opacity: 0;
+    transform: translateX(10rem);
+}
+
+.slideLeftOn {
+    animation: slideLeft 0.2s forwards;
+}
+
+@keyframes slideLeft {
+	// from {  }
+	to {
+        opacity: 1;
+		transform: translateX(0);
+	}
+}

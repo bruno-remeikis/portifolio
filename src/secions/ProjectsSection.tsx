@@ -12,6 +12,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import { Technology, technologies } from '../utils/technologies';
 import Link from 'next/link';
+import { Slide } from '../components/InViewAnimation';
 
 type ImageProps = {
     src: string;
@@ -59,7 +60,9 @@ const Project: React.FC<ProjectProps> = ({
         `${imgAlign}%`;
 
     return (
-        <div
+        <div //Slide
+            //to='up'
+            //delay={Math.floor((Math.random() * 3)) * 0.1} // <- Delay aleatório entre 0s e 0.2s
             className={`${styles.project} ${isDesktop ? styles.project__isDesktop : ''}`}
             style={
                 mobile && !butDesktopShowcase ? { gridRow: 'span 2' } : null

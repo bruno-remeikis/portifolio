@@ -107,3 +107,34 @@ h1, h2, h3, h4, h5, h6 {
 .thumbs-wrapper.axis-vertical {
 	display: none;
 }
+
+
+
+
+
+.slideLeft {
+	animation: slideLeft 0.8s forwards;
+	opacity: 0;
+}
+
+@keyframes slideleft {
+	from {
+		transform: translateX(10rem);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideup {
+	from {
+		transform: translateY(10rem);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
