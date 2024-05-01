@@ -129,7 +129,8 @@ export const technologies: {[name: string]: Technology} = {
     },
     tailwind: {
         name: 'Tailwind',
-        imageName: 'tailwindcss-plain'
+        imageName: 'tailwindcss-plain',
+        unshowable: true
     }
     // mongo: {
     //     name: 'MongoDB',

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { CiMail, CiPhone } from "react-icons/ci";
 import SectionTitle from "../components/SectionTitle";
+import { contacts } from '../utils/contacts';
 
 const ContactLink: React.FC<{
 	title: string;
@@ -33,19 +34,19 @@ const ContactSection: React.FC = () =>
                     <ContactLink
                         title='Whatsapp'
                         image='circle-whatsapp'
-                        href='https://wa.me/5527995898501'
+                        href={contacts.whatsapp}
                         bgColor='rgb(37, 211, 102)'
                     />
                     <ContactLink
                         title='LinkedIn'
                         image='circle-linkedin'
-                        href='https://www.linkedin.com/in/bruno-remeikis-b9a6a2202/'
+                        href={contacts.linkedin}
                         bgColor='#0a66c2'
                     />
                     <ContactLink
                         title='GitHub'
                         image='circle-github-2'
-                        href='https://github.com/bruno-remeikis'
+                        href={contacts.github}
                         bgColor='#181616'
                     />
                 </div>
