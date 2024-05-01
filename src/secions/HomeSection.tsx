@@ -7,7 +7,7 @@ import { FaGithub } from "react-icons/fa";
 
 import { track } from '@vercel/analytics';
 import { contacts } from '../utils/contacts';
-import { useInView } from 'react-intersection-observer';
+// import { useInView } from 'react-intersection-observer';
 
 const HomeSection: React.FC = () => {
     return (
