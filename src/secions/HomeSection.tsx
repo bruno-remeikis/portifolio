@@ -19,18 +19,16 @@ const HomeSection: React.FC = () => {
                     {/* <Link href="#about">About</Link> */}
                     <section className={styles.mainText}>
                         <h1>Bruno Coutinho Remeikis</h1>
-                        <p className={styles.p1}>Olá!</p>
-                        {/* <WritingEffect className={styles.p1} cursorStyle={{ height: '4rem' }}>Olá!</WritingEffect> */}
-                        <p className={styles.p2}>Eu sou o <span>Bruno</span>,</p>
-                        {/* <p className={styles.p2}>dev Full Stack</p> */}
-                        <WritingEffect className={styles.p2} cursorStyle={{ background: 'lightgray' }}>dev Full Stack</WritingEffect>
-
                         <MultipleWritingEffetc
                             className={styles.p2}
                             cursorStyle={{ background: 'lightgray' }}
                             childrens={[
-                                { text: 'Olá!' },
-                                { text: 'Eu sou o Bruno,' },
+                                { text: 'Olá!', className: styles.p1 },
+                                { text: [
+                                    {text: 'Eu sou o '},
+                                    {text: 'Bruno', className: `${styles.p2} ${styles.pEmphasis}`},
+                                    {text: ','}
+                                ]},
                                 { text: 'dev Full Stack' }
                             ]}
                         ></MultipleWritingEffetc>

@@ -35,8 +35,10 @@
 					&.p1 { font-size: 4rem; }
 			
 					&.p2 { font-size: 3.2rem; }
+
+					&.pEmphasis { color: var(--orange-2); }
 			
-					span { color: var(--orange-2); }
+					//span { color: var(--orange-2); }
 				}
 			}
 		
