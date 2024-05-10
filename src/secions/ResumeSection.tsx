@@ -2,12 +2,42 @@ import Image from 'next/image';
 import SectionTitle from '../components/SectionTitle';
 import styles from '../styles/sections/Resume.module.scss';
 import { useState } from 'react';
-import { getImagePath, technologies } from '../utils/technologies';
+import { Technology, getImagePath, technologies } from '../utils/technologies';
 import { Card } from '../components/Card';
 import { Emojis } from '../components/Card/CardIcon';
+import { useInView } from 'react-intersection-observer';
+
+type TechProps = {
+    item: [string, Technology];
+    inView: boolean;
+    i: number;
+}
+
+const Tech = ({ item, inView, i }: TechProps) =>
+{
+    return (
+        <div className={`${styles.tec} grow-init`}
+            style={{
+                animation: inView ? `grow 0.3s forwards ${0.03 * i}s ease-out` : null,
+            }}
+        >
+            <div className={styles.tec__imgContainer}>
+                <Image
+                    src={getImagePath(item[1].imageName)}
+                    alt={item[1].name}
+                    width={40}
+                    height={40}
+                />
+            </div>
+            <p className={styles.tec__name}>{item[1].name}</p>
+        </div>
+    );
+}
 
 const ResumeSection: React.FC = () =>
 {
+    const { ref: techsRef, inView: techsInView } = useInView({ threshold: 0 });
+
 	const [displayTecNames, setDisplayTecNames] = useState(false);
 
     return (
@@ -18,8 +48,8 @@ const ResumeSection: React.FC = () =>
                 <div className={styles.resume__col}>
                     <div className={styles.resume__text}>
                         {/* <section> */}
-                        <p>Meu nome é <span>Bruno Coutinho Remeikis</span>. Sou desenvolvedor <span>Full Stack</span>. Tenho 21 anos. Resido em Vitória/ES.</p>
-                        <p>Atualmente trabalho desenvolvendo aplicações em Angular e Java com Spring Boot para criação de APIs, JPA e JSP.</p>
+                        <p>Meu nome é <span>Bruno Coutinho Remeikis</span> e sou desenvolvedor <span>Full Stack</span>.</p> {/* Resido em Vitória/ES. */}
+                        {/* <p>Atualmente trabalho desenvolvendo aplicações em Angular e Java com Spring Boot para criação de APIs, JPA e JSP.</p> */}
                         <p>Participei da criação de um produto com Quarkus, Apache Camel e Apache Kafka pela Red Hat para o processamentos de boletos bancários.</p>
                         {/* </section> */}
                         <p>Estou cursando Sistemas de Informação, tendo concluído 64% das matérias e previsão de graduação em 2025/2.</p>
@@ -38,21 +68,10 @@ const ResumeSection: React.FC = () =>
                     </div>
 
                     {/* <h3>Minhas habilidades</h3> */}
-                    <div className={`${styles.tecnologies} ${displayTecNames ? styles.displayTecNames : null}`}>
-                        {Object.entries(technologies).map((item, i) =>
-                            !item[1].unshowable ? // <- Não mostrar algumas tecnologias
-                                <div key={i} className={styles.tec}>
-                                    <div className={styles.tec__imgContainer}>
-                                        <Image
-                                            src={getImagePath(item[1].imageName)}
-                                            alt={item[1].name}
-                                            width={40}
-                                            height={40}
-                                        />
-                                    </div>
-                                    <p className={styles.tec__name}>{item[1].name}</p>
-                                </div>
-                            : null
+                    <div ref={techsRef} className={`${styles.tecnologies} ${displayTecNames ? styles.displayTecNames : null}`}>
+                        {Object.entries(technologies)
+                            .filter(item => !item[1].unshowable) // <- Não mostrar algumas tecnologias
+                            .map((item, i) => <Tech key={i} item={item} i={i} inView={techsInView} />
                         )}
                     </div>
 
@@ -65,7 +84,7 @@ const ResumeSection: React.FC = () =>
                 <div className={styles.resume__col}>
                     {/* ESTUDO */}
                     <div className={styles.cards}>
-                        <Card.Root>
+                        <Card.Root i={0}>
                             <Card.Icon emoji={ Emojis.NOTEBOOK } />
                             <Card.Info
                                 title='Técnico em Desenvolvimento de Sistemas'
@@ -75,7 +94,7 @@ const ResumeSection: React.FC = () =>
                             />
                         </Card.Root>
 
-                        <Card.Root>
+                        <Card.Root i={1}>
                             <Card.Icon emoji={ Emojis.GRADUATION_CAP } />
                             <Card.Info
                                 title='Bacharel em Sistemas de Informação'
@@ -88,7 +107,7 @@ const ResumeSection: React.FC = () =>
 
                     {/* EMPRESAS */}
                     <div className={styles.cards}>
-                        <Card.Root>
+                        <Card.Root i={2}>
                             <Card.Icon emoji={ Emojis.BRIEFCASE } />
                             <Card.Info
                                 title='SEFAZ - Secretaria da Fazenda'
@@ -98,7 +117,7 @@ const ResumeSection: React.FC = () =>
                             />
                         </Card.Root>
 
-                        <Card.Root>
+                        <Card.Root i={3}>
                             <Card.Icon emoji={ Emojis.BRIEFCASE } />
                             <Card.Info
                                 title='CSI - Solução & Tecnologia'
@@ -112,7 +131,7 @@ const ResumeSection: React.FC = () =>
                     {/* LINGUAS */}
                     {/* https://github.com/HatScripts/circle-flags/ */}
                     <div className={`${styles.cards} ${styles.cardLanguages}`}>
-                        <Card.Root>
+                        <Card.Root i={4}>
                             {/* <Card.Icon emoji={ Emojis.RED_BOOK } /> */}
                             <Image src='/img/flags/br-rounded.svg' width={35} height={35} alt='Brazil flag' />
                             <Card.Lang
@@ -121,7 +140,7 @@ const ResumeSection: React.FC = () =>
                                 conversation={{ title: 'Conversação', points: 5 }}
                             />
                         </Card.Root>
-                        <Card.Root>
+                        <Card.Root i={5}>
                             <Image src='/img/flags/us-rounded.svg' width={35} height={35} alt='USA flag' />
                             <Card.Lang
                                 reading={{ title: 'Reading', points: 4 }}

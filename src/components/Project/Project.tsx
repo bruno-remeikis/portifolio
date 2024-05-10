@@ -10,6 +10,7 @@ import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link';
 import { Technology } from '../../utils/technologies';
 import { Modal } from '../Modal';
+import { useInView } from 'react-intersection-observer';
 
 type ImageProps = {
     src: string;
@@ -39,6 +40,8 @@ export const Project: React.FC<ProjectProps> = ({
     img, name, demoLink, githubLink, imgAlign = 'center', mobile, butDesktopShowcase, imgs, description, technologies, intention, lastVisibleOne = false
 }) =>
 {
+    const { ref, inView } = useInView({ threshold: 0.9 });
+
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [closing, setClosing] = useState<boolean>(false);
 
@@ -60,10 +63,12 @@ export const Project: React.FC<ProjectProps> = ({
 
     return (
         <div
-            className={`${styles.project} ${isDesktop ? styles.project__isDesktop : ''} ${lastVisibleOne ? styles.lastVisibleOne : ''}`}
-            style={
-                mobile && !butDesktopShowcase ? { gridRow: 'span 2' } : null
-            }
+            ref={ref}
+            className={`grow-init ${styles.project} ${isDesktop ? styles.project__isDesktop : ''} ${lastVisibleOne ? styles.lastVisibleOne : ''}`}
+            style={{
+                gridRow: mobile && !butDesktopShowcase ? 'span 2' : null,
+                animation: inView ? `grow 0.3s forwards 0s ease-out` : null
+            }}
         >
             <div className={styles.imgContainer}>
                 <div className={styles.img} style={{
