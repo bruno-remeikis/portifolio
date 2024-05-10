@@ -7,6 +7,8 @@ import { FaGithub } from "react-icons/fa";
 
 import { track } from '@vercel/analytics';
 import { contacts } from '../utils/contacts';
+import { WritingEffect } from '../components/WritingEffect/WritingEffect';
+import { MultipleWritingEffetc } from '../components/MultipleWritingEffect/MultipleWritingEffect';
 // import { useInView } from 'react-intersection-observer';
 
 const HomeSection: React.FC = () => {
@@ -18,8 +20,20 @@ const HomeSection: React.FC = () => {
                     <section className={styles.mainText}>
                         <h1>Bruno Coutinho Remeikis</h1>
                         <p className={styles.p1}>Olá!</p>
+                        {/* <WritingEffect className={styles.p1} cursorStyle={{ height: '4rem' }}>Olá!</WritingEffect> */}
                         <p className={styles.p2}>Eu sou o <span>Bruno</span>,</p>
-                        <p className={styles.p2}>dev Full Stack</p>
+                        {/* <p className={styles.p2}>dev Full Stack</p> */}
+                        <WritingEffect className={styles.p2} cursorStyle={{ background: 'lightgray' }}>dev Full Stack</WritingEffect>
+
+                        <MultipleWritingEffetc
+                            className={styles.p2}
+                            cursorStyle={{ background: 'lightgray' }}
+                            childrens={[
+                                { text: 'Olá!' },
+                                { text: 'Eu sou o Bruno,' },
+                                { text: 'dev Full Stack' }
+                            ]}
+                        ></MultipleWritingEffetc>
 
                         <div className={styles.btnSobre}>
                             <Link href="#about" onClick={() => { track('about-me') }}>Sobre mim</Link>
