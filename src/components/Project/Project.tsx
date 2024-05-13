@@ -40,7 +40,7 @@ export const Project: React.FC<ProjectProps> = ({
     img, name, demoLink, githubLink, imgAlign = 'center', mobile, butDesktopShowcase, imgs, description, technologies, intention, lastVisibleOne = false
 }) =>
 {
-    const { ref, inView } = useInView({ threshold: 0.9 });
+    // const { ref, inView } = useInView({ threshold: 0.9 });
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [closing, setClosing] = useState<boolean>(false);
@@ -63,11 +63,11 @@ export const Project: React.FC<ProjectProps> = ({
 
     return (
         <div
-            ref={ref}
-            className={`grow-init ${styles.project} ${isDesktop ? styles.project__isDesktop : ''} ${lastVisibleOne ? styles.lastVisibleOne : ''}`}
+            //ref={ref}
+            className={/*grow-init*/ `${styles.project} ${isDesktop ? styles.project__isDesktop : ''} ${lastVisibleOne ? styles.lastVisibleOne : ''}`}
             style={{
                 gridRow: mobile && !butDesktopShowcase ? 'span 2' : null,
-                animation: inView ? `grow 0.3s forwards 0s ease-out` : null
+                //animation: inView ? `grow 0.3s forwards 0s ease-out` : null
             }}
         >
             <div className={styles.imgContainer}>
