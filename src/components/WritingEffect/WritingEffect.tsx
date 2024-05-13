@@ -86,17 +86,19 @@ export const WritingEffect = ({
     }, [textRef]);
 
     return(
-        <p ref={textRef} className={`${styles.text} ${className}`} style={cssStyles}>
-            { texting }
-            {cursorVisible &&
-                <span
-                    className={`${styles.cursor} ${cursorClassName}`}
-                    style={{
-                        ...cursorStyle,
-                        animationPlayState: texting.length === text.length ? 'running' : 'paused',
-                        height: fontHeight
-                    }}
-                />}
-        </p>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+            <p ref={textRef} className={`${styles.text} ${className}`} style={cssStyles}>
+                { texting }
+            </p>
+
+            {cursorVisible && <span
+                className={`${styles.cursor} ${cursorClassName}`}
+                style={{
+                    ...cursorStyle,
+                    animationPlayState: texting.length === text.length ? 'running' : 'paused',
+                    height: fontHeight
+                }}
+            />}
+        </div>
     );
 }

@@ -30,8 +30,14 @@
 		
 			.mainText {
 				margin-right: 1rem;
+
+				.writingEffect {
+					height: 14rem;
+				}
 		
 				p {
+					display: block;
+					
 					&.p1 { font-size: 4rem; }
 			
 					&.p2 { font-size: 3.2rem; }
@@ -43,6 +49,9 @@
 			}
 		
 			.btnSobre {
+				// justify-content: flex-end;
+				// align-self: flex-end;
+				
 				display: flex;
 		
 				a	{
@@ -174,8 +183,19 @@
 	.mainText {
 		margin-right: 1rem;
 
+		.writingEffect {
+			height: 12rem !important;
+			display: flex !important;
+			flex-direction: column !important;
+			align-items: center !important;
+			justify-content: center !important;
+		}
+
 		p {
-			&.p1 { font-size: 3.4rem !important; }
+			&.p1 {
+				font-size: 3.4rem !important;
+				text-align: center;
+			}
 			&.p2 { font-size: 2.8rem !important; }
 		}
 	}

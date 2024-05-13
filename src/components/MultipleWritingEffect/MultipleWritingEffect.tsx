@@ -48,7 +48,7 @@ export const MultipleWritingEffetc = ({ childrens, ...gen }: MultipleWritingEffe
             }
             else {
                 el = (
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', whiteSpace: 'pre-wrap' }}>
                         {child.text.map(subChild =>
                         {
                             // Cria sub-elemento

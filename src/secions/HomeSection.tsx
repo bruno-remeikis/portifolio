@@ -7,9 +7,7 @@ import { FaGithub } from "react-icons/fa";
 
 import { track } from '@vercel/analytics';
 import { contacts } from '../utils/contacts';
-import { WritingEffect } from '../components/WritingEffect/WritingEffect';
 import { MultipleWritingEffetc } from '../components/MultipleWritingEffect/MultipleWritingEffect';
-// import { useInView } from 'react-intersection-observer';
 
 const HomeSection: React.FC = () => {
     return (
@@ -19,19 +17,22 @@ const HomeSection: React.FC = () => {
                     {/* <Link href="#about">About</Link> */}
                     <section className={styles.mainText}>
                         <h1>Bruno Coutinho Remeikis</h1>
-                        <MultipleWritingEffetc
-                            className={styles.p2}
-                            cursorStyle={{ background: 'lightgray' }}
-                            childrens={[
-                                { text: 'Olá!', className: styles.p1 },
-                                { text: [
-                                    {text: 'Eu sou o '},
-                                    {text: 'Bruno', className: `${styles.p2} ${styles.pEmphasis}`},
-                                    {text: ','}
-                                ]},
-                                { text: 'dev Full Stack' }
-                            ]}
-                        ></MultipleWritingEffetc>
+                        <div className={styles.writingEffect}>
+                            <MultipleWritingEffetc
+                                className={styles.p2}
+                                cursorStyle={{ background: 'lightgray' }}
+                                timming={50}
+                                childrens={[
+                                    { text: 'Olá!', className: styles.p1 },
+                                    { text: [
+                                        {text: 'Eu sou o '},
+                                        {text: 'Bruno', className: `${styles.p2} ${styles.pEmphasis}`},
+                                        {text: ','}
+                                    ]},
+                                    { text: 'dev Full Stack' }
+                                ]}
+                            ></MultipleWritingEffetc>
+                        </div>
 
                         <div className={styles.btnSobre}>
                             <Link href="#about" onClick={() => { track('about-me') }}>Sobre mim</Link>
