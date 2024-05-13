@@ -75,7 +75,9 @@ h1, h2, h3, h4, h5, h6 {
 	// scroll-padding: 10rem;
 }
 
-// SCROLLBAR
+
+
+// -- SCROLLBAR --
 // width
 ::-webkit-scrollbar {
 	width: 0.14rem;
@@ -106,4 +108,33 @@ h1, h2, h3, h4, h5, h6 {
 // Remove elemento estranho de baixo do Carousel
 .thumbs-wrapper.axis-vertical {
 	display: none;
+}
+
+
+
+// -- ANIMATIONS --
+
+$slideTranslate: 2rem;
+
+.grow-init { transform: scale(0); }
+
+.slide-init {
+	transform: translateX($slideTranslate);
+	opacity: 0;
+}
+
+@keyframes grow {
+	from { transform: scale(0); }
+	to { transform: scale(1); }
+}
+
+@keyframes slideright {
+	from {
+		transform: translateX($slideTranslate);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
 }
