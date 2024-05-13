@@ -8,10 +8,17 @@ import { FaGithub } from "react-icons/fa";
 import { track } from '@vercel/analytics';
 import { contacts } from '../utils/contacts';
 import { MultipleWritingEffetc } from '../components/MultipleWritingEffect/MultipleWritingEffect';
+import { useRef } from 'react';
+import { SuperCanvas } from '../components/canvas/SuperCanvas/SuperCanvas';
 
 const HomeSection: React.FC = () => {
+    const sectionRef = useRef(null);
+    
     return (
-        <div id="home" className={`section ${styles.homeSection}`}>
+        <div ref={sectionRef} id="home" className={`section ${styles.homeSection}`}>
+
+            <SuperCanvas parentRef={sectionRef} />
+            
             <div className={styles.container}>
                 <main className={styles.content}>
                     {/* <Link href="#about">About</Link> */}
