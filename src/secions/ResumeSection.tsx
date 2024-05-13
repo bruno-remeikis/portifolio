@@ -47,12 +47,13 @@ const ResumeSection: React.FC = () =>
             <div className={styles.resumeContent}>
                 <div className={styles.resume__col}>
                     <div className={styles.resume__text}>
-                        {/* <section> */}
-                        <p>Meu nome é <span>Bruno Coutinho Remeikis</span> e sou desenvolvedor <span>Full Stack</span>.</p> {/* Resido em Vitória/ES. */}
-                        {/* <p>Atualmente trabalho desenvolvendo aplicações em Angular e Java com Spring Boot para criação de APIs, JPA e JSP.</p> */}
-                        <p>Participei da criação de um produto com Quarkus, Apache Camel e Apache Kafka pela Red Hat para o processamentos de boletos bancários.</p>
-                        {/* </section> */}
+                        <p>Meu nome é <span>Bruno Coutinho Remeikis</span> e sou desenvolvedor <span>Full Stack</span>.</p>
+                        <br />
+                        {/* <p>Atuo principalmente com <span>Java</span></p> */}
+                        <p>Em 2023, participei, como parceiro <span>Red Hat</span>, da criação de um produto para o <span>Banestes</span>. Tratou-se de um processador de boletos bancários utilizando Quarkus, Camel e Kafka.</p>
+                        <br />
                         <p>Estou cursando Sistemas de Informação, tendo concluído 64% das matérias e previsão de graduação em 2025/2.</p>
+                        <br />
                         <p>Em meu trabalho, busco ao máximo aplicar boas práticas de manutenibilidade e legibilidade do código.</p>
 
                         {/* <br />
@@ -67,6 +68,11 @@ const ResumeSection: React.FC = () =>
                         <p> EMOJI DE LOCALIZAÇÃO  Vitória/ES. </p> */}
                     </div>
 
+                    {/* <div>
+                        <input id="show-all-tec-names" className={styles.showAllTecNames} type='checkbox' checked={displayTecNames} onChange={e => setDisplayTecNames(v => !v)} />
+                        <label htmlFor="show-all-tec-names">Mostrar tudo</label>
+                    </div> */}
+
                     {/* <h3>Minhas habilidades</h3> */}
                     <div ref={techsRef} className={`${styles.tecnologies} ${displayTecNames ? styles.displayTecNames : null}`}>
                         {Object.entries(technologies)
@@ -74,16 +80,13 @@ const ResumeSection: React.FC = () =>
                             .map((item, i) => <Tech key={i} item={item} i={i} inView={techsInView} />
                         )}
                     </div>
-
-                    {/* <div>
-                        <input id="show-all-tec-names" className={styles.showAllTecNames} type='checkbox' checked={displayTecNames} onChange={e => setDisplayTecNames(v => !v)} />
-                        <label htmlFor="show-all-tec-names">Mostrar tudo</label>
-                    </div> */}
                 </div>
 
                 <div className={styles.resume__col}>
                     {/* ESTUDO */}
                     <div className={styles.cards}>
+                        <p className={styles.cards__title}>Estudo</p>
+
                         <Card.Root i={0}>
                             <Card.Icon emoji={ Emojis.NOTEBOOK } />
                             <Card.Info
@@ -107,8 +110,34 @@ const ResumeSection: React.FC = () =>
 
                     {/* EMPRESAS */}
                     <div className={styles.cards}>
-                        <Card.Root i={2}>
-                            <Card.Icon emoji={ Emojis.BRIEFCASE } />
+                        <p className={styles.cards__title}>Carreira</p>
+
+                        <Card.Root i={2} highlighted>
+                            {/* <Card.Icon emoji={ Emojis.BRIEFCASE } /> */}
+                            <img src='/img/logos/softexpert.png' width={48} height={48} />
+                            <Card.Info
+                                title='SoftExpert'
+                                office='Engenheiro de Software'
+                                local='Joinville - Santa Catarina'
+                                period='2024 - '
+                                periodHighlight='hoje'
+                            />
+                        </Card.Root>
+
+                        <Card.Root i={3}>
+                            {/* <Card.Icon emoji={ Emojis.BRIEFCASE } /> */}
+                            <img src='/img/logos/csi.png' width={48} height={48} />
+                            <Card.Info
+                                title='CSI - Solução & Tecnologia'
+                                office='Analista e Desenvolvedor pleno'
+                                local='Vitória - ES'
+                                period='2021 - 2024'
+                            />
+                        </Card.Root>
+
+                        <Card.Root i={4}>
+                            {/* <Card.Icon emoji={ Emojis.BRIEFCASE } /> */}
+                            <img src='/img/logos/sefaz.png' width={48} height={48} />
                             <Card.Info
                                 title='SEFAZ - Secretaria da Fazenda'
                                 office='Desenvolvedor'
@@ -116,22 +145,14 @@ const ResumeSection: React.FC = () =>
                                 period='2020 - 2021'
                             />
                         </Card.Root>
-
-                        <Card.Root i={3}>
-                            <Card.Icon emoji={ Emojis.BRIEFCASE } />
-                            <Card.Info
-                                title='CSI - Solução & Tecnologia'
-                                office='Analista desenvolvedor pleno'
-                                local='Vitória - ES'
-                                period='2021 - hoje'
-                            />
-                        </Card.Root>
                     </div>
 
                     {/* LINGUAS */}
                     {/* https://github.com/HatScripts/circle-flags/ */}
                     <div className={`${styles.cards} ${styles.cardLanguages}`}>
-                        <Card.Root i={4}>
+                        <p className={styles.cards__title}>Línguas</p>
+
+                        <Card.Root i={5}>
                             {/* <Card.Icon emoji={ Emojis.RED_BOOK } /> */}
                             <Image src='/img/flags/br-rounded.svg' width={35} height={35} alt='Brazil flag' />
                             <Card.Lang
@@ -140,7 +161,7 @@ const ResumeSection: React.FC = () =>
                                 conversation={{ title: 'Conversação', points: 5 }}
                             />
                         </Card.Root>
-                        <Card.Root i={5}>
+                        <Card.Root i={6}>
                             <Image src='/img/flags/us-rounded.svg' width={35} height={35} alt='USA flag' />
                             <Card.Lang
                                 reading={{ title: 'Reading', points: 4 }}

@@ -161,7 +161,11 @@ const ProjectsSection: React.FC = () =>
                             { src: 'marvel-ttt/marvel-ttt-home.png', size: [1920, 1079] },
                             { src: 'marvel-ttt/marvel-ttt-game.png', size: [1920, 1079] }
                         ]}
-                        description=''
+                        description={
+                            'Este projeto concorreu a uma vaga admissional.\nO desafio era desenvolver um jogo-da-velha ' +
+                            'simples e integrá-lo à API da Marvel. Desta forma, os jogadores devem selecionar seus personagens ' +
+                            'para batalharem.'
+                        }
                         technologies={[
                             technologies.angular,
                             technologies.sass
