@@ -1,10 +1,13 @@
-import styles from '../styles/sections/Contact.module.scss';
-
 import Image from "next/image";
 import Link from "next/link";
+
 import { CiMail, CiPhone } from "react-icons/ci";
-import SectionTitle from "../components/SectionTitle";
-import { contacts } from '../utils/contacts';
+
+import { contacts } from '../../utils/contacts';
+
+import SectionTitle from "../../components/SectionTitle/SectionTitle";
+
+import styles from './Contact.module.scss';
 
 const ContactLink: React.FC<{
 	title: string;

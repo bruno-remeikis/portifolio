@@ -1,11 +1,14 @@
 import Image from 'next/image';
-import SectionTitle from '../components/SectionTitle';
-import styles from '../styles/sections/Resume.module.scss';
 import { useState } from 'react';
-import { Technology, getImagePath, technologies } from '../utils/technologies';
-import { Card } from '../components/Card';
-import { Emojis } from '../components/Card/CardIcon';
 import { useInView } from 'react-intersection-observer';
+
+import { Technology, getImagePath, technologies } from '../../utils/technologies';
+
+import { Card } from '../../components/Card';
+import { Emojis } from '../../components/Card/CardIcon';
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
+
+import styles from './Resume.module.scss';
 
 type TechProps = {
     item: [string, Technology];

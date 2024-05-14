@@ -10,12 +10,12 @@ import { GoRead } from "react-icons/go";
 import { GoLightBulb } from "react-icons/go";
 import { GoLog } from "react-icons/go";
 
-import HomeSection from '../secions/HomeSection';
-import AboutSection from '../secions/AboutSection';
-import ResumeSection from '../secions/ResumeSection';
-import ContactSection from '../secions/ContactSection';
+import HomeSection from '../secions/Home/HomeSection';
+import AboutSection from '../secions/About/AboutSection';
+import ResumeSection from '../secions/Resume/ResumeSection';
+import ContactSection from '../secions/Contact/ContactSection';
 // import ProjectsDeviceSection from '../secions/ProjectsDeviceSection';
-import ProjectsSection from '../secions/ProjectsSection';
+import ProjectsSection from '../secions/Projects/ProjectsSection';
 import { useState } from 'react';
 
 const Home: React.FC = () =>

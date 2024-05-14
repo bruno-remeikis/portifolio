@@ -1,18 +1,21 @@
+import { useRef } from 'react';
 import Link from 'next/link';
-import styles from '../styles/sections/Home.module.scss';
+import { track } from '@vercel/analytics';
+import { isMobile } from 'react-device-detect';
 
 import { FaLinkedin } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
-import { track } from '@vercel/analytics';
-import { contacts } from '../utils/contacts';
-import { MultipleWritingEffetc } from '../components/MultipleWritingEffect/MultipleWritingEffect';
-import { useRef } from 'react';
-import { SuperCanvas } from '../components/canvas/SuperCanvas/SuperCanvas';
-import { isMobile } from 'react-device-detect';
+import { contacts } from '../../utils/contacts';
 
-const HomeSection: React.FC = () => {
+import { MultipleWritingEffetc } from '../../components/MultipleWritingEffect/MultipleWritingEffect';
+import { SuperCanvas } from '../../components/canvas/SuperCanvas/SuperCanvas';
+
+import styles from './Home.module.scss';
+
+const HomeSection: React.FC = () =>
+{
     const sectionRef = useRef(null);
     
     return (

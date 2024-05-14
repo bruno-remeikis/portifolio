@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link';
 import { Technology } from '../../utils/technologies';
-import { Modal } from '../Modal';
+import { Modal } from '../Modal/Modal';
 
 type ImageProps = {
     src: string;

@@ -1,10 +1,11 @@
-import styles from '../styles/sections/Projects.module.scss';
-import SectionTitle from '../components/SectionTitle';
 import { useState } from 'react';
 
-// import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import { technologies } from '../utils/technologies';
-import { Project } from '../components/Project/Project';
+import { technologies } from '../../utils/technologies';
+
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
+import { Project } from '../../components/Project/Project';
+
+import styles from './Projects.module.scss';
 
 const ProjectsSection: React.FC = () =>
 {

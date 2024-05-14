@@ -1,7 +1,10 @@
 import Image from 'next/image';
-import SectionTitle from '../components/SectionTitle';
-import styles from '../styles/sections/About.module.scss';
+
+import SectionTitle from '../../components/SectionTitle/SectionTitle';
+
 import { TbFileDownload } from 'react-icons/tb';
+
+import styles from './About.module.scss';
 
 const AboutSection: React.FC = () =>
     <div id="about" className={`section ${styles.aboutSection}`}>
