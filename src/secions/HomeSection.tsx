@@ -10,6 +10,7 @@ import { contacts } from '../utils/contacts';
 import { MultipleWritingEffetc } from '../components/MultipleWritingEffect/MultipleWritingEffect';
 import { useRef } from 'react';
 import { SuperCanvas } from '../components/canvas/SuperCanvas/SuperCanvas';
+import { isMobile } from 'react-device-detect';
 
 const HomeSection: React.FC = () => {
     const sectionRef = useRef(null);
@@ -17,7 +18,7 @@ const HomeSection: React.FC = () => {
     return (
         <div ref={sectionRef} id="home" className={`section ${styles.homeSection}`}>
 
-            <SuperCanvas parentRef={sectionRef} />
+            <SuperCanvas parentRef={sectionRef} dotsAmount={isMobile ? 14 : 20} />
             
             <div className={styles.container}>
                 <main className={styles.content}>

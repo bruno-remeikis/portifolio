@@ -10,7 +10,6 @@ import { Carousel } from 'react-responsive-carousel';
 import Link from 'next/link';
 import { Technology } from '../../utils/technologies';
 import { Modal } from '../Modal';
-import { useInView } from 'react-intersection-observer';
 
 type ImageProps = {
     src: string;

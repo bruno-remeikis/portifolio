@@ -41,7 +41,7 @@ const Home: React.FC = () =>
 
 				<Head>
 					<meta charSet="UTF-8" />
-					<meta name="description" content="Portifólio de Bruno Coutinho Remeikis" />
+					<meta name="description" content="Portfólio de Bruno Coutinho Remeikis" />
 					<meta name="keywords" content="portifolio,portifólio,bruno remeikis,bruno coutinho remeikis,software,sistemas,desenvolvedor,desenvolvimento,programador,programação"></meta>
 					<meta name="author" content="Bruno Coutinho Remeikis" />
 					<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -49,7 +49,7 @@ const Home: React.FC = () =>
 					{/* <meta name="robots" content="noindex,nofollow" /> */}
 					<meta name="robots" content="index,nofollow" />
 
-					<title>Portifólio - Bruno Remeikis</title>
+					<title>Portfolio - Bruno Remeikis</title>
 					<link rel="icon" href="/favicon.ico" />
 				</Head>
 
