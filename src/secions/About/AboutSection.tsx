@@ -65,7 +65,7 @@ const AboutSection: React.FC = () =>
                                 Iniciei meus estudos em desenvolvimento de sistemas em 2018.
                                 Desde o início, apresentei muito interesse e desenvoltura na
                                 aprendizagem de novas tecnologias. Hoje estou em meu processo
-                                de graduação e atuo profissionalmente na área há quase 4 anos.
+                                de graduação e atuo profissionalmente na área há mais de 4 anos.
 
                                 Caí de paraquedas no mundo da programação e não imaginava que
                                 gostaria tanto!
