@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import styles from './Card.module.scss';
 import { useInView } from 'react-intersection-observer';
+import { slide } from '../../utils/animations';
 
 type CardRootProps = {
     children: ReactNode;
@@ -13,10 +14,11 @@ const CardRoot: React.FC<CardRootProps> = ({ children, i, highlighted = false })
     const { ref, inView } = useInView({ threshold: 0.4 });
 
     return (
-        <div ref={ref} className={`${styles.card} slide-init`} style={{
-            animation: inView ? `slideright 0.5s forwards ${0.1 * i}s ease-out` : null,
-            border: highlighted ? '1px dashed var(--orange-2)' : 'none'
-        }}>
+        <div ref={ref} 
+            {...slide('left', inView, i, {
+                className: `${styles.card} ${highlighted ? styles.highlighted : ''}`,
+            })}
+        >
             { children }
         </div>
     );

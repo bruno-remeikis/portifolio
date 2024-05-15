@@ -11,6 +11,10 @@
 		margin-top: 0.2rem;
 	}
 
+	&.highlighted {
+		border: 1px dashed var(--orange-2);
+	}
+
 	.card__header {
 		font-size: 2rem;
 	}

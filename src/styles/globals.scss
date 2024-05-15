@@ -114,23 +114,68 @@ h1, h2, h3, h4, h5, h6 {
 
 // -- ANIMATIONS --
 
-$slideTranslate: 2rem;
+$slide: 1rem;
 
 .grow-init { transform: scale(0); }
-
-.slide-init {
-	transform: translateX($slideTranslate);
-	opacity: 0;
-}
-
 @keyframes grow {
 	from { transform: scale(0); }
 	to { transform: scale(1); }
 }
 
+.slideup-init {
+	transform: translateY($slide);
+	opacity: 0;
+}
+@keyframes slideup {
+	from {
+		transform: translateY($slide);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.slideleft-init {
+	transform: translateX($slide);
+	opacity: 0;
+}
+@keyframes slideleft {
+	from {
+		transform: translateX($slide);
+		opacity: 0;
+	}
+	to {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
+
+.slidedown-init {
+	transform: translateY(calc(#{$slide} * -1));
+	opacity: 0;
+}
+@keyframes slidedown {
+	from {
+		--a: 2rem;
+		transform: translateY(calc(#{$slide} * -1));
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.slideright-init {
+	transform: translateX(calc(#{$slide} * -1));
+	opacity: 0;
+}
 @keyframes slideright {
 	from {
-		transform: translateX($slideTranslate);
+		--a: 2rem;
+		transform: translateX(calc(#{$slide} * -1));
 		opacity: 0;
 	}
 	to {
