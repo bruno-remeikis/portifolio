@@ -93,92 +93,92 @@ export const Project: React.FC<ProjectProps> = ({
                     <span>{ name } <AiOutlineFullscreen /></span>
                     <span>Clique para ver detalhes</span>
                 </div>
+            </div>
 
-                <Modal
-                    isOpen={isOpen}
-                    onRequestClose={requestClose}
-                    overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''} ${closing ? styles.modalOverlay__Closing : ''} ${isOpen ? styles.modalOverlay__Open : ''}`}
-                    containerClass={styles.modalContainer}
-                >
-                    <div className={styles.modalContent}>
-                        <div className={styles.carouselContainer}>
-                            <Carousel className={styles.carousel} showThumbs={false}>
-                                {imgs.map(img =>
+            <Modal
+                isOpen={isOpen}
+                onRequestClose={requestClose}
+                overlayClass={`${styles.modalOverlay} ${mobile ? styles.modalOverlay__Mobile : ''} ${closing ? styles.modalOverlay__Closing : ''} ${isOpen ? styles.modalOverlay__Open : ''}`}
+                containerClass={styles.modalContainer}
+            >
+                <div className={styles.modalContent}>
+                    <div className={styles.carouselContainer}>
+                        <Carousel className={styles.carousel} showThumbs={false}>
+                            {imgs.map(img =>
+                                <Image
+                                    key={img.src}
+                                    className={styles.carousel__item}
+                                    src={`/img/projects/${img.src}`}
+                                    width={img.size[0] ? img.size[0] : 10}
+                                    height={img.size[1] ? img.size[1] : 10}
+                                    layout='intrinsic'
+                                    alt={`${name} image`}
+                                    title={`${name} image`}
+                                />
+                            )}
+                        </Carousel>
+                    </div>
+
+                    <div className={styles.data}>
+                        <div className={styles.header}>
+                            <h3>{ name }</h3>
+                            <div className={styles.technologies}>
+                                {technologies.map((t, i) =>
                                     <Image
-                                        key={img.src}
-                                        className={styles.carousel__item}
-                                        src={`/img/projects/${img.src}`}
-                                        width={img.size[0] ? img.size[0] : 10}
-                                        height={img.size[1] ? img.size[1] : 10}
-                                        layout='intrinsic'
-                                        alt={`${name} image`}
-                                        title={`${name} image`}
-                                    />
+                                        key={i}
+                                        src={`/img/abilities/${t.imageName}.${t.extension ? t.extension : 'svg'}`}
+                                        // layout='intrinsic'
+                                        width={35}
+                                        height={35}
+                                        alt={t.name}
+                                        title={t.name}
+                                    />    
                                 )}
-                            </Carousel>
+                            </div>
                         </div>
 
-                        <div className={styles.data}>
-                            <div className={styles.header}>
-                                <h3>{ name }</h3>
-                                <div className={styles.technologies}>
-                                    {technologies.map((t, i) =>
-                                        <Image
-                                            key={i}
-                                            src={`/img/abilities/${t.imageName}.${t.extension ? t.extension : 'svg'}`}
-                                            // layout='intrinsic'
-                                            width={35}
-                                            height={35}
-                                            alt={t.name}
-                                            title={t.name}
-                                        />    
-                                    )}
-                                </div>
+                        <div className={styles.modalInfo}>
+                            <div className={styles.description}>
+                                {description.split('\n').map((desc, i) =>
+                                    <p key={i}>{ desc }</p>
+                                )}
                             </div>
 
-                            <div className={styles.modalInfo}>
-                                <div className={styles.description}>
-                                    {description.split('\n').map((desc, i) =>
-                                        <p key={i}>{ desc }</p>
-                                    )}
+                            {intention ?
+                                <div className={styles.intention}>
+                                    <span>Intúito: </span>
+                                    <span>{ intention }</span>
                                 </div>
+                            : null}
+                        </div>
 
-                                {intention ?
-                                    <div className={styles.intention}>
-                                        <span>Intúito: </span>
-                                        <span>{ intention }</span>
-                                    </div>
+                        <div className={styles.projectLinks}>
+                            <div>
+                                {demoLink ?
+                                    <Link href={demoLink} target='_blank' className={styles.demoLink}>
+                                        <HiMiniGlobeAlt />
+                                        Visitar
+                                    </Link>
+                                : null}
+
+                                {githubLink ? 
+                                    <Link href={githubLink} target='_blank' className={styles.githubLink}>
+                                        <HiMiniCodeBracket />
+                                        Ver código-fonte
+                                    </Link>
                                 : null}
                             </div>
 
-                            <div className={styles.projectLinks}>
-                                <div>
-                                    {demoLink ?
-                                        <Link href={demoLink} target='_blank' className={styles.demoLink}>
-                                            <HiMiniGlobeAlt />
-                                            Visitar
-                                        </Link>
-                                    : null}
-
-                                    {githubLink ? 
-                                        <Link href={githubLink} target='_blank' className={styles.githubLink}>
-                                            <HiMiniCodeBracket />
-                                            Ver código-fonte
-                                        </Link>
-                                    : null}
-                                </div>
-
-                                <div>
-                                    <button type="button" className={styles.closeBtn} onClick={() => requestClose()}>
-                                        <HiMiniXMark />
-                                        Fechar
-                                    </button>
-                                </div>
+                            <div>
+                                <button type="button" className={styles.closeBtn} onClick={() => requestClose()}>
+                                    <HiMiniXMark />
+                                    Fechar
+                                </button>
                             </div>
                         </div>
                     </div>
-                </Modal>
-            </div>
+                </div>
+            </Modal>
         </div>
     );
 }
