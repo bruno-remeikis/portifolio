@@ -39,7 +39,7 @@ const Tech = ({ item, inView, i }: TechProps) =>
 
 const ResumeSection: React.FC = () =>
 {
-    const { ref: techsRef, inView: techsInView } = useInView({ threshold: 0 });
+    const { ref: techsRef, inView: techsInView } = useInView({ threshold: 0.2 });
 
 	const [displayTecNames, setDisplayTecNames] = useState(false);
 

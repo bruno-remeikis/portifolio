@@ -8,6 +8,8 @@ import styles from './About.module.scss';
 import { useInView } from 'react-intersection-observer';
 import { slide } from '../../utils/animations';
 
+const inViewConfig = { threshold: 0 }
+
 type HighlightProps = {
     i: number;
     time: string;
@@ -31,10 +33,10 @@ const Highlight = ({ i, time, title, inView }: HighlightProps) =>
 
 const AboutSection: React.FC = () =>
 {
-    const { ref: imgRef, inView: imgInView } = useInView();
-    const { ref: selfDescRef, inView: selfDescInView } = useInView();
-    const { ref: highlightsRef, inView: highlightsInView } = useInView();
-    const { ref: downloadRef, inView: downloadsInView } = useInView();
+    const { ref: imgRef, inView: imgInView } = useInView(inViewConfig);
+    const { ref: selfDescRef, inView: selfDescInView } = useInView(inViewConfig);
+    const { ref: highlightsRef, inView: highlightsInView } = useInView(inViewConfig);
+    const { ref: downloadRef, inView: downloadsInView } = useInView(inViewConfig);
 
     return (
         <div id="about" className={`section ${styles.aboutSection}`}>

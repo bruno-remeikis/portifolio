@@ -118,8 +118,10 @@ $slide: 1rem;
 
 .grow-init { transform: scale(0); }
 @keyframes grow {
-	from { transform: scale(0); }
-	to { transform: scale(1); }
+	0% { transform: scale(0); }
+	50% { transform: scale(1.03); }
+	75% { transform: scale(0.97); }
+	100% { transform: scale(1); }
 }
 
 .slideup-init {

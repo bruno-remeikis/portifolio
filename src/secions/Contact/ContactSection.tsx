@@ -43,14 +43,14 @@ const ContactLink = ({ title, image, href, bgColor, inView, i }: ContactLinkProp
 
 
 
-type ContactTextProps = {
+type ContactProps = {
     info: string;
     Icon: IconType;
     inView: boolean;
     i: number;
 }
 
-const ContactText = ({ info, Icon, inView, i }: ContactTextProps) =>
+const Contact = ({ info, Icon, inView, i }: ContactProps) =>
     <div {...slide('right', inView, i)}>
         <Icon />
         <span>{ info }</span>
@@ -60,9 +60,12 @@ const ContactText = ({ info, Icon, inView, i }: ContactTextProps) =>
 
 
 
+const inViewConfig = { threshold: 0.4 };
+
 const ContactSection: React.FC = () =>
 {
-    const { ref: contactsRef, inView: contactsInView } = useInView();
+    const { ref: linksRef, inView: linksInView } = useInView(inViewConfig);
+    const { ref: contactsRef, inView: contactsInView } = useInView(inViewConfig);
 
     return (
         <div id="contacts" className={`section ${styles.contactsSection}`}>
@@ -76,13 +79,13 @@ const ContactSection: React.FC = () =>
                 {/* https://www.iconfinder.com/search?iconset=social-media-icons-the-circle-set */}
 
                 <div className={styles.contacts__cols}>
-                    <div ref={contactsRef} className={styles.contacts__links}>
+                    <div ref={linksRef} className={styles.contacts__links}>
                         <ContactLink
                             title='Whatsapp'
                             image='circle-whatsapp'
                             href={contacts.whatsapp}
                             bgColor='rgb(37, 211, 102)'
-                            inView={contactsInView}
+                            inView={linksInView}
                             i={0}
                         />
                         <ContactLink
@@ -90,7 +93,7 @@ const ContactSection: React.FC = () =>
                             image='circle-linkedin'
                             href={contacts.linkedin}
                             bgColor='#0a66c2'
-                            inView={contactsInView}
+                            inView={linksInView}
                             i={1}
                         />
                         <ContactLink
@@ -98,19 +101,19 @@ const ContactSection: React.FC = () =>
                             image='circle-github-2'
                             href={contacts.github}
                             bgColor='#181616'
-                            inView={contactsInView}
+                            inView={linksInView}
                             i={2}
                         />
                     </div>
 
-                    <div className={styles.contacts__contacts}>
-                        <ContactText
+                    <div ref={contactsRef} className={styles.contacts__contacts}>
+                        <Contact
                             Icon={CiMail}
                             info='brunocoutinhoremeikis@gmail.com'
                             inView={contactsInView}
                             i={0}
                         />
-                        <ContactText
+                        <Contact
                             Icon={CiPhone}
                             info='+55 (27) 99589-8501'
                             inView={contactsInView}
