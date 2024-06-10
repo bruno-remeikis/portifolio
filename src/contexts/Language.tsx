@@ -11,11 +11,19 @@ const LanguageContext = createContext<LanguageContextProps | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) =>
 {
-    const [language, setLanguage] = useState<Language>('pt');
+    const [language, setLanguage] = useState<Language>(/*() => {
+        try {
+            console.log(navigator.language.substring(0, 2) as Language);
+            return navigator.language.substring(0, 2) as Language;
+        }
+        catch(err) {
+            console.error(err);
+            return 'pt'
+        }
+    }*/ 'pt');
 
     function text(text: MultilangText): string {
         try {
-            // return multilangTexts[key][language];
             return text[language];
         }
         catch(err) {

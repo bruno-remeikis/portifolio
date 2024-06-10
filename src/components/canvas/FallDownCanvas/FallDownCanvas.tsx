@@ -22,8 +22,6 @@ export const FallDownCanvas = ({ parentRef }: FallDownCanvasProps) =>
         if(!width || !height)
             return;
 
-        console.log(height);
-
         const canvas: HTMLCanvasElement = canvasRef.current;
         const ctx: CanvasRenderingContext2D = canvas.getContext('2d');
 

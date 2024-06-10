@@ -38,7 +38,7 @@ export const LanguageSwitch = ({ id = '', dark }: LanguageSwitchProps) => {
 			</div>
 			<div className={styles.options}>
 				{languages.filter(lang => lang !== language).map(lang =>
-					<button onClick={() => setLanguage(lang)}>
+					<button key={lang} onClick={() => setLanguage(lang)}>
 						<LanguageOption lang={lang} />
 					</button>
 				)}

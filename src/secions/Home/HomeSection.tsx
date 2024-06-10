@@ -26,7 +26,7 @@ const TypingApresentation = () =>
 
     const parts: (MultilangText | string)[] = [
         { pt: 'Olá!', en: 'Hi!' },
-        { pt: 'Eu sou', en: 'I\'m' },
+        { pt: 'Eu sou ', en: 'I\'m ' },
         'Bruno',
         ',',
         { pt: 'dev FullStack', en: 'FullStack dev' }
@@ -36,20 +36,65 @@ const TypingApresentation = () =>
         let delay = 0;
         for(let j = 0; j < i; j++) {
             const p = parts[j];
-            delay += ((typeof p === 'string') ? p : text(p)).length * timming;
+            delay += ((typeof p === 'string') ? p : text(p)).length * timming + (j === 0 ? 0 : j === 4 ? 2 : 1) * timming;
         }
         return delay;
     }
 
     return (
         <>
-            <TypingEffect delay={calcDelay(0)}>{text(parts[0] as MultilangText)}</TypingEffect>
-            <div>
-                <TypingEffect delay={calcDelay(1)}>{text(parts[1] as MultilangText)}</TypingEffect>
-                <TypingEffect delay={calcDelay(2)} deps={[language]}>{parts[2] as string}</TypingEffect>
-                <TypingEffect delay={calcDelay(3)} deps={[language]}>{parts[3] as string}</TypingEffect>
+            <TypingEffect
+                delay={calcDelay(0)}
+                className={styles.p1}
+                hideCursorOnEnd
+                endDelay={100}
+            >
+                {text(parts[0] as MultilangText)}
+            </TypingEffect>
+
+            <div style={{ display: 'flex', whiteSpace: 'pre-wrap' }}>
+
+                <TypingEffect
+                    delay={calcDelay(1)}
+                    className={styles.p2}
+                    hideCursorWhileInitialDelay
+                    hideCursorOnEnd
+                    endDelay={100}
+                >
+                    {text(parts[1] as MultilangText)}
+                </TypingEffect>
+
+                <TypingEffect
+                    delay={calcDelay(2)}
+                    deps={[language]}
+                    className={`${styles.p2} ${styles.pEmphasis}`}
+                    hideCursorWhileInitialDelay
+                    hideCursorOnEnd
+                    endDelay={100}
+                >
+                    {parts[2] as string}
+                </TypingEffect>
+
+                <TypingEffect
+                    delay={calcDelay(3)}
+                    deps={[language]}
+                    className={styles.p2}
+                    hideCursorWhileInitialDelay
+                    hideCursorOnEnd
+                    endDelay={100}
+                >
+                    {parts[3] as string}
+                </TypingEffect>
+            
             </div>
-            <TypingEffect delay={calcDelay(4)}>{text(parts[4] as MultilangText)}</TypingEffect>
+
+            <TypingEffect
+                delay={calcDelay(4)}
+                className={styles.p2}
+                hideCursorWhileInitialDelay
+            >
+                {text(parts[4] as MultilangText)}
+            </TypingEffect>
         </>
     )   
 }
@@ -70,7 +115,7 @@ const HomeSection: React.FC = () =>
                     {/* <Link href="#about">About</Link> */}
                     <section className={styles.mainText}>
                         <h1>Bruno Coutinho Remeikis</h1>
-                        <div className={styles.writingEffect} style={{ display: 'flex', flexDirection: 'column' }}>
+                        <div className={styles.typingEffect} style={{ display: 'flex', flexDirection: 'column' }}>
                             {/* <MultipleWritingEffetc
                                 className={styles.p2}
                                 cursorStyle={{ background: 'lightgray' }}
