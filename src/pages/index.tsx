@@ -17,27 +17,49 @@ import ContactSection from '../secions/Contact/ContactSection';
 // import ProjectsDeviceSection from '../secions/ProjectsDeviceSection';
 import ProjectsSection from '../secions/Projects/ProjectsSection';
 import { useState } from 'react';
+import { useLanguage } from '../contexts/Language';
+import { LanguageSwitch } from '../components/LanguageSwitch/LanguageSwitch';
 
 const Home: React.FC = () =>
 {
+	const { text } = useLanguage();
+
 	const [darkMenu, setDarkMenu] = useState<boolean>(false);
+	const [darkLangSwitch, setDarkLangSwitch] = useState<boolean>(false);
 
-	function invertMenuColor()
+	function invertColors(): void {
+		const projectsBcs = document.querySelector('#projects')
+			.getBoundingClientRect();
+
+		invertMenuColor(projectsBcs);
+		invertLanguageSwitchColor(projectsBcs);
+	}
+
+	function invertMenuColor(rect: DOMRect): void
 	{
-		const projects = document.querySelector('#projects');
-		const bcr = projects.getBoundingClientRect();
-
-		const menuBcr = document.querySelector('#mainMenu').getBoundingClientRect();
+		const menuBcr = document.querySelector('#mainMenu')
+			.getBoundingClientRect();
 
 		setDarkMenu(
-			bcr.y - window.innerHeight <= 0 &&
-			bcr.y + bcr.height - window.innerHeight + menuBcr.height >= 0
+			rect.y - window.innerHeight <= 0 &&
+			rect.y + rect.height - window.innerHeight + menuBcr.height >= 0
+		);
+	}
+
+	function invertLanguageSwitchColor(rect: DOMRect): void
+	{
+		const langSwitchBcr = document.querySelector('#language-switch')
+			.getBoundingClientRect();
+
+		setDarkLangSwitch(
+			rect.y <= 0 &&
+			rect.y + rect.height + 10 >= 0
 		);
 	}
 
 	return(
 		<div className={styles.page}>
-			<div id="pageScroll" className={styles.pageScroll} onScroll={invertMenuColor}>
+			<div id="pageScroll" className={styles.pageScroll} onScroll={invertColors}>
 
 				<Head>
 					<meta charSet="UTF-8" />
@@ -57,45 +79,35 @@ const Home: React.FC = () =>
 					<ul id="mainMenu">
 						<li><Link href="#home">
 							<GoHome />
-							<span>Início</span>
+							<span>{text({ pt: 'Início', en: 'Start' })}</span>
 						</Link></li>
 						<li><Link href="#about">
 							<GoPerson />
-							<span>Sobre mim</span>	
+							<span>{text({ pt: 'Sobre mim', en: 'About me' })}</span>	
 						</Link></li>
 						<li><Link href="#resume">
 							<GoLog />
-							<span>Resumo</span>	
+							<span>{text({ pt: 'Resumo', en: 'Summary' })}</span>	
 						</Link></li>
 						<li><Link href="#projects">
 							<GoLightBulb />
-							<span>Projetos</span>	
+							<span>{text({ pt: 'Projetos', en: 'Projects' })} </span>	
 						</Link></li>
 						<li><Link href="#contacts">
 							<GoRead />
-							<span>Contato</span>
+							<span>{text({ pt: 'Contato', en: 'Contact' })}</span>
 						</Link></li>
 					</ul>
 				</nav>
 
+				<LanguageSwitch id='language-switch' dark={darkLangSwitch} />
+
 				<div className={styles.sections}>
 					<HomeSection />
-
 					<AboutSection />
-					
 					<ResumeSection />
-
 					<ProjectsSection />
-
-					{/* <ProjectsDeviceSection /> */}
-
 					<ContactSection />
-
-					{/* <div id="projects" className={`section ${styles.projectsSection}`}>
-						<div className={styles.projectImg}>
-							<Image src='/projects/calendario.png' layout='fill' />
-						</div>
-					</div> */}
 
 					{/* <footer>
 						<p>Ultima atualização</p>

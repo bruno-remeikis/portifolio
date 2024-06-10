@@ -89,14 +89,14 @@ export const WritingEffect = ({
         <div style={{ display: 'flex', alignItems: 'center' }}>
             <p ref={textRef} className={`${styles.text} ${className}`} style={cssStyles}>
                 { texting }
-            </p>
+            </p>    
 
             {cursorVisible && <span
                 className={`${styles.cursor} ${cursorClassName}`}
                 style={{
                     ...cursorStyle,
                     animationPlayState: texting.length === text.length ? 'running' : 'paused',
-                    height: fontHeight
+                    height: fontHeight ? fontHeight : 'inherit'
                 }}
             />}
         </div>

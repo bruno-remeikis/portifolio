@@ -48,12 +48,12 @@ export const MultipleWritingEffetc = ({ childrens, ...gen }: MultipleWritingEffe
             }
             else {
                 el = (
-                    <div style={{ display: 'flex', whiteSpace: 'pre-wrap' }}>
-                        {child.text.map(subChild =>
+                    <div key={i} style={{ display: 'flex', whiteSpace: 'pre-wrap' }}>
+                        {child.text.map((subChild, j) =>
                         {
                             // Cria sub-elemento
                             const subEl = (
-                                <WritingEffect key={i}
+                                <WritingEffect key={`${i}-${j}`}
                                     {...gen}
                                     className={subChild.className ? subChild.className : (child.className ? child.className : gen.className)}
                                     styles={subChild.styles ? subChild.styles : (child.styles ? child.styles : gen.styles)}

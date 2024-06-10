@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 
-import styles from '../DefaultCanvas.module.scss';
-import { Dot, createDot, createFallDownDot } from "../Dot";
+import styles from '../HomeCanvas.module.scss';
+import { Dot, createFallDownDot } from "../Dot";
 
 type FallDownCanvasProps = {
     parentRef: MutableRefObject<any>;

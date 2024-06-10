@@ -11,6 +11,7 @@ import { slide } from "../../utils/animations";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 
 import styles from './Contact.module.scss';
+import { useLanguage } from "../../contexts/Language";
 
 
 
@@ -64,6 +65,7 @@ const inViewConfig = { threshold: 0.4 };
 
 const ContactSection: React.FC = () =>
 {
+    const { text } = useLanguage();
     const { ref: linksRef, inView: linksInView } = useInView(inViewConfig);
     const { ref: contactsRef, inView: contactsInView } = useInView(inViewConfig);
 
@@ -74,7 +76,10 @@ const ContactSection: React.FC = () =>
             </div>
 
             <div className={styles.contactsContent}>
-                <SectionTitle className={styles.sectionTitle} title='Contato' subtitle='Fale comigo' />
+                <SectionTitle className={styles.sectionTitle}
+                    title={text({ pt: 'Contato', en: 'Contact' })}
+                    subtitle={text({ pt: 'Fale comigo', en: 'Talk to me' })}
+                />
 
                 {/* https://www.iconfinder.com/search?iconset=social-media-icons-the-circle-set */}
 

@@ -1,0 +1,58 @@
+.languageSwitch {
+	position: fixed;
+	z-index: 99999;
+	right: 1rem;
+	top: 1rem;
+
+	&:hover .options {
+		animation: show 0.4s ease-in-out;
+	}
+
+    &.dark {
+        color: black !important;
+        button { color: black !important; }
+    }
+
+	.options {
+		display: flex;
+		flex-direction: column;
+
+		animation: hide 0.4s ease-in-out forwards;
+	}
+
+	button {
+		background-color: transparent;
+		border: none;
+		color: var(--white);
+		cursor: pointer;
+	}
+}
+
+.languageOption {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-size: 1.2rem;
+}
+
+@keyframes show {
+	from {
+		margin-top: -1rem;
+		opacity: 0;
+	}
+	to {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+
+@keyframes hide {
+	from {
+		margin-top: 0;
+		opacity: 1;	
+	}
+	to {
+		margin-top: -1rem;
+		opacity: 0;
+	}
+}

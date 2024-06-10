@@ -7,6 +7,8 @@
 
 	background-color: var(--dark-purple-3);
 
+	padding: 4rem 0;
+
 	h3 {
 		font-size: 0.8rem;
 	}
@@ -160,9 +162,6 @@
 }
 
 @media only screen and (max-width: 1000px) {
-	.resumeSection {
-		padding-top: 4rem;
-	}
     .resumeContent {
         flex-direction: column;
         align-items: center;
