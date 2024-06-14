@@ -33,20 +33,23 @@ export const MultiTyping = ({ rows, defaultClassName = '', defaultStyle = {}, de
         const flatRows = rows.flat();
         let itemCount = 0;
 
-        function createTypingEffect(item: MultitypintText, cursor: boolean): JSX.Element {
+        function createTypingEffect(item: MultitypintText, cursor: boolean): JSX.Element
+        {
             itemCount++;
-            console.log(itemCount);
+            
             const el = (
                 <Typing
                     key={itemCount}
                     className={item.className ? item.className : defaultClassName}
                     style={defaultStyle}
                     timming={timming}
-                    hideCursor={!cursor}
                     delay={delay}
                     endDelay={endDelay}
-                    hideCursorWhileInitialDelay
-                    hideCursorOnEnd={itemCount < flatRows.length}
+                    cursor={{
+                        hide: !cursor,
+                        hideBeforeStarting: true,
+                        hideOnEnd: itemCount < flatRows.length
+                    }}
                     deps={deps}
                 >{ item.text }</Typing>
             );
@@ -61,8 +64,7 @@ export const MultiTyping = ({ rows, defaultClassName = '', defaultStyle = {}, de
                 return (
                     <div key={`multi-${i}`} className={styles.multiItemsRow}>
                         {row.map(item => createTypingEffect(item, false))}
-                        {/* <Cursor animationRunning={false} /> */}
-                        <CustomCursor init={initialDelay} end={delay} /*delay={delay}*/ />
+                        <CustomCursor init={initialDelay} end={delay} deps={deps} />
                     </div>
                 );
             } else
@@ -75,27 +77,30 @@ export const MultiTyping = ({ rows, defaultClassName = '', defaultStyle = {}, de
     );
 }
 
+
+
 type CustomCursorProps = {
     init: number;
     end: number;
+    deps: DependencyList;
 }
 
-const CustomCursor = ({ init, end }: CustomCursorProps) => {
-    const [a, setA] = useState(false);
+const CustomCursor = ({ init, end, deps }: CustomCursorProps) => {
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
         setTimeout(
-            () => setA(true), init
+            () => setVisible(true), init
         );
 
         setTimeout(
-            () => setA(false), end
+            () => setVisible(false), end
         );
-    }, []);
+    }, [init, end, deps]);
 
     return (
         <>
-            {a && <Cursor blinking={false} />}
+            {visible && <Cursor blinking={false} />}
         </>
     )
 }

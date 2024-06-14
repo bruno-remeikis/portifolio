@@ -3,6 +3,12 @@ import { useState, useEffect, DependencyList, CSSProperties } from 'react';
 import styles from './Typing.module.scss';
 import { Cursor, CursorProps } from '../Cursor/Cursor';
 
+type CustomCursorProps = CursorProps & {
+    hide?: boolean;
+    hideOnEnd?: boolean,
+    hideBeforeStarting?: boolean;
+}
+
 type TypingProps = {
     children: string;
     className?: string;
@@ -10,18 +16,10 @@ type TypingProps = {
 
     timming?: number;
     delay?: number;
-    infinite?: boolean;
-    infiniteDelay?: number;
-
-    hideCursorOnEnd?: boolean;
-    hideCursorWhileInitialDelay?: boolean;
     endDelay?: number;
+    infinite?: boolean;
 
-    cursor?: CursorProps;
-
-    hideCursor?: boolean;
-    cursorClassName?: string;
-    cursorStyle?: CSSProperties;
+    cursor?: CustomCursorProps;
 
     deps?: DependencyList;
 }
@@ -32,14 +30,8 @@ export const Typing = ({
     style = {},
     timming = 100,
     delay = 0,
-    infinite = false,
-    //infiniteDelay = 1000,
-    hideCursorOnEnd = false,
-    hideCursorWhileInitialDelay = false,
     endDelay = 0,
-    hideCursor = false,
-    //cursorClassName = '',
-    //cursorStyle = {},
+    infinite = false,
     cursor,
     deps = []
 }: TypingProps) =>
@@ -47,18 +39,17 @@ export const Typing = ({
     const [fullText, setFullText] = useState('');
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [cursorVisible, setCursorVisible] = useState(/*!hideCursor*/!hideCursorWhileInitialDelay);
+    const [cursorVisible, setCursorVisible] = useState(!cursor.hideBeforeStarting);
 
     function init() {
         setCurrentText('');
         setCurrentIndex(0);
-        if(!hideCursor)
+        if(!cursor.hide)
             initCursor();
     }
 
     function initCursor() {
-        //currentIndex === 0 &&
-        if(delay > 0 && hideCursorWhileInitialDelay/* && cursorVisible*/) {
+        if(delay > 0 && cursor.hideBeforeStarting) {
             setCursorVisible(false);
             setTimeout(() => {
                 setCursorVisible(true);
@@ -74,47 +65,28 @@ export const Typing = ({
     },
     [text, ...deps]);
 
-    /*useEffect(() => {
-        if(currentIndex >= fullText.length) {
-            if(hideCursorOnEnd && cursorVisible)
-                setTimeout(() => {
-                    setCursorVisible(false);
-                }, endDelay);
-        }
-    }, [currentIndex]);*/
-
     useEffect(() => {
-        let timeout: NodeJS.Timeout;
-
         if(fullText.length === 0)
             return;
 
         if(currentIndex < fullText.length) {
-            timeout = setTimeout(() => {
+            setTimeout(() => {
                 setCurrentText(prevText => prevText.concat(fullText[currentIndex]));
                 setCurrentIndex(prevIndex => prevIndex + 1);
             }, currentIndex === 0 ? (delay + timming) : timming);
         }
         else {
             if(infinite)
-                /*timeout = */setTimeout(() => init(), endDelay);
+                setTimeout(() => init(), endDelay);
             
-            if(hideCursorOnEnd && cursorVisible) {
-                // console.log("aaa")
-                /*timeout = */setTimeout(() => {
+            if(cursor.hideOnEnd && cursorVisible) {
+                setTimeout(() => {
                     setCursorVisible(false);
                 }, endDelay);
             }
         }
-
-        return () => clearTimeout(timeout);
     },
     [currentIndex, timming, infinite, fullText]);
-
-    /*useEffect(() => {
-        
-    },
-    [currentIndex]);*/
 
     return <div className={styles.container}>
 
@@ -124,7 +96,10 @@ export const Typing = ({
             <Cursor
                 className={cursor?.className}
                 style={cursor?.style}
-                blinking={currentIndex >= fullText.length}
+                blinking={cursor.blinking !== undefined
+                    ? cursor.blinking
+                    : currentIndex >= fullText.length
+                }
             />}
     </div>;
 };
