@@ -1,10 +1,13 @@
 import { Analytics } from '@vercel/analytics/react';
 import '../styles/globals.scss';
+import { LanguageProvider } from '../contexts/Language';
 
 function MyApp({ Component, pageProps }) {
   return <>
-    <Component {...pageProps} />
-    <Analytics />
+    <LanguageProvider>
+      <Component {...pageProps} />
+      <Analytics />
+    </LanguageProvider>
   </>
 }
 

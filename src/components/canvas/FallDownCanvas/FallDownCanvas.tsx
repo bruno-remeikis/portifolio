@@ -1,7 +1,7 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 
-import styles from '../DefaultCanvas.module.scss';
-import { Dot, createDot, createFallDownDot } from "../Dot";
+import styles from '../HomeCanvas.module.scss';
+import { Dot, createFallDownDot } from "../Dot";
 
 type FallDownCanvasProps = {
     parentRef: MutableRefObject<any>;
@@ -21,8 +21,6 @@ export const FallDownCanvas = ({ parentRef }: FallDownCanvasProps) =>
     useEffect(() => {
         if(!width || !height)
             return;
-
-        console.log(height);
 
         const canvas: HTMLCanvasElement = canvasRef.current;
         const ctx: CanvasRenderingContext2D = canvas.getContext('2d');

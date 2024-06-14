@@ -1,13 +1,8 @@
-.text {
-    display: flex;
-    align-items: center;
-}
-
 .cursor {
-    display: block;
+    // display: block;
     background-color: currentColor;
     width: 0.2rem;
-    // height: 1rem;
+    height: 3rem;
     margin-left: 0.1rem;
     animation: blink 1.2s steps(1) infinite;
 }

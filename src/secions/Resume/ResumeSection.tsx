@@ -9,6 +9,7 @@ import { Emojis } from '../../components/Card/CardIcon';
 import SectionTitle from '../../components/SectionTitle/SectionTitle';
 
 import styles from './Resume.module.scss';
+import { useLanguage } from '../../contexts/Language';
 
 type TechProps = {
     item: [string, Technology];
@@ -39,25 +40,61 @@ const Tech = ({ item, inView, i }: TechProps) =>
 
 const ResumeSection: React.FC = () =>
 {
+    const { text } = useLanguage();
     const { ref: techsRef, inView: techsInView } = useInView({ threshold: 0.2 });
 
-	const [displayTecNames, setDisplayTecNames] = useState(false);
+	const [displayTecNames/*, setDisplayTecNames*/] = useState(false);
 
     return (
         <div id="resume" className={`section ${styles.resumeSection}`}>
-            <SectionTitle title='Resumo profissional' subtitle='e minhas habilidades' />
+            <SectionTitle
+                title={text({ pt: 'Resumo profissional', en: 'Professional summary' })}
+                subtitle={text({ pt: 'e minhas habilidades', en: 'and my skills' })} />
 
             <div className={styles.resumeContent}>
                 <div className={styles.resume__col}>
                     <div className={styles.resume__text}>
-                        <p>Meu nome é <span>Bruno Coutinho Remeikis</span> e sou desenvolvedor <span>Full Stack</span>.</p>
+                        <p>
+                            {text({ pt: 'Meu nome é ', en: 'My name is ' })}
+                            <span>Bruno Remeikis</span>
+                            {text({ pt: ' e sou desenvolvedor ', en: ' and I\'m a ' })}
+                            <span>Full Stack</span>
+                            {text({ pt: '', en: ' developer' })}
+                            .
+                        </p>
                         <br />
                         {/* <p>Atuo principalmente com <span>Java</span></p> */}
-                        <p>Em 2023, participei, como parceiro <span>Red Hat</span>, da criação de um produto para o <span>Banestes</span>. Tratou-se de um processador de boletos bancários utilizando Quarkus, Camel e Kafka.</p>
+                        <p>
+                            {text({ pt: 'Em 2023, participei, como parceiro ', en: 'In 2023, I participated, as a ' })}
+                            <span>Red Hat</span>
+                            {text({
+                                pt: ', da criação de um produto para o ',
+                                en: ' partner, in the creation of a product for '
+                            })}
+                            <span>Banestes</span>.
+                            {text({
+                                pt: ' Tratou-se de um processador de boletos bancários utilizando Quarkus, Camel e Kafka.',
+                                en: ' It was a bank slip processor using Quarkus, Camel and Kafka.'
+                            })}
+                        </p>
                         <br />
-                        <p>Estou cursando Sistemas de Informação, tendo concluído 64% das matérias e previsão de graduação em 2025/2.</p>
+                        <p>
+                            {text({
+                                pt: `Estou cursando Sistemas de Informação, tendo concluído 64% das matérias e
+                                    previsão de graduação em 2025/2.`,
+                                en: `I am studying Information Systems, having completed 64% of the subjects and
+                                    expected graduation in 2025/2.`
+                            })}
+                        </p>
                         <br />
-                        <p>Em meu trabalho, busco ao máximo aplicar boas práticas de manutenibilidade e legibilidade do código.</p>
+                        <p>
+                            {text({
+                                pt: `Em meu trabalho, busco ao máximo aplicar boas práticas de manutenibilidade
+                                    e legibilidade do código.`,
+                                en: `In my work, I try to apply good code maintainability and readability practices
+                                    as much as possible.`
+                            })}
+                        </p>
 
                         {/* <br />
                         <p>Atualmente eu faço abubleble no meu trabalho. </p>
@@ -88,12 +125,17 @@ const ResumeSection: React.FC = () =>
                 <div className={styles.resume__col}>
                     {/* ESTUDO */}
                     <div className={styles.cards}>
-                        <p className={styles.cards__title}>Estudo</p>
+                        <p className={styles.cards__title}>
+                            {text({ pt: 'Estudo', en: 'Study' })}
+                        </p>
 
                         <Card.Root i={0}>
                             <Card.Icon emoji={ Emojis.NOTEBOOK } />
                             <Card.Info
-                                title='Técnico em Desenvolvimento de Sistemas'
+                                title={text({
+                                    pt: 'Técnico em Desenvolvimento de Sistemas',
+                                    en: 'Systems Development Technician'
+                                })}
                                 institution='SENAI'
                                 local='Vitória - ES'
                                 period='2018 - 2019'
@@ -103,27 +145,35 @@ const ResumeSection: React.FC = () =>
                         <Card.Root i={1}>
                             <Card.Icon emoji={ Emojis.GRADUATION_CAP } />
                             <Card.Info
-                                title='Bacharel em Sistemas de Informação'
+                                title={text({
+                                    pt: 'Bacharel em Sistemas de Informação',
+                                    en: 'Bachelor in Information Systems'
+                                })}
                                 institution='FAESA'
                                 local='Vitória - ES'
-                                period='2022 - cursando'
+                                period='2022 - studying'
                             />
                         </Card.Root>
                     </div>
 
                     {/* EMPRESAS */}
                     <div className={styles.cards}>
-                        <p className={styles.cards__title}>Carreira</p>
+                        <p className={styles.cards__title}>
+                            {text({ pt: 'Carreira', en: 'Career' })}
+                        </p>
 
                         <Card.Root i={2} highlighted>
                             {/* <Card.Icon emoji={ Emojis.BRIEFCASE } /> */}
                             <img src='/img/logos/softexpert.png' width={48} height={48} />
                             <Card.Info
                                 title='SoftExpert'
-                                office='Engenheiro de Software'
-                                local='Joinville - Santa Catarina'
+                                office={text({
+                                    pt: 'Engenheiro de Software',
+                                    en: 'Software Engineer'
+                                })}
+                                local='Joinville - SC'
                                 period='2024 - '
-                                periodHighlight='hoje'
+                                periodHighlight={text({ pt: 'hoje', en: 'today' })}
                             />
                         </Card.Root>
 
@@ -132,7 +182,10 @@ const ResumeSection: React.FC = () =>
                             <img src='/img/logos/csi.png' width={48} height={48} />
                             <Card.Info
                                 title='CSI - Solução & Tecnologia'
-                                office='Analista e Desenvolvedor pleno'
+                                office={text({
+                                    pt: 'Analista e Desenvolvedor pleno',
+                                    en: 'Full Analyst and Developer'
+                                })}
                                 local='Vitória - ES'
                                 period='2021 - 2024'
                             />
@@ -143,7 +196,10 @@ const ResumeSection: React.FC = () =>
                             <img src='/img/logos/sefaz.png' width={48} height={48} />
                             <Card.Info
                                 title='SEFAZ - Secretaria da Fazenda'
-                                office='Desenvolvedor'
+                                office={text({
+                                    pt: 'Desenvolvedor de Software',
+                                    en: 'Software Developer'
+                                })}
                                 local='Vitória - ES'
                                 period='2020 - 2021'
                             />
@@ -153,11 +209,13 @@ const ResumeSection: React.FC = () =>
                     {/* LINGUAS */}
                     {/* https://github.com/HatScripts/circle-flags/ */}
                     <div className={`${styles.cards} ${styles.cardLanguages}`}>
-                        <p className={styles.cards__title}>Línguas</p>
+                        <p className={styles.cards__title}>
+                            {text({ pt: 'Línguas', en: 'Languages' })}
+                        </p>
 
                         <Card.Root i={5}>
                             {/* <Card.Icon emoji={ Emojis.RED_BOOK } /> */}
-                            <Image src='/img/flags/br-rounded.svg' width={35} height={35} alt='Brazil flag' />
+                            <Image src='/img/flags/br-circle.svg' width={35} height={35} alt='Brazil flag' />
                             <Card.Lang
                                 reading={{ title: 'Leitura', points: 5 }}
                                 writing={{ title: 'Escrita', points: 5 }}
@@ -165,7 +223,7 @@ const ResumeSection: React.FC = () =>
                             />
                         </Card.Root>
                         <Card.Root i={6}>
-                            <Image src='/img/flags/us-rounded.svg' width={35} height={35} alt='USA flag' />
+                            <Image src='/img/flags/us-circle.svg' width={35} height={35} alt='USA flag' />
                             <Card.Lang
                                 reading={{ title: 'Reading', points: 4 }}
                                 writing={{ title: 'Writing', points: 4 }}

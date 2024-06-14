@@ -10,6 +10,7 @@ import { grow } from '../../utils/animations';
 import { ProjectModal } from '../modals/ProjectModal/ProjectModal';
 
 import styles from './Project.module.scss';
+import { useLanguage } from '../../contexts/Language';
 
 type ImageProps = {
     src: string;
@@ -39,6 +40,7 @@ export const Project: React.FC<ProjectProps> = (props) =>
 {
     const { img, name, imgAlign = 'center', mobile, butDesktopShowcase, lastVisibleOne = false } = useMemo(() => props, [props]);
 
+    const { text } = useLanguage();
     const { ref, inView } = useInView({ threshold: 0.2 });
 
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -78,7 +80,10 @@ export const Project: React.FC<ProjectProps> = (props) =>
                     onClick={() => setIsOpen(true)}
                 >
                     <span>{ name } <AiOutlineFullscreen /></span>
-                    <span>Clique para ver detalhes</span>
+                    <span>{text({
+                        pt: 'Clique para ver detalhes',
+                        en: 'Click to see details'
+                    })}</span>
                 </div>
             </div>
 

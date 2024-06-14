@@ -11,6 +11,7 @@ import { ProjectProps } from '../../Project/Project';
 
 import styles from './ProjectModal.module.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { useLanguage } from '../../../contexts/Language';
 
 type ProjectModalProps = Omit<ModalProps, 'children'> & {
     project: ProjectProps;
@@ -24,6 +25,8 @@ export const ProjectModal = ({
     }
 }: ProjectModalProps) =>
 {
+    const { text} = useLanguage();
+
     const [closing, setClosing] = useState<boolean>(false);
 
     function requestClose()
@@ -88,7 +91,7 @@ export const ProjectModal = ({
 
                         {intention ?
                             <div className={styles.intention}>
-                                <span>Intúito: </span>
+                                <span>{text({ pt: 'Intúito', en: 'Intention' })}: </span>
                                 <span>{ intention }</span>
                             </div>
                         : null}
@@ -99,14 +102,14 @@ export const ProjectModal = ({
                             {demoLink ?
                                 <Link href={demoLink} target='_blank' className={styles.demoLink}>
                                     <HiMiniGlobeAlt />
-                                    Visitar
+                                    {text({ pt: 'Visitar', en: 'Visit' })}
                                 </Link>
                             : null}
 
                             {githubLink ? 
                                 <Link href={githubLink} target='_blank' className={styles.githubLink}>
                                     <HiMiniCodeBracket />
-                                    Ver código-fonte
+                                    {text({ pt: 'Ver código-fonte', en: 'See source code' })}
                                 </Link>
                             : null}
                         </div>
@@ -114,7 +117,7 @@ export const ProjectModal = ({
                         <div>
                             <button type="button" className={styles.closeBtn} onClick={() => requestClose()}>
                                 <HiMiniXMark />
-                                Fechar
+                                {text({ pt: 'Fechar', en: 'Close' })}
                             </button>
                         </div>
                     </div>

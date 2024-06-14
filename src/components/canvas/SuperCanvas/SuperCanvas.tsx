@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 
-import styles from '../DefaultCanvas.module.scss';
+import styles from '../HomeCanvas.module.scss';
 import { SuperAnimation } from "./SuperAnimation";
 
 type HomeCanvasProps = {
