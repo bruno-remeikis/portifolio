@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import { track } from '@vercel/analytics';
 import { isMobile } from 'react-device-detect';
@@ -9,18 +9,13 @@ import { FaGithub } from "react-icons/fa";
 
 import { contacts } from '../../utils/contacts';
 
-import { MultipleWritingEffetc } from '../../components/MultipleWritingEffect/MultipleWritingEffect';
 import { SuperCanvas } from '../../components/canvas/SuperCanvas/SuperCanvas';
 
 import styles from './Home.module.scss';
 import { useLanguage } from '../../contexts/Language';
-import { WritingEffect } from '../../components/WritingEffect/WritingEffect';
-import { TypingEffect } from '../../components/TypingEffect/TypingEffect';
-import { MultilangText } from '../../utils/language';
+import { MultiTyping } from '../../components/Typing/MultiTyping/MultiTyping';
 
-const timming = 100;
-
-const TypingApresentation = () =>
+/*const TypingApresentation = () =>
 {
     const { text, language } = useLanguage();
 
@@ -97,14 +92,32 @@ const TypingApresentation = () =>
             </TypingEffect>
         </>
     )   
-}
+}*/
 
 const HomeSection: React.FC = () =>
 {
-    const { text } = useLanguage();
+    const { text, language } = useLanguage();
 
     const sectionRef = useRef(null);
-    
+
+    /*const [multityping, setMultityping] = useState<ReactElement>();
+
+    useEffect(() => {console.log('AAA');setMultityping((
+        <MultitypingEffect
+            defaultClassName={styles.p2}
+            deps={[language]}
+            rows={[
+                { text: text({ pt: 'Olá!', en: 'Hi!' }), className: styles.p1 },
+                [
+                    { text: text({ pt: 'Eu sou ', en: 'I\'m ' }) },
+                    { text: 'Bruno', className: `${styles.p2} ${styles.pEmphasis}` },
+                    { text: ',' }
+                ],
+                { text: text({ pt: 'dev FullStack', en: 'FullStack dev' }) }
+            ]}
+        />
+    ))}, [language]); // forceUpdate */
+
     return (
         <div ref={sectionRef} id="home" className={`section ${styles.homeSection}`}>
 
@@ -131,7 +144,36 @@ const HomeSection: React.FC = () =>
                                 ]}
                             ></MultipleWritingEffetc> */}
 
-                            <TypingApresentation />
+                            {/* <TypingApresentation /> */}
+
+                            {/* <MultitypingEffect
+                                defaultClassName={styles.p2}
+                                texts={[
+                                    { text: { pt: 'Olá!', en: 'Hi!' }, className: styles.p1 },
+                                    { texts: [
+                                        { text: { pt: 'Eu sou o ', en: 'I\'m ' } },
+                                        { text: 'Bruno' },
+                                        ','
+                                    ] },
+                                    { text: { pt: 'dev FullStack', en: 'FullStack dev' } }
+                                ]}
+                            /> */}
+
+                            <MultiTyping
+                                defaultClassName={styles.p2}
+                                deps={[language]}
+                                rows={[
+                                    { text: text({ pt: 'Olá!', en: 'Hi!' }), className: styles.p1 },
+                                    [
+                                        { text: text({ pt: 'Eu sou ', en: 'I\'m ' }) },
+                                        { text: 'Bruno', className: `${styles.p2} ${styles.pEmphasis}` },
+                                        { text: ',' }
+                                    ],
+                                    { text: text({ pt: 'dev FullStack', en: 'FullStack dev' }) }
+                                ]}
+                            />
+
+                            {/* { multityping } */}
                         </div>
 
                         <div className={styles.btnSobre}>

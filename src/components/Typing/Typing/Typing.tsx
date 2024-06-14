@@ -1,8 +1,9 @@
 import { useState, useEffect, DependencyList, CSSProperties } from 'react';
 
-import styles from './TypingEffect.module.scss';
+import styles from './Typing.module.scss';
+import { Cursor, CursorProps } from '../Cursor/Cursor';
 
-type TypingEffectProps = {
+type TypingProps = {
     children: string;
     className?: string;
     style?: CSSProperties;
@@ -16,6 +17,8 @@ type TypingEffectProps = {
     hideCursorWhileInitialDelay?: boolean;
     endDelay?: number;
 
+    cursor?: CursorProps;
+
     hideCursor?: boolean;
     cursorClassName?: string;
     cursorStyle?: CSSProperties;
@@ -23,43 +26,46 @@ type TypingEffectProps = {
     deps?: DependencyList;
 }
 
-export const TypingEffect = ({
+export const Typing = ({
     children: text,
     className = '',
     style = {},
     timming = 100,
     delay = 0,
     infinite = false,
-    infiniteDelay = 1000,
+    //infiniteDelay = 1000,
     hideCursorOnEnd = false,
     hideCursorWhileInitialDelay = false,
     endDelay = 0,
     hideCursor = false,
-    cursorClassName = '',
-    cursorStyle = {},
+    //cursorClassName = '',
+    //cursorStyle = {},
+    cursor,
     deps = []
-}: TypingEffectProps) =>
+}: TypingProps) =>
 {
     const [fullText, setFullText] = useState('');
     const [currentText, setCurrentText] = useState('');
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [cursorVisible, setCursorVisible] = useState(!hideCursor);
-
-    // const typing = currentIndex < fullText.length;
+    const [cursorVisible, setCursorVisible] = useState(/*!hideCursor*/!hideCursorWhileInitialDelay);
 
     function init() {
         setCurrentText('');
         setCurrentIndex(0);
-        initCursor();
+        if(!hideCursor)
+            initCursor();
     }
 
     function initCursor() {
-        if(currentIndex === 0 && hideCursorWhileInitialDelay && cursorVisible) {
+        //currentIndex === 0 &&
+        if(delay > 0 && hideCursorWhileInitialDelay/* && cursorVisible*/) {
             setCursorVisible(false);
             setTimeout(() => {
                 setCursorVisible(true);
             }, delay);
         }
+        else
+            setCursorVisible(true);
     }
 
     useEffect(() => {
@@ -68,29 +74,38 @@ export const TypingEffect = ({
     },
     [text, ...deps]);
 
-    useEffect(() => {
+    /*useEffect(() => {
         if(currentIndex >= fullText.length) {
             if(hideCursorOnEnd && cursorVisible)
                 setTimeout(() => {
                     setCursorVisible(false);
                 }, endDelay);
         }
-    }, [currentIndex]);
-
-
-    // useEffect(() => initCursor(), []);
+    }, [currentIndex]);*/
 
     useEffect(() => {
         let timeout: NodeJS.Timeout;
 
+        if(fullText.length === 0)
+            return;
+
         if(currentIndex < fullText.length) {
             timeout = setTimeout(() => {
-                setCurrentText(prevText => prevText + fullText[currentIndex]);
+                setCurrentText(prevText => prevText.concat(fullText[currentIndex]));
                 setCurrentIndex(prevIndex => prevIndex + 1);
             }, currentIndex === 0 ? (delay + timming) : timming);
         }
-        else if(infinite)
-            timeout = setTimeout(() => init(), infiniteDelay);
+        else {
+            if(infinite)
+                /*timeout = */setTimeout(() => init(), endDelay);
+            
+            if(hideCursorOnEnd && cursorVisible) {
+                // console.log("aaa")
+                /*timeout = */setTimeout(() => {
+                    setCursorVisible(false);
+                }, endDelay);
+            }
+        }
 
         return () => clearTimeout(timeout);
     },
@@ -102,14 +117,14 @@ export const TypingEffect = ({
     [currentIndex]);*/
 
     return <div className={styles.container}>
+
         <span className={`${styles.text} ${className}`} style={style}>{currentText}</span>
-        {cursorVisible && <span
-            className={`${styles.cursor} ${cursorClassName}`}
-            style={{
-                ...cursorStyle,
-                animationPlayState: currentIndex < fullText.length ? 'paused' : 'running' //typing ? 'running' : 'paused',
-                // height: fontHeight ? fontHeight : 'inherit'
-            }}
-        />}
+
+        {cursorVisible &&
+            <Cursor
+                className={cursor?.className}
+                style={cursor?.style}
+                blinking={currentIndex >= fullText.length}
+            />}
     </div>;
 };
