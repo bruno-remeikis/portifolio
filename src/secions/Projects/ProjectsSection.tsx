@@ -53,28 +53,27 @@ const ProjectsSection: React.FC = () =>
                         mobile
                     />
                     <Project
-                        img='chess/chess.png'
-                        name={text({ pt: 'Xadrez', en: 'Chess' })}
-                        githubLink='https://github.com/bruno-remeikis/Chess'
+                        // lastVisibleOne
+                        img='graph/graph-2.png'
+                        imgScale={1}
+                        name='Graph'
+                        // demoLink='https://portifolio-remeikis.vercel.app/'
+                        githubLink='https://github.com/bruno-remeikis/dijkstra-algorithm'
                         imgs={[
-                            { src: 'chess/chess.png', size: [1920, 1079] },
-                            { src: 'chess/chess-2.png', size: [1920, 1079] },
+                            { src: 'graph/graph-1.png', size: [1920, 1080] },
                         ]}
                         description={text({
-                            pt: 'Jogo de xadrez desenvolvido com o framework Phaser 3.\nUtilizei este projeto para aprender um ' +
-                                'pouco de como funciona o xadrez, além de experimentar um pouco de desenvolvimento de jogos digitais ' +
-                                'e exercitar minhas habilidades em programação e desenvolvimento Front-end.',
-                            en: 'Chess game developed with the Phaser 3 framework.\nI used this project to learn a little about ' +
-                                'how chess works, as well as experience a bit of digital game development and exercise my skills ' +
-                                'in programming and Front-end development.'
+                            pt: 'Graph é um simulador de grafos.\nNele é possível criar e editar grafos e ver qual o melhor ' +
+                                'caminho entre seus vértices através do algoritmo de Dijkstra.',
+                            en: 'Graph is a graph simulator.\nIt is possible to create and edit graphs and see the best path ' +
+                                'between their vertices using Dijkstra\'s algorithm.'
                         })}
                         technologies={[
                             technologies.html,
                             technologies.css,
-                            technologies.javascript,
-                            technologies.phaser3
+                            technologies.typescript,
+                            technologies.node,
                         ]}
-                        intention={text({ pt: 'Conhecimento', en: 'Knowledge' })}
                     />
                     <Project
                         img='ursport.jpeg'
@@ -163,21 +162,26 @@ const ProjectsSection: React.FC = () =>
                         intention={text({ pt: 'Uso pessoal', en: 'Personal use' })}
                     />
                     <Project
-                        img='calendario2.png'
-                        name={text({ pt: 'Calendário', en: 'Calendary' })}
-                        githubLink='https://github.com/bruno-remeikis/calendario'
-                        imgAlign='top'
+                        img='chess/chess.png'
+                        name={text({ pt: 'Xadrez', en: 'Chess' })}
+                        githubLink='https://github.com/bruno-remeikis/Chess'
                         imgs={[
-                            { src: 'calendario2.png', size: [1123, 625] },
+                            { src: 'chess/chess.png', size: [1920, 1079] },
+                            { src: 'chess/chess-2.png', size: [1920, 1079] },
                         ]}
                         description={text({
-                            pt: 'Este é um calendário simples feito em um dia de tédio :)',
-                            en: 'Este é um calendário simples feito em um dia de tédio :)'
+                            pt: 'Jogo de xadrez desenvolvido com o framework Phaser 3.\nUtilizei este projeto para aprender um ' +
+                                'pouco de como funciona o xadrez, além de experimentar um pouco de desenvolvimento de jogos digitais ' +
+                                'e exercitar minhas habilidades em programação e desenvolvimento Front-end.',
+                            en: 'Chess game developed with the Phaser 3 framework.\nI used this project to learn a little about ' +
+                                'how chess works, as well as experience a bit of digital game development and exercise my skills ' +
+                                'in programming and Front-end development.'
                         })}
                         technologies={[
                             technologies.html,
                             technologies.css,
-                            technologies.javascript
+                            technologies.javascript,
+                            technologies.phaser3
                         ]}
                         intention={text({ pt: 'Conhecimento', en: 'Knowledge' })}
                     />
@@ -203,6 +207,25 @@ const ProjectsSection: React.FC = () =>
                             technologies.sass
                         ]}
                         intention={text({ pt: 'Prova admissional', en: 'Admimssion test' })}
+                    />
+                    <Project
+                        img='calendario2.png'
+                        name={text({ pt: 'Calendário', en: 'Calendary' })}
+                        githubLink='https://github.com/bruno-remeikis/calendario'
+                        imgAlign='top'
+                        imgs={[
+                            { src: 'calendario2.png', size: [1123, 625] },
+                        ]}
+                        description={text({
+                            pt: 'Este é um calendário simples feito em um dia de tédio :)',
+                            en: 'Este é um calendário simples feito em um dia de tédio :)'
+                        })}
+                        technologies={[
+                            technologies.html,
+                            technologies.css,
+                            technologies.javascript
+                        ]}
+                        intention={text({ pt: 'Conhecimento', en: 'Knowledge' })}
                     />
                     <Project
                         lastVisibleOne

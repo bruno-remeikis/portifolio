@@ -19,6 +19,7 @@ type ImageProps = {
 
 export type ProjectProps = {
     img: string;
+    imgScale?: number;
     name: string;
     demoLink?: string;
     githubLink?: string;
@@ -38,7 +39,7 @@ export type ProjectProps = {
 
 export const Project: React.FC<ProjectProps> = (props) =>
 {
-    const { img, name, imgAlign = 'center', mobile, butDesktopShowcase, lastVisibleOne = false } = useMemo(() => props, [props]);
+    const { img, imgScale = 1, name, imgAlign = 'center', mobile, butDesktopShowcase, lastVisibleOne = false } = useMemo(() => props, [props]);
 
     const { text } = useLanguage();
     const { ref, inView } = useInView({ threshold: 0.2 });
@@ -71,7 +72,8 @@ export const Project: React.FC<ProjectProps> = (props) =>
                     <div className={styles.img} style={{
                         backgroundImage: `url('/img/projects/${img}')`,
                         backgroundPositionX: '50%',
-                        backgroundPositionY: getImgAlign()
+                        backgroundPositionY: getImgAlign(),
+                        transform: `scale(${imgScale})`
                     }} />
                 </div>
 
