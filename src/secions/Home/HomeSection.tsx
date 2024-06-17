@@ -65,6 +65,7 @@ const HomeSection: React.FC = () =>
 
                 </main>
             </div>
+
         </div>
     );
 }

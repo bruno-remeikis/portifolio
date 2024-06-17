@@ -65,4 +65,14 @@ export class Dot
     }
 
     getLifetime = () => Date.now() - this.creationDt;
+
+    hovers(x: number, y: number, range: number = 1) {
+        const dist = Math.sqrt((this.x - x) ** 2 + (this.y - y) ** 2);
+        return dist <= this.size * range;
+    }
+
+    setLocation(x: number, y: number) {
+        this.x = x;
+        this.y = y;
+    }
 }
