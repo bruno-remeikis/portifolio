@@ -53,11 +53,9 @@ const ProjectsSection: React.FC = () =>
                         mobile
                     />
                     <Project
-                        // lastVisibleOne
                         img='graph/graph-2.png'
-                        imgScale={1}
                         name='Graph'
-                        // demoLink='https://portifolio-remeikis.vercel.app/'
+                        demoLink='https://graaph.vercel.app/'
                         githubLink='https://github.com/bruno-remeikis/dijkstra-algorithm'
                         imgs={[
                             { src: 'graph/graph-1.png', size: [1920, 1080] },
